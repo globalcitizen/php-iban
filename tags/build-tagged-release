@@ -29,12 +29,12 @@ $symdir = $filebasename;
 
 # generate tarball
 print "Building tarball... ";
-`tar --exclude .svn -cHjf $filebasename.tar.bz2 $symdir`;
+`tar --exclude .svn .git -cHjf $filebasename.tar.bz2 $symdir`;
 print "done.\n";
 
 # generate zipfile
 print "Building zipfile... ";
-`zip --exclude '*.svn/*' -9r $filebasename.zip $symdir`;
+`zip --exclude '*.svn/*' '*.git/*' -9r $filebasename.zip $symdir`;
 print "done.\n";
 
 # remove symlinked dir
@@ -57,7 +57,8 @@ if(($gc_username ne '') && ($gc_password ne '')) {
 
 # warning
 print "Don't forget to run:\n";
-print " svn commit -m '$dir tag' $dir\n";
+print " git add '$dir'\n";
+print " git push\n";
 
 # all done
 exit(0);
