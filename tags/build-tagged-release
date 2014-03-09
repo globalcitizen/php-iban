@@ -21,7 +21,7 @@ if(!($app =~ /^[a-z0-9-]+$/)) {
 }
 
 # add VERSION file
-`echo $app >> $dir/VERSION`;
+`echo "$dir" > $dir/VERSION`;
 
 # calculate base name of release file
 $filebasename = $app . '-' . $dir;
@@ -32,7 +32,7 @@ $symdir = $filebasename;
 
 # generate tarball
 print "Building tarball... ";
-`tar --exclude .svn .git -cHjf $filebasename.tar.bz2 $symdir`;
+`tar --exclude .svn --exclude .git -cjf $filebasename.tar.bz2 $symdir`;
 print "done.\n";
 
 # generate zipfile
