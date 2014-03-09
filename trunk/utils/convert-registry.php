@@ -29,6 +29,9 @@ foreach($lines as $line) {
    $bits[$i] = preg_replace('/ *$/','',$bits[$i]);
   }
   # assigned fields to named variables
+  print "-------\n";
+  print $line;
+  print "-------\n";
   list($country_name,$country_code,$domestic_example,$bban,$bban_structure,$bban_length,$bban_bi_position,$bban_bi_length,$bban_bi_example,$bban_example,$iban,$iban_structure,$iban_length,$iban_electronic_example,$iban_print_example,$country_sepa,$contact_details) = $bits;
   # sanitise
   $country_code = strtoupper(substr($country_code,0,2));       # sanitise comments away
