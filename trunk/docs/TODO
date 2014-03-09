@@ -18,4 +18,4 @@ TODO
    deployments requiring international and/or constrained input.
  - Consider building a library of national-level bank or payment
    institution identifier codes. This would be rather large and an
-   optional extension.
+   optional extension and would be in competition with SWIFTRef.

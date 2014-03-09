@@ -33,3 +33,18 @@ September 2013
 --------------
  - Azerbaijan, Brazil, Costa Rica, Palestine, Virgin Islands 'SEPA 
    Country' field in PDF (yes/no) is completely blank
+
+March 2014
+----------
+ - In multiple cases, territories of a major country have a SEPA status
+   that differs from the parent jurisdiction. The IBAN specification as
+   previously released does not include individual records for these
+   territories, and thus cannot convey this important information.
+ - The IBAN registry's old URL is no longer publicly available! Its now
+   ends in a 404, and the apparent new home, located over at
+   http://www.swift.com/products_services/by_type/reference_data/iban_registry_iso13616
+   does not have any content. The parent portion of this part of the
+   SWIFT website suggests the information may have been moved to a new
+   'SWIFTRef' site, however that site appears to only peddle paid for
+   directories of BICs and similar. The new location after much
+   searching was found to be http://www.swift.com/products_services/bic_and_iban_format_registration_iban_format_r
