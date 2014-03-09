@@ -20,6 +20,9 @@ if(!($app =~ /^[a-z0-9-]+$/)) {
  error("Unable to ascertain application name (came up with '$app')");
 }
 
+# add VERSION file
+`echo $app >> $dir/VERSION`;
+
 # calculate base name of release file
 $filebasename = $app . '-' . $dir;
 
