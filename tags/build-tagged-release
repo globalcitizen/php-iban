@@ -32,7 +32,7 @@ $symdir = $filebasename;
 
 # generate tarball
 print "Building tarball... ";
-`tar --exclude .svn --exclude .git -cjf $filebasename.tar.bz2 $symdir`;
+`tar --exclude .svn --exclude .git -chjf $filebasename.tar.bz2 $symdir`;
 print "done.\n";
 
 # generate zipfile
