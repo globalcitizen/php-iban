@@ -48,3 +48,5 @@ March 2014
    'SWIFTRef' site, however that site appears to only peddle paid for
    directories of BICs and similar. The new location after much
    searching was found to be http://www.swift.com/products_services/bic_and_iban_format_registration_iban_format_r
+ - The TXT records of QA and JO do not match those within the PDF and
+   are essentially spurious while looking roughly correct. Dang.
