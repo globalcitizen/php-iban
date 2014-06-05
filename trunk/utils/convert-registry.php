@@ -7,7 +7,7 @@ require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
 date_default_timezone_set('UTC'); # mutes a warning
 
 # read registry
-$data = file_get_contents('IBAN_Registry.txt');
+$data = `iconv -f utf8 -t ascii --byte-subst="<0x%x>" --unicode-subst="<U+%04X>" 'IBAN_Registry.txt'`;
 if($data == '') { die("Couldn't read IBAN_Registry.txt - try downloading from the location described in the REGISTRY-URL file."); }
 
 # print header line
@@ -51,10 +51,35 @@ foreach($lines as $line) {
    # fix bban example to remove verbosity and match domestic example
    $bban = '12345600000785';
   }
+  if($country_code=='KZ') {
+   # fix presence of multiline free-text in KZ IBAN structure field
+   $iban_structure = '2!a2!n3!n13!c';
+  }
+  if($country_code=='QA') {
+   # fix the lack BBAN structure provision in the TXT format registry
+   $bban_structure = '4!a4!n17!c';
+   # fix broken IBAN structure provision
+   $iban_structure = 'QA2!n4!a4!n17!c';
+  }
+  if($country_code=='JO') {
+   $bban_bi_length=4; # not '4!a' as suggested
+  }
   $iban_print_example = preg_replace('/, .*$/','',$iban_print_example); # DK includes FO and GL examples in one record
 
+  # drop leading 2!a in iban structure.
+  #  .. should actually be the country code in question
+  if(substr($iban_structure,0,3) == '2!a') {
+   $iban_structure = $country_code . substr($iban_structure,3);
+  }
+
+  # calculate $bban_regex from $bban_structure
+  $bban_regex = swift_to_regex($bban_structure);
+  # calculate $iban_regex from $iban_structure
+  $iban_regex = swift_to_regex($iban_structure);
+  print "[DEBUG] got $iban_regex from $iban_structure\n";
+
  # debugging
- if(false) {
+ if(true) {
   print "[$country_name ($country_code)]\n";
   print "Domestic account number example: $domestic_example\n";
   print "BBAN structure:                  $bban_structure\n";
@@ -63,18 +88,16 @@ foreach($lines as $line) {
   print "BBAN bank identifier length:     $bban_bi_length\n";
   print "BBAN bank identifier example:    $bban_bi_example\n";
   print "BBAN example:                    $bban_example\n";
+  print "BBAN regex (calculated):         $bban_regex\n";
   print "IBAN structure:                  $iban_structure\n";
   print "IBAN length:                     $iban_length\n";
   print "IBAN electronic format example:  $iban_electronic_example\n";
   print "IBAN print format example:       $iban_print_example\n";
+  print "IBAN Regex (calculated):         $iban_regex\n";
   print "SEPA country:                    $country_sepa\n";
   print "Contact details:                 $contact_details\n\n";
  }
 
-  # calculate $bban_regex from $bban_structure
-  $bban_regex = swift_to_regex($bban_structure);
-  # calculate $iban_regex from $iban_structure
-  $iban_regex = swift_to_regex($iban_structure);
   # calculate numeric $bban_length
   $bban_length = preg_replace('/[^\d]/','',$bban_length);
   # calculate numeric $iban_length
@@ -146,7 +169,9 @@ foreach($lines as $line) {
    # being checksums) and, if so, assume that the first/shorter one is the
    # branch identifier.
    $reduced_bban_structure = preg_replace('/^\d+![nac]/','',$bban_structure);
+#   print "[DEBUG] reduced BBAN structure = $reduced_bban_structure\n";
    $tokens = swift_tokenize($reduced_bban_structure,1);
+#   print "[DEBUG] tokens = " + json_encode($tokens,1);
    # discard any tokens of length 1 or 2
    for($t=0;$t<count($tokens[0]);$t++) {
     if($tokens[1][$t] < 3) {
@@ -159,6 +184,7 @@ foreach($lines as $line) {
    else {
     $interesting_field_count = (count($tokens[0])-count($tokens['discarded']));
    }
+#   print "[DEBUG] interesting field count = $interesting_field_count\n";
    # ...if we have at least two of them, there's a branchid-type field
    if($interesting_field_count >= 2) {
     # now loop through until we assign the branchid start offset
@@ -175,6 +201,14 @@ foreach($lines as $line) {
      }
     }
    }
+  }
+
+  # fix for Jordan
+  if($country_code == 'JO') {
+   $bban_bankid_start_offset = 0;
+   $bban_bankid_stop_offset = 3;
+   $bban_branchid_start_offset = 4;
+   $bban_branchid_stop_offset = 7;
   }
 
   # calculate 1=Yes, 0=No for $country_sepa
@@ -201,9 +235,23 @@ foreach($lines as $line) {
    $iban_electronic_example = iban_set_checksum($country_code .  substr($iban_electronic_example,2));
    #print "CHECKSUM-AFTER[$country_code]  = $iban_electronic_example\n";
    $iban_structure = $country_code . substr($iban_structure,2);
-   $iban_regex = '^' . $country_code . substr($iban_regex,3);
+   # step 1
+   $iban_regex_fixed = '^' . $country_code;
+   $tmp_country_code = substr($iban_regex,1,2);
+   #print "[DEBUG] $tmp_country_code\n";
+   # route #1 ... here we are dealing with a country code in the string already
+   if(preg_match('/^[A-Z][A-Z]$/',$tmp_country_code)) {
+    #print "[DEBUG] route #1\n";
+    $iban_regex_fixed = $iban_regex_fixed . substr($iban_regex,3);
+   }
+   # route #2 ... here there is no country code yet present
+   else {
+    #print "[DEBUG] route #2\n";
+    $iban_regex_fixed = $iban_regex_fixed . substr($iban_regex,1);
+   }
+   #print "[DEBUG] substited '$iban_regex_fixed' for '$iban_regex'\n";
    # output
-   print "$country_code|$country_name|$domestic_example|$bban_example|$bban_structure|$bban_regex|$bban_length|$iban_electronic_example|$iban_structure|$iban_regex|$iban_length|$bban_bankid_start_offset|$bban_bankid_stop_offset|$bban_branchid_start_offset|$bban_branchid_stop_offset|$registry_edition|$country_sepa\n";
+   print "$country_code|$country_name|$domestic_example|$bban_example|$bban_structure|$bban_regex|$bban_length|$iban_electronic_example|$iban_structure|$iban_regex_fixed|$iban_length|$bban_bankid_start_offset|$bban_bankid_stop_offset|$bban_branchid_start_offset|$bban_branchid_stop_offset|$registry_edition|$country_sepa\n";
   }
 
  }
