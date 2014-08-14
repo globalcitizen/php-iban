@@ -1,0 +1,5 @@
+{
+    "name": "php-iban/php-iban",
+    "description": "Parse and validate IBAN (and IIBAN) bank account information",
+    "version": "1.4.7"
+}
