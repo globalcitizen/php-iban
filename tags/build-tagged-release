@@ -23,6 +23,9 @@ if(!($app =~ /^[a-z0-9-]+$/)) {
 # add VERSION file
 `echo "$dir" > $dir/VERSION`;
 
+# add composer.json file
+`cat composer.json |sed 's/__VERSION__/$dir/' >$dir/composer.json`;
+
 # calculate base name of release file
 $filebasename = $app . '-' . $dir;
 
