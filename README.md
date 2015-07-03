@@ -3,9 +3,9 @@ php-iban
 
 `php-iban` is a library for parsing and validating IBAN (and IIBAN) bank account information in PHP.
 
-All parts of an IBAN an be retrieved, including country code, checksum, BBAN, financial institution or bank code, and where a fixed-length national system is in use, also branch/sort code and account number. IBANs can also be converted between human and machine representation.
+All parts of an IBAN an be retrieved, including country code, checksum, BBAN, financial institution or bank code, and where a fixed-length national system is in use, also branch/sort code and account number. IBANs can also be converted between human and machine representation. Finally, intelligent suggestions for originally intended input can be made when an incorrect IBAN is detected and is due to mistranscription error.
 
-The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at http://www.swift.com/solutions/messaging/information_products/directory_products/iban_format_registry/index.page then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-iban.googlecode.com/git/trunk/docs/COMEDY-OF-ERRORS 
+The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at http://www.swift.com/products_services/bic_and_iban_format_registration_iban_format_r then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-iban.googlecode.com/git/trunk/docs/COMEDY-OF-ERRORS 
 
 Various deficiencies in the initial adaptation have since been rectified, and the current version should be a fairly correct and reliable implementation.
 
@@ -14,6 +14,11 @@ Where appropriate, __European Committee for Banking Standards__ (ECBS) recommend
 Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though.
 
 Licensed under LGPL, it is free to use in commercial settings.
+
+News: July 2015
+---------------
+Corrected SWIFT URL to IBAN page.
+Emphasized mistranscription error support.
 
 News: March 2015
 ----------------
