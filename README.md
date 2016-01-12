@@ -5,7 +5,7 @@ php-iban
 
 All parts of an IBAN an be retrieved, including country code, checksum, BBAN, financial institution or bank code, and where a fixed-length national system is in use, also branch/sort code and account number. IBANs can also be converted between human and machine representation. Finally, intelligent suggestions for originally intended input can be made when an incorrect IBAN is detected and is due to mistranscription error.
 
-The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at http://www.swift.com/products_services/bic_and_iban_format_registration_iban_format_r then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-iban.googlecode.com/git/trunk/docs/COMEDY-OF-ERRORS 
+The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-iban.googlecode.com/git/trunk/docs/COMEDY-OF-ERRORS 
 
 Various deficiencies in the initial adaptation have since been rectified, and the current version should be a fairly correct and reliable implementation.
 
