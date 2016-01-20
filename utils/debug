@@ -1,6 +1,0 @@
-#!/bin/bash
-echo "test to stdout"
-echo "test to stderr" 1>&2
-echo "test to parent of cwd build.log" >>../build.log
-echo "test to cwd build.log" >>build.log
-exit 1
