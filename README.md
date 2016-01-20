@@ -3,9 +3,16 @@ php-iban
 
 `php-iban` is a library for parsing and validating IBAN (and IIBAN) bank account information in PHP.
 
+[![Build Status](https://travis-ci.org/globalcitizen/php-iban.png)](https://travis-ci.org/globalcitizen/php-iban)
+[![Latest Stable Version](https://poser.pugx.org/globalcitizen/php-iban/v/stable)](https://packagist.org/packages/globalcitizen/php-iban) 
+[![Total Downloads](https://poser.pugx.org/globalcitizen/php-iban/downloads)](https://packagist.org/packages/globalcitizen/php-iban) 
+[![Latest Unstable Version](https://poser.pugx.org/globalcitizen/php-iban/v/unstable)](https://packagist.org/packages/globalcitizen/php-iban) 
+[![License](https://poser.pugx.org/globalcitizen/php-iban/license)](https://packagist.org/packages/globalcitizen/php-iban)
+![PHP Version](https://img.shields.io/badge/version-PHP%205.3%2B-lightgrey.svg)
+
 All parts of an IBAN an be retrieved, including country code, checksum, BBAN, financial institution or bank code, and where a fixed-length national system is in use, also branch/sort code and account number. IBANs can also be converted between human and machine representation. Finally, intelligent suggestions for originally intended input can be made when an incorrect IBAN is detected and is due to mistranscription error.
 
-The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-iban.googlecode.com/git/docs/COMEDY-OF-ERRORS 
+The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-php-iban.googlecode.com/git/docs/COMEDY-OF-ERRORS 
 
 Various deficiencies in the initial adaptation have since been rectified, and the current version should be a fairly correct and reliable implementation.
 
