@@ -17,6 +17,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 
 News: January 2016
 ------------------
+__Version 1.4.9__ has been released using the new Github-based release process. Hopefully this provides a solid anchor point for those bundling the library with other software. We also have a contributed composer metadata file to ease integration.
 New IBAN registry URLs integrated.
 Removed old SVN tag/trunk structure.
 
