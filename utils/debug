@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "test to stdout"
+echo "test to stderr" 1>&2
+exit 1
