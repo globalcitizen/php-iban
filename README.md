@@ -26,6 +26,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 
 News: January 2016
 ------------------
+I am currently working on connecting the automated test scripts to Travis CI, to provide additional robustness for new builds. Please excuse the temporary presence of broken build icons in the mean time!
 __Version 1.5.0__ has been released. There are no code changes, but we now have http://packagist.org/ integration, hopefully this triggers it to start working. If you use packagist, you can now add the library to your project by just running `composer require globalcitizen/php-iban` (thanks to @acoulton for pointing the way)
 
 __Version 1.4.9__ has been released using the new Github-based release process. Hopefully this provides a solid anchor point for those bundling the library with other software. We also have a contributed composer metadata file to ease integration.
