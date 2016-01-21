@@ -13,9 +13,6 @@ All parts of an IBAN an be retrieved, including country code, checksum, BBAN, fi
 
 Tested on PHP versions: 5.3, 5.4, 5.5, 5.6, 7.0, hhvm and nightly.
 
-If you are using `composer` (packagist) you can simply run `composer require globalcitizen/php-iban` to get going. Reportedly 
-[![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/phpunit/phpunit) and [![Daily Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/daily)](https://packagist.org/packages/phpunit/phpunit) were done via composer.
-
 The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-php-iban.googlecode.com/git/docs/COMEDY-OF-ERRORS 
 
 Various deficiencies in the initial adaptation have since been rectified, and the current version should be a fairly correct and reliable implementation.
@@ -25,6 +22,57 @@ Where appropriate, __European Committee for Banking Standards__ (ECBS) recommend
 Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though.
 
 Licensed under LGPL, it is free to use in commercial settings.
+
+
+Installation via composer
+-------------------------
+
+If you are use [composer](https://getcomposer.org/) you can simply run `composer require globalcitizen/php-iban` to get going. Reportedly 
+[![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/phpunit/phpunit) and [![Daily Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/daily)](https://packagist.org/packages/phpunit/phpunit) were done via composer.
+
+(If you don't yet have `composer` and wish to install it in an insecure fashion (not recommended, but convenient) you can run `curl -sS https://getcomposer.org/installer | php` or `wget -O- https://getcomposer.org/installer | php`)
+
+Then just add the following to your `composer.json` file:
+
+```js
+// composer.json
+{
+    "require": {
+        "globalcitizen/php-iban": "2.0.1"
+    }
+}
+```
+
+Then, you can install the new dependencies by running `composer`'s update command from the directory where your `composer.json` file is located:
+
+```sh
+# install
+$ php composer.phar install
+# update
+$ php composer.phar update globalcitizen/php-iban
+
+# or you can simply execute composer command if you set it to
+# your PATH environment variable
+$ composer install
+$ composer update globalcitizen/php-iban
+```
+
+You can see this library on Packagist.
+
+`composer` installs `autoloader` at `./vendor/autoload.php`. If you use globalcitizen/php-iban in your php script, add:
+
+```php
+require_once 'vendor/autoload.php';
+```
+
+Or you can use the `git clone` command:
+
+```sh
+# HTTP
+$ git clone https://github.com/globalcitizen/php-iban.git
+# SSH
+$ git clone git@github.com:globalcitizen/php-iban.git
+```
 
 News: January 2016
 ------------------
