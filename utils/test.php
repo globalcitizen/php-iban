@@ -28,13 +28,14 @@ if(verify_iban($iban)) {
 print "Hooray! - Invalid IBAN successfully rejected.\n\n";
 
 # Broken IIBAN
-$broken_iiban = 'AA12011123ZS6';
+$broken_iiban = 'VG96VPVG00000L2345678901';
 $suggestions = iban_mistranscription_suggestions($broken_iiban);
 if(count($suggestions)) {
  print "Hooray!  Successfully derived '" . implode(',',$suggestions) . "' as likely transcription error source suggestion(s) for the incorrect IBAN $broken_iiban.\n";
 }
 else {
  print "ERROR: Not able to ascertain suggested transcription error source(s) for $broken_iiban.\n";
+ $errors++;
 }
 print "\n";
 
@@ -75,6 +76,24 @@ foreach($_iban_registry as $country) {
  }
  else {
   print "ERROR: IBAN $iban is invalid.\n";
+  $correct = iban_set_checksum($iban);
+  if($correct == $iban) { 
+   print "       (checksum is correct, structure must have issues.)\n";
+   $machine_iban = iban_to_machine_format($iban);
+   print "        (machine format is: '$machine_iban')\n";
+   $country = iban_get_country_part($machine_iban);
+   print "        (country is: '$country')\n";
+   if(strlen($machine_iban)!=iban_country_get_iban_length($country)) {
+    print "        (ERROR: length of '" . strlen($machine_iban) . "' does not match expected length for country's IBAN '" . iban_country_get_iban_length($country) . "'.)";
+   }
+   $regex = '/'.iban_country_get_iban_format_regex($country).'/';
+   if(!preg_match($regex,$machine_iban)) {
+    print "        (ERROR: did not match regular expression '" . $regex . "')\n";
+   }
+  }
+  else {
+   print "       (correct checksum version would be '" . $correct . "')\n";
+  }
   $errors++;
  }
 
