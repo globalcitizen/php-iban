@@ -28,6 +28,20 @@ Licensed under LGPL, it is free to use in commercial settings.
 
 News: January 2016
 ------------------
+__Version 2.0.0__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with thcnages. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
+ * IIBAN (AA)
+ * Brazil (BR)
+ * Costa Rica (CR)
+ * Kazakhstan (KZ)
+ * Kosovo (XK)
+ * Kuwait (KW)
+ * Saint Barthelemy (BL)
+ * Saint Lucia (LC) 
+ * Saint Martin (French Part) (MF)
+ * Sao Tome and Principe (ST)
+ * Timor Leste (TL)
+ * Turkey (TR)
+
 __Version 1.6.0__ has been released. This version features more registry corrections (newly added territories with faulty data, bad checksums in sample IBANs, etc.) as well as enhanced testing routines, extended documentation, and corrected documentation. All users are advised to upgrade. We now have automated test script execution with Travis CI, to provide additional robustness for all committed code. This took longer than expected as unfortunately I picked the exact time Travis broke their build logs - https://www.traviscistatus.com/incidents/fcllblkclgmb - to see what all the fuss was about... proving again that cloud computing is just *great* for breaking things unexpectedly. Because they want to hide things, there was literally no debug output whatsoever, and I was led to believe this was my fault. Fellow programmers, behold: it is the dawning of the age of the mystical fail.
 
 __Version 1.5.0__ has been released. There are no code changes, but we now have http://packagist.org/ integration, hopefully this triggers it to start working. If you use packagist, you can now add the library to your project by just running `composer require globalcitizen/php-iban` (thanks to @acoulton for pointing the way)
