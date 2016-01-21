@@ -28,7 +28,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 
 News: January 2016
 ------------------
-__Version 2.0.0__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with thcnages. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
+__Version 2.0.0__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with changes. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
  * IIBAN (AA)
  * Brazil (BR)
  * Costa Rica (CR)
