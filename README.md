@@ -14,7 +14,7 @@ All parts of an IBAN an be retrieved, including country code, checksum, BBAN, fi
 Tested on PHP versions: 5.3, 5.4, 5.5, 5.6, 7.0, hhvm and nightly.
 
 If you are using `composer` (packagist) you can simply run `composer require globalcitizen/php-iban` to get going. Reportedly 
-[![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/phpunit/phpunit) and [![Daily Downloads](https://poser.pugx.org/phpunit/phpunit/d/daily)](https://packagist.org/packages/phpunit/phpunit) were done via composer.
+[![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/phpunit/phpunit) and [![Daily Downloads](https://poser.pugx.org/globalcizien/php-iban/d/daily)](https://packagist.org/packages/phpunit/phpunit) were done via composer.
 
 The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-php-iban.googlecode.com/git/docs/COMEDY-OF-ERRORS 
 
