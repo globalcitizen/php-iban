@@ -7,6 +7,13 @@ matters that cause issue for implementers:
  - Lack of validation of information in fields prior to publishing
  - Lack of synchronisation between TXT and PDF versions of the registry
 
+2016-01-21
+----------
+ - Correction for broken example IBANs for multiple countries (checksum
+   failed, length incorrect, etc.)
+ - Correction for broken IBAN length field for Khazakstan (no specified
+   length whatsoever)
+
 2011-07-16
 ----------
  - No information for Kuwait past sixth column

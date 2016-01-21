@@ -324,10 +324,10 @@ function iban_mistranscription_suggestions($incorrect_iban) {
  
  # abort on ridiculous length input (but be liberal)
  $length = strlen($incorrect_iban);
- if($length<5 || $length>34) { return array('(length bad)'); }
+ if($length<5 || $length>34) { return array('(supplied iban length insane)'); }
 
  # abort if mistranscriptions data is unable to load
- if(!_iban_load_mistranscriptions()) { return array('(failed to load)'); }
+ if(!_iban_load_mistranscriptions()) { return array('(failed to load mistranscriptions)'); }
 
  # init
  global $_iban_mistranscriptions;

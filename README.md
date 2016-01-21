@@ -26,7 +26,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 
 News: January 2016
 ------------------
-__Version 1.5.1__ has been released. This version features more registry corrections (newly added territories with faulty data, bad checksums in sample IBANs, etc.) as well as enhanced testing routines. All users are advised to upgrade. We now have automated test script execution with Travis CI, to provide additional robustness for all committed code. This took longer than expected as unfortunately I picked the exact time Travis broke their build logs - https://www.traviscistatus.com/incidents/fcllblkclgmb ... proving again that cloud computing is just *great* for breaking things unexpectedly!
+__Version 1.6.0__ has been released. This version features more registry corrections (newly added territories with faulty data, bad checksums in sample IBANs, etc.) as well as enhanced testing routines, extended documentation, and corrected documentation. All users are advised to upgrade. We now have automated test script execution with Travis CI, to provide additional robustness for all committed code. This took longer than expected as unfortunately I picked the exact time Travis broke their build logs - https://www.traviscistatus.com/incidents/fcllblkclgmb - to see what all the fuss was about... proving again that cloud computing is just *great* for breaking things unexpectedly. Because they want to hide things, there was literally no debug output whatsoever, and I was led to believe this was my fault. Fellow programmers, behold: it is the dawning of the age of the mystical fail.
 
 __Version 1.5.0__ has been released. There are no code changes, but we now have http://packagist.org/ integration, hopefully this triggers it to start working. If you use packagist, you can now add the library to your project by just running `composer require globalcitizen/php-iban` (thanks to @acoulton for pointing the way)
 
@@ -327,10 +327,34 @@ $country_bban_length = iban_country_get_bban_length($iban_country);
 # Get the IBAN example for an IBAN country
 $country_iban_example = iban_country_get_iban_example($iban_country);
 
+# Get the IBAN length for an IBAN country
+$country_iban_length = iban_country_get_iban_length($iban_country);
+
+# Get the IBAN format (in SWIFT format) for an IBAN country
+$country_iban_format_as_swift = iban_country_get_iban_format_swift ($iban_country);
+
+# Get the IBAN format (as a regular expression) for an IBAN country
+$country_iban_format_as_regex = iban_country_get_iban_format_regex($iban_country);
+
 # Determine whether an IBAN country is a member of SEPA (Single Euro Payments Area)
 if(!iban_country_is_sepa($iban_country)) {
  # ... do something xenophobic ...
 }
+
+# Get the bank ID start offset for an IBAN country
+$country_bankid_start_offset = iban_country_get_bankid_start_offset($iban_country);
+
+# Get the bank ID stop offset for an IBAN country
+$country_bankid_stop_offset = iban_country_get_bankid_stop_offset($iban_country);
+
+# Get the branch ID start offset for an IBAN country
+$country_branchid_start_offset = iban_country_get_branchid_start_offset($iban_country);
+
+# Get the branch ID stop offset for an IBAN country
+$country_branchid_stop_offset = iban_country_get_branchid_stop_offset($iban_country);
+
+# Get the registry edition for an IBAN country (note: IIBAN country 'AA' returns 'N/A')
+$country_registry_edition = iban_country_get_registry_edition($iban_country);
 ```
 
 
@@ -453,7 +477,7 @@ $country_bban_example = $myCountry->BBANExample();
 $country_bban_format_as_swift = $myCountry->BBANFormatSWIFT();
 
 # Get the BBAN format (as a regular expression) for an IBAN country
-$country_bban_format_as_regex = $myCounty->BBANFormatRegex();
+$country_bban_format_as_regex = $myCountry->BBANFormatRegex();
 
 # Get the BBAN length for an IBAN country
 $country_bban_length = $myCountry->BBANLength();
@@ -461,11 +485,34 @@ $country_bban_length = $myCountry->BBANLength();
 # Get the IBAN example for an IBAN country
 $country_iban_example = $myCountry->IBANExample();
 
+# Get the IBAN length for an IBAN country
+$country_iban_length = $myCountry->IBANLength();
+
+# Get the IBAN format (in SWIFT format) for an IBAN country
+$country_iban_format_as_swift = $myCountry->IBANFormatSWIFT();
+
+# Get the IBAN format (as a regular expression) for an IBAN country
+$country_iban_format_as_regex = $myCountry->IBANFormatRegex();
+
 # Determine whether an IBAN country is a member of SEPA (Single Euro Payments Area)
 if(!$myCountry->IsSEPA()) {
  # ... do something xenophobic ...
 }
 
+# Get the bank ID start offset for an IBAN country
+$country_bankid_start_offset = $myCountry->BankIDStartOffset();
+
+# Get the bank ID stop offset for an IBAN country
+$country_bankid_stop_offset = $myCountry->BankIDStopOffset();
+
+# Get the branch ID start offset for an IBAN country
+$country_branchid_start_offset = $myCountry->BranchIDStartOffset();
+
+# Get the branch ID stop offset for an IBAN country
+$country_branchid_stop_offset = $myCountry->BranchIDStopOffset();
+
+# Get the registry edition for an IBAN country (note: IIBAN country 'AA' returns 'N/A')
+$country_registry_edition = $myCountry->RegistryEdition();
 ```
 
 

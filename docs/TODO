@@ -10,7 +10,10 @@ TODO
    and the UAE that published data in advance of deployment
  - Support for calculating or validating any known national (sub-
    BBAN-level) checksum algorithms?
- - URLs to national-level BBAN format specifications
+ - Addition of special case national-level validations, eg. Estonia's
+   record states that the first digit of the bank code cannot be 0,
+   and Slovenia's five digit bank ID always begins with 91.
+ - URLs to national-level BBAN format specifications (if online)
  - Consider adding a library of localised forms and abbreviations
    for account number portions, for example Austria and Germany seem
    to have 'Kontonummer' (KTO) for account number, and 'Bankleitzah'
