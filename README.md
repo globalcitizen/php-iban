@@ -26,7 +26,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 
 News: January 2016
 ------------------
-I am currently working on connecting the automated test scripts to Travis CI, to provide additional robustness for new builds. Please excuse the temporary presence of broken build icons in the mean time! Unfortunately I picked the exact time Travis broke their build logs service - https://www.traviscistatus.com/incidents/fcllblkclgmb - so it's totally opaque what's going on right now. Will check back over the next day or two to see if all's well.
+__Version 1.5.1__ has been released. This version features more registry corrections (newly added territories with faulty data, bad checksums in sample IBANs, etc.) as well as enhanced testing routines. All users are advised to upgrade. We now have automated test script execution with Travis CI, to provide additional robustness for all committed code. This took longer than expected as unfortunately I picked the exact time Travis broke their build logs - https://www.traviscistatus.com/incidents/fcllblkclgmb ... proving again that cloud computing is just *great* for breaking things unexpectedly!
 
 __Version 1.5.0__ has been released. There are no code changes, but we now have http://packagist.org/ integration, hopefully this triggers it to start working. If you use packagist, you can now add the library to your project by just running `composer require globalcitizen/php-iban` (thanks to @acoulton for pointing the way)
 
