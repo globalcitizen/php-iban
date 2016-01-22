@@ -78,7 +78,7 @@ Comparison with other libraries
 
 The following table compares php-iban to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
 
-| Project                   | License       | Proc   | OO  | Began   | Latest  | ★   | 👀   | ⑂  | Installs | Home culture | Composer | Dependencies    |
+| Project                   | License       | Proc   | OO  | Began   | Latest  | (★)  | (👀)   | (⑂)  | Installs | Home culture | Composer | Dependencies    |
 | ------------------------- | ------------- | ------ | --- | ------- | ------- | --- | --- | -- | -------- | ------------ | -------- | --------------- |
 | php-iban                  | LGPL          | ✔      | ✔   | 2009    | 2.0.1   | 21  | 11  | 12 | 10,000+* | Global       | ✔        | *none*          |
 | jschaedl/iban             | MIT           | ✘      | ✔   | 2013    | 1.1.6   | 38  | 10  | 14 | 52,521   | German       | ✔        | phpunit/phpunit, phpunit/php-code-coverage, phploc/phploc, sebastian/phpcpd, jschaedl/bav |
