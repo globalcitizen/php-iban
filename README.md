@@ -76,24 +76,24 @@ $ git clone git@github.com:globalcitizen/php-iban.git
 Comparison with other libraries
 -------------------------------
 
-The following table compares php-iban to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
+The following table compares __php-iban__ to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
 
 | Project                                                       | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Composer | Deps    |
 | ------------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | -------- | ------- |
-| php-iban                                                      | LGPL | ✔    | ✔   | 2009   | 2.0.1  | 21   | 11    | 12   | 10,000+* | Global*      | ✔        | *none*  |
+| __php-iban__                                                  | LGPL | ✔    | ✔   | 2009   | 2.0.1  | 21   | 11    | 12   | 10,000+* | Global*      | ✔        | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                      | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | ✔        | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | ✔        | lots    |
 | [SepaUtilities](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | ✔        | phpunit |
 
 Notes:
- * Original download records for php-iban releases were hosted on Google Code and are now lost.
+ * Original download records for __php-iban__ releases were hosted on Google Code and are now lost.
  * __php-iban__'s author is an Australian born, Australia/New Zealand/German citizen based long-term in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
 
 Now let's take a look at features.
 
 |                                                               | Generation | IIBAN | Mistranscription | Human? | Registry                                                               |
 | ------------------------------------------------------------- | ---------- | ----- | ---------------- | ------ | ---------------------------------------------------------------------- |
-| php-iban                                                      | ✔          | ✔     | ✔                | ✔      | [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
+| __php-iban__                                                  | ✔          | ✔     | ✔                | ✔      | [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
 | [Iban](https://github.com/jschaedl/Iban)                      | ✔*         | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | ✘          | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)    |
 | [SepaUtilities](https://github.com/AbcAeffchen/SepaUtilities) | ✘          | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
