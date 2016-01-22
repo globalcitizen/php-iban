@@ -353,7 +353,7 @@ News: December 2009
 Documentation (Procedural/Recommended)
 ======================================
 
-```
+```php
 require_once('php-iban.php');
 # ... your code utilising IBAN functions...
 ```
@@ -361,7 +361,7 @@ require_once('php-iban.php');
 Validation Functions
 --------------------
 
-```
+```php
 # Verify an IBAN number.  Returns true or false.
 #  Input can be either printed form ('IBAN xx xx xx...') or machine form ('xxxxx')
 if(!verify_iban($iban)) {
@@ -389,7 +389,7 @@ $fixed_iban = iban_set_checksum($iban);
 Utility Functions
 -----------------
 
-```
+```php
 # Convert an IBAN to machine format.  To do this, we
 # remove IBAN from the start, if present, and remove
 # non basic roman letter / digit characters
@@ -403,7 +403,7 @@ $human_iban = iban_to_human_format($iban);
 
 IBAN Country-Level Functions
 ----------------------------
-```
+```php
 # Get the name of an IBAN country
 $country_name = iban_country_get_country_name($iban_country);
 
@@ -463,7 +463,7 @@ if(!iban_country_get_country_swift_official($iban_country)) {
 
 Parsing Functions
 -----------------
-```
+```php
 # Get an array of all the parts from an IBAN
 $iban_parts = iban_get_parts($iban);
 
@@ -491,7 +491,7 @@ $checksum = iban_get_checksum_part($iban);
 Internal Functions
 ------------------
 
-```
+```php
 # Perform MOD97-10 checksum calculation
 $mod97_10 = iban_mod97_10($string);
 
@@ -504,14 +504,14 @@ Documentation (Object Oriented Wrapper/Discouraged)
 ===================================================
 
 OO use is discouraged as there is a present-day trend to overuse the model.  However, if you prefer OO PHP then by all means use the object oriented wrapper, described below.
-```
+```php
 require_once('oophp-iban.php');
 # ... your code utilising object oriented PHP IBAN functions...
 ```
 
 Validation Functions
 --------------------
-```
+```php
 # Example instantiation
 $iban = 'AZ12345678901234'
 $myIban = new IBAN($iban);
@@ -543,7 +543,7 @@ $fixed_iban = $myIban->SetChecksum()
 Utility Functions
 -----------------
 
-```
+```php
 # Convert an IBAN to machine format.  To do this, we
 # remove IBAN from the start, if present, and remove
 # non basic roman letter / digit characters
@@ -557,7 +557,7 @@ $human_iban = $myIban->HumanFormat();
 IBAN Country-Level Functions
 ----------------------------
 
-```
+```php
 # To list countries, use the IBAN Class...
 $myIban->Countries();
 
@@ -627,7 +627,7 @@ if(!$myCountry->SWIFTOfficial()) {
 Parsing Functions
 -----------------
 
-```
+```php
 # Get an array of all the parts from an IBAN
 $iban_parts = $myIban->Parts();
 
@@ -650,5 +650,4 @@ $account = $myIban->Account();
 
 # Get the checksum part from an IBAN
 $checksum = $myIban->Checksum();
-
 ```
