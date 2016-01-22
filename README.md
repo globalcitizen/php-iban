@@ -84,9 +84,9 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
 
 Notes:
- * Original download records for __php-iban__ releases were hosted on Google Code and are now lost.
+ * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess.
  * php-iban's author is an Australian born, Australia/New Zealand/German citizen based in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
- * The IsoCodes and SepaUtil's projects cover standards other than IBAN so their popularity should be considered in this light. (In essence, there is really only one directly competing library)
+ * The IsoCodes and SepaUtil's projects cover standards other than IBAN so their popularity should be considered in this light. (In essence, there is really only one directly competing library, Iban)
 
 Now let's take a look at features.
 
@@ -103,13 +103,15 @@ Note:
  * __Mistranscription__ refers to the capacity to automatically detect what the user probably meant when they make a transcription error on IBANs, such as those manually written or printed in confusing fonts.
  * __Human?__ means support for input and output for the human, space-laden or presentation variant of an IBAN, ie. `IBAN XXXX XXXX XXXX XXXX` instead of `XXXXXXXXXXXXXXXX` - a lot more reasonable.
 
-In short, while composer users have apparently lept on rival libraries, particularly Iban, due to the time it took us to integrate a composer file, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), and are short on features.
+In short, while composer users have apparently lept on rival libraries (particularly Iban), probably due to the time it took us to integrate a composer file, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), use data from dubious sources and are frankly short on features.
 
 So, fearless user ... __choose php-iban__: the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. __Choose to win!__ ;)
 
 
 News: January 2016
 ------------------
+Currently unofficial IBAN country codes are being integrated. A new flag has been created to check whether a country is an official, SWIFT-issued record or not. Work continues on providing a major update to include string internationalization.
+
 __Version 2.0.1__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with changes. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
  * IIBAN (AA)
  * Brazil (BR)
