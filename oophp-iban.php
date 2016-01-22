@@ -148,6 +148,10 @@ Class IBANCountry {
   return iban_country_get_registry_edition($this->code);
  }
 
+ public function SWIFTOfficial() {
+  return iban_country_get_country_swift_official($this->code);
+ }
+
  public function IsSEPA() {
   return iban_country_is_sepa($this->code);
  }
