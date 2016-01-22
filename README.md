@@ -99,14 +99,14 @@ Now let's take a look at features.
 | [SepaUtilities](https://github.com/AbcAeffchen/SepaUtilities) | ✘          | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
 
 Note:
- * It is the author's opinion that generation features without IIBAN support are of dubious use, except in one-off migrations.
+ * __Generation__ refers to the capacity to create checksum-accurate potential IBANs programatically. It is the author's opinion that generation features without IIBAN support are of dubious use, except in one-off migrations.
  * __IIBAN__ describes support for the open [proposal](http://www.ifex-project.org/) for decentralized financial endpoint generation by private parties, such as crypto-currency exchanges, whilst maintaining compatibility with the emerging IBAN system. This system has been adopted by major cryptocurrency exchanges such as [Kraken](https://www.kraken.com/).
  * __Mistranscription__ refers to the capacity to automatically detect what the user probably meant when they make a transcription error on IBANs, such as those manually written or printed in confusing fonts.
  * __Human?__ means support for input and output for the human, space-laden or presentation variant of an IBAN, ie. `IBAN XXXX XXXX XXXX XXXX` instead of `XXXXXXXXXXXXXXXX` - a lot more reasonable.
 
 In short, while composer users have apparently lept on rival libraries due to the time it took us to integrate, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), and are short on features.
 
-So ... '''choose php-iban''': the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. '''Choose to win.'''
+So ... __choose php-iban__: the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. __Choose to win.__ ;)
 
 
 News: January 2016
