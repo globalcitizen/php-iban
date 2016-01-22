@@ -306,6 +306,11 @@ function iban_country_get_registry_edition($iban_country) {
  return _iban_country_get_info($iban_country,'registry_edition');
 }
 
+# Is the IBAN country one official issued by SWIFT?
+function iban_country_get_country_swift_official($iban_country) {
+ return _iban_country_get_info($iban_country,'country_swift_official');
+}
+
 # Is the IBAN country a SEPA member?
 function iban_country_is_sepa($iban_country) {
  return _iban_country_get_info($iban_country,'country_sepa');
@@ -412,7 +417,7 @@ function _iban_load_registry() {
     ini_set('display_errors',false);
     $old_error_reporting_value = ini_get('error_reporting');
     ini_set('error_reporting',false);
-    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa) = explode('|',$line);
+    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official) = explode('|',$line);
     ini_set('display_errors',$old_display_errors_value);
     ini_set('error_reporting',$old_error_reporting_value);
     # assign to registry
@@ -433,7 +438,8 @@ function _iban_load_registry() {
 				'bban_bankid_stop_offset'	=>	$bban_bankid_stop_offset,
 				'bban_branchid_start_offset'	=>	$bban_branchid_start_offset,
 				'bban_branchid_stop_offset'	=>	$bban_branchid_stop_offset,
-				'registry_edition'		=>	$registry_edition
+				'registry_edition'		=>	$registry_edition,
+                                'country_swift_official'        =>      $country_swift_official
                                );
    }
   }
