@@ -78,12 +78,12 @@ Comparison with other libraries
 
 The following table compares php-iban to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
 
-| Project                   | License       | Procedural? | Object-Oriented? | Began   | Latest  | ★   | 👀   | Forks | Installs   | Home culture    | Composer?  | Dependencies |
-| ------------------------- | ------------- | ----------- | ---------------- | ------- | ------- | --- | --- | ----- | ---------- | --------------- | ---------- | ------------ |
-| __php-iban__              | LGPL          | ✔           | ✔                | 2009    | 2.0.1   | 21  | 11  | 12    | 10,000+*   | International** | ✔          | *none*       |
-| jschaedl/iban             | MIT           | ✘           | ✔                | 2013    | 1.1.6   | 38  | 10  | 14    | 52,521     | German          | ✔          | phpunit/phpunit, phpunit/php-code-coverage, phploc/phploc, sebastian/phpcpd, jschaedl/bav |
-| ronanguilloux/IsoCodes    | GPL3          | ✘           | ✔                | 2012    | 2.0.0   | 241 | 14  | 28    | 36,360     | French          | ✔          | squizlabs/php_codesniffer, sebastian/phpcpd, phploc/phploc, phpmd/phpmd, pdepend/pdepend, fabpot/php-cs-fixer, symfony/phpunit-bridge, phpunit/phpunit, satooshi/php-coveralls, ext-bcmath |
-| AbcAeffchen/SepaUtilities | GPL3          | ✘           | ✔                | 2014    | 1.1.2   | 4   | 3   | 3     | 1,394      | German          | ✔          | phpunit/phpunit |
+| Project                                  | License       | Proc.? | OO? | Began   | Latest  | ★   | 👀   | ⑂  | Installs | Home culture | Composer | Dependencies |
+| ---------------------------------------- | ------------- | ------ | --- | ------- | ------- | --- | --- | -- | -------- | ------------ | -------- | ------------ |
+| __php-iban__                             | LGPL          | ✔      | ✔   | 2009    | 2.0.1   | 21  | 11  | 12 | 10,000+* | Global**     | ✔        | *none*       |
+| <small>jschaedl/iban</small>             | MIT           | ✘      | ✔   | 2013    | 1.1.6   | 38  | 10  | 14 | 52,521   | German       | ✔        | phpunit/phpunit, phpunit/php-code-coverage, phploc/phploc, sebastian/phpcpd, jschaedl/bav |
+| <small>ronanguilloux/IsoCodes</small>    | GPL3          | ✘      | ✔   | 2012    | 2.0.0   | 241 | 14  | 28 | 36,360   | French       | ✔        | squizlabs/php_codesniffer, sebastian/phpcpd, phploc/phploc, phpmd/phpmd, pdepend/pdepend, fabpot/php-cs-fixer, symfony/phpunit-bridge, phpunit/phpunit, satooshi/php-coveralls, ext-bcmath |
+| <small>AbcAeffchen/SepaUtilities</small> | GPL3          | ✘      | ✔   | 2014    | 1.1.2   | 4   | 3   | 3  | 1,394    | German       | ✔        | phpunit/phpunit |
 
 * Note that original download records for php-iban releases were hosted on Google Code and now lost.
 ** Author is an Australian born, Australia/New Zealand/German citizen based long-term in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
