@@ -455,6 +455,11 @@ $country_branchid_stop_offset = iban_country_get_branchid_stop_offset($iban_coun
 $country_registry_edition = iban_country_get_registry_edition($iban_country);
 ```
 
+# Determine whether an IBAN country is an official, SWIFT issued country record
+if(!iban_country_get_country_swift_official($iban_country)) {
+ # ... do something against decentralization ...
+}
+
 
 Parsing Functions
 -----------------
@@ -611,6 +616,11 @@ $country_branchid_stop_offset = $myCountry->BranchIDStopOffset();
 
 # Get the registry edition for an IBAN country (note: IIBAN country 'AA' returns 'N/A')
 $country_registry_edition = $myCountry->RegistryEdition();
+
+# Determine whether an IBAN country is an official, SWIFT issued country record
+if(!$myCountry->SWIFTOfficial()) {
+ # ... do something against decentralization ...
+}
 ```
 
 
