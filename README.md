@@ -74,6 +74,42 @@ $ git clone https://github.com/globalcitizen/php-iban.git
 $ git clone git@github.com:globalcitizen/php-iban.git
 ```
 
+Comparison with other libraries
+-------------------------------
+
+The following table compares php-iban to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
+
+| Project                   | License       | Procedural? | Object-Oriented? | Began   | Latest  | Stars | Watchers | Forks | Installs   | Home culture    | Composer?  | Dependencies |
+| ------------------------- | ------------- | ----------- | ---------------- | ------- | ------- | ----- | -------- | ----- | ---------- | --------------- | ---------- | ------------ |
+| __php-iban__              | LGPL          | ✔           | ✔                | 2009    | 2.0.1   | 21    | 11       | 12    | 10,000+*   | International** | ✔          | *none*       |
+| jschaedl/iban             | MIT           | ✘           | ✔                | 2013    | 1.1.6   | 38    | 10       | 14    | 52,521     | German          | ✔          | phpunit/phpunit, phpunit/php-code-coverage, phploc/phploc, sebastian/phpcpd, jschaedl/bav |
+| ronanguilloux/IsoCodes    | GPL3          | ✘           | ✔                | 2012    | 2.0.0   | 241   | 14       | 28    | 36,360     | French          | ✔          | squizlabs/php_codesniffer, sebastian/phpcpd, phploc/phploc, phpmd/phpmd, pdepend/pdepend, fabpot/php-cs-fixer, symfony/phpunit-bridge, phpunit/phpunit, satooshi/php-coveralls, ext-bcmath |
+| AbcAeffchen/SepaUtilities | GPL3          | ✘           | ✔                | 2014    | 1.1.2   | 4     | 3        | 3     | 1,394      | German          | ✔          | phpunit/phpunit |
+
+* Note that original download records for php-iban releases were hosted on Google Code and now lost.
+** Author is an Australian born, Australia/New Zealand/German citizen based long-term in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
+
+Now let's take a look at features.
+
+|                           | Generation | IIBAN | Mistranscription | Human? | Registry                                                               |
+| ------------------------- | ---------- | ----- | ---------------- | ------ | ---------------------------------------------------------------------- |
+| php-iban                  | ✔          | ✔     | ✔                | ✔      | [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) | 
+| jschaedl/iban             | ✔*         | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44) |
+| ronanguilloux/IsoCodes    | ✘          | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)  |
+| AbcAeffchen/SepaUtilities | ✘          | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
+
+* It is the author's opinion that generation features without IIBAN support are of dubious use, except in one-off migrations.
+
+Note:
+ * __IIBAN__ describes support for the open [proposal](http://www.ifex-project.org/) for decentralized financial endpoint generation by private parties, such as crypto-currency exchanges, whilst maintaining compatibility with the emerging IBAN system. This system has been adopted by major cryptocurrency exchanges such as [Kraken](https://www.kraken.com/).
+ * __Mistranscription__ refers to the capacity to automatically detect what the user probably meant when they make a transcription error on IBANs, such as those manually written or printed in confusing fonts.
+ * __Human?__ means support for input and output for the human, space-laden or presentation variant of an IBAN, ie. `IBAN XXXX XXXX XXXX XXXX` instead of `XXXXXXXXXXXXXXXX` - a lot more reasonable.
+
+In short, while composer users have apparently lept on rival libraries due to the time it took us to integrate, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), and are short on features.
+
+So ... '''choose php-iban''': the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. '''Choose to win.'''
+
+
 News: January 2016
 ------------------
 __Version 2.0.1__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with changes. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
