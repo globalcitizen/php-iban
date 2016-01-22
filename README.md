@@ -71,8 +71,8 @@ $ git clone https://github.com/globalcitizen/php-iban.git
 $ git clone git@github.com:globalcitizen/php-iban.git
 ```
 
-Comparison with other libraries
--------------------------------
+Comparison of PHP IBAN libraries
+--------------------------------
 
 The following table compares __php-iban__ to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
 
