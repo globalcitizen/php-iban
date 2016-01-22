@@ -118,7 +118,7 @@ Currently unofficial IBAN country codes are being integrated, and the process re
  * Angola (AO)
  * Benin (BJ)
 
-Note also that the IIBAN (AA) record has been marked unofficial.
+Note also that the IIBAN (AA) record has been marked unofficial, and features listed in `docs/TODO` have been migrated to Github issues and that file deleted.
 
 __Version 2.0.1__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with changes. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
  * IIBAN (AA)
