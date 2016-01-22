@@ -78,16 +78,17 @@ Comparison with other libraries
 
 The following table compares __php-iban__ to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
 
-| Project                                                       | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
-| ------------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                                  | LGPL | ✔    | ✔   | 2009   | 2.0.1  | 21   | 11    | 12   | 10,000+* | Global*      | *none*  |
-| [Iban](https://github.com/jschaedl/Iban)                      | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
-| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
+| Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
+| ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.0.1  | 21   | 11    | 12   | 10,000+* | Global*      | *none*  |
+| [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
+| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
 
 Notes:
  * Original download records for __php-iban__ releases were hosted on Google Code and are now lost.
- * __php-iban__'s author is an Australian born, Australia/New Zealand/German citizen based long-term in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
+ * php-iban's author is an Australian born, Australia/New Zealand/German citizen based in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
+ * The IsoCodes and SepaUtil's projects cover standards other than IBAN so their popularity should be considered in this light. (In essence, there is really only one directly competing library)
 
 Now let's take a look at features.
 
@@ -99,14 +100,14 @@ Now let's take a look at features.
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | ✘          | ✘     | ✘                | ✘      | [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
 
 Note:
- * __Generation__ refers to the capacity to create checksum-accurate potential IBANs programatically. It is the author's opinion that generation features without IIBAN support are of dubious use, except in one-off migrations.
+ * __Generation__ refers to the capacity to create checksum-accurate potential IBANs programatically. It is the author's opinion that generation features without IIBAN support (ie. authority) are of dubious use, except in one-off migrations.
  * __IIBAN__ describes support for the open [proposal](http://www.ifex-project.org/) for decentralized financial endpoint generation by private parties, such as crypto-currency exchanges, whilst maintaining compatibility with the emerging IBAN system. This system has been adopted by major cryptocurrency exchanges such as [Kraken](https://www.kraken.com/).
  * __Mistranscription__ refers to the capacity to automatically detect what the user probably meant when they make a transcription error on IBANs, such as those manually written or printed in confusing fonts.
  * __Human?__ means support for input and output for the human, space-laden or presentation variant of an IBAN, ie. `IBAN XXXX XXXX XXXX XXXX` instead of `XXXXXXXXXXXXXXXX` - a lot more reasonable.
 
-In short, while composer users have apparently lept on rival libraries due to the time it took us to integrate, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), and are short on features.
+In short, while composer users have apparently lept on rival libraries, particularly Iban, due to the time it took us to integrate a composer file, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), and are short on features.
 
-So ... __choose php-iban__: the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. __Choose to win.__ ;)
+So, fearless user ... __choose php-iban__: the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. __Choose to win!__ ;)
 
 
 News: January 2016
