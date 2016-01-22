@@ -110,7 +110,14 @@ So, fearless user ... __choose php-iban__: the ethical, functional, forward-look
 
 News: January 2016
 ------------------
-Currently unofficial IBAN country codes are being integrated. A new flag has been created to check whether a country is an official, SWIFT-issued record or not. Work continues on providing a major update to include string internationalization.
+Work continues on providing a major update to include string internationalization.
+
+__Version 2.1.0__ has been released.  
+Currently unofficial IBAN country codes are being integrated, and the process remains ongoing.  A new flag has been created to check whether a country is an official, SWIFT-issued record or not. The following new countries have therefore been added.
+ * Algeria (DZ)
+ * Angola (AO)
+ * Benin (BJ)
+Note also that the IIBAN (AA) record is marked unofficial.
 
 __Version 2.0.1__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with changes. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
  * IIBAN (AA)
