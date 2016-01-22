@@ -78,12 +78,12 @@ Comparison with other libraries
 
 The following table compares __php-iban__ to other PHP projects offering IBAN-related functionality, on the basis of general project information and programming paradigms supported.
 
-| Project                                                       | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Composer | Deps    |
-| ------------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | -------- | ------- |
-| __php-iban__                                                  | LGPL | ✔    | ✔   | 2009   | 2.0.1  | 21   | 11    | 12   | 10,000+* | Global*      | ✔        | *none*  |
-| [Iban](https://github.com/jschaedl/Iban)                      | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | ✔        | lots    |
-| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | ✔        | lots    |
-| [SepaUtilities](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | ✔        | phpunit |
+| Project                                                       | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
+| ------------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
+| __php-iban__                                                  | LGPL | ✔    | ✔   | 2009   | 2.0.1  | 21   | 11    | 12   | 10,000+* | Global*      | *none*  |
+| [Iban](https://github.com/jschaedl/Iban)                      | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
+| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
+| [SepaUtilities](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
 
 Notes:
  * Original download records for __php-iban__ releases were hosted on Google Code and are now lost.
