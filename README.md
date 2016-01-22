@@ -25,7 +25,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 Installation via composer
 -------------------------
 
-If you are use [composer](https://getcomposer.org/) you can simply run `composer require globalcitizen/php-iban` to get going. Reportedly [![Daily Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/daily)](https://packagist.org/packages/phpunit/phpunit) (and [![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/phpunit/phpunit)) were done via composer.
+If you are use [composer](https://getcomposer.org/) you can simply run `composer require globalcitizen/php-iban` to get going. Reportedly [![Daily Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/daily)](https://packagist.org/packages/globalcitizen/php-iban) (and [![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/globalcitizen/php-iban)) were done via composer.
 
 (If you don't yet have `composer` and wish to install it in an insecure fashion (not recommended, but convenient) you can run `curl -sS https://getcomposer.org/installer | php` or `wget -O- https://getcomposer.org/installer | php`)
 
