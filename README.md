@@ -35,7 +35,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.1.1"
+        "globalcitizen/php-iban": "2.1.2"
     }
 }
 ```
@@ -76,7 +76,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.1.1  | 21   | 11    | 12   | 10,000+* | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.1.2  | 22   | 11    | 12   | 10,000+* | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
@@ -109,6 +109,14 @@ So, fearless user ... __choose php-iban__: the ethical, functional, forward-look
 News: January 2016
 ------------------
 Work continues on providing a major update to include string internationalization.
+
+__Version 2.1.2__ has been released. All known unofficial IBAN country codes are now integrated. As well as minor documentation updates and a shortening of the reported name of Kosovo, this version adds:
+ * Ivory Coast (CI) (14 minutes ago) <Walter Stanish>
+ * Madagascar (MG) (11 minutes ago) <Walter Stanish>
+ * Mali (ML) (10 minutes ago) <Walter Stanish>
+ * Mozambique (MZ) (8 minutes ago) <Walter Stanish>
+ * Senegal (SN) (7 minutes ago) <Walter Stanish>
+ * Ukraine (UA)
 
 __Version 2.1.1__ has been released. Currently unofficial IBAN country codes are being integrated, and the process remains ongoing. This version adds:
  * Burkina Faso (BF)
