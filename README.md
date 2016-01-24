@@ -111,11 +111,11 @@ News: January 2016
 Work continues on providing a major update to include string internationalization.
 
 __Version 2.1.2__ has been released. All known unofficial IBAN country codes are now integrated. As well as minor documentation updates and a shortening of the reported name of Kosovo, this version adds:
- * Ivory Coast (CI) (14 minutes ago) <Walter Stanish>
- * Madagascar (MG) (11 minutes ago) <Walter Stanish>
- * Mali (ML) (10 minutes ago) <Walter Stanish>
- * Mozambique (MZ) (8 minutes ago) <Walter Stanish>
- * Senegal (SN) (7 minutes ago) <Walter Stanish>
+ * Ivory Coast (CI)
+ * Madagascar (MG)
+ * Mali (ML)
+ * Mozambique (MZ)
+ * Senegal (SN)
  * Ukraine (UA)
 
 __Version 2.1.1__ has been released. Currently unofficial IBAN country codes are being integrated, and the process remains ongoing. This version adds:
