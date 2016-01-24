@@ -101,7 +101,7 @@ Note:
  * __Mistranscription__ refers to the capacity to automatically detect what the user probably meant when they make a transcription error on IBANs, such as those manually written or printed in confusing fonts.
  * __Human?__ means support for input and output for the human, space-laden or presentation variant of an IBAN, ie. `IBAN XXXX XXXX XXXX XXXX` instead of `XXXXXXXXXXXXXXXX` - a lot more reasonable.
 
-In short, while composer users have apparently lept on rival libraries (particularly Iban), probably due to the time it took us to integrate a composer file, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), use data from dubious sources and are frankly short on features.
+In short, while composer users have apparently lept on rival libraries (particularly Iban), probably due to the time it took us to integrate a composer file, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), use data from dubious sources, tend to use licenses that are incompatible with certain commercial uses, and are frankly short on features.
 
 So, fearless user ... __choose php-iban__: the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. __Choose to win!__ ;)
 
