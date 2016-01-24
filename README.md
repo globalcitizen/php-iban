@@ -25,7 +25,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 Installation via composer
 -------------------------
 
-If you are use [composer](https://getcomposer.org/) you can simply run `composer require globalcitizen/php-iban` to get going. Reportedly [![Daily Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/daily)](https://packagist.org/packages/globalcitizen/php-iban) (and [![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/globalcitizen/php-iban)) were done via composer.
+If you use [composer](https://getcomposer.org/) you can simply run `composer require globalcitizen/php-iban` to get going. Reportedly [![Daily Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/daily)](https://packagist.org/packages/globalcitizen/php-iban) (and [![Monthly Downloads](https://poser.pugx.org/globalcitizen/php-iban/d/monthly)](https://packagist.org/packages/globalcitizen/php-iban)) were done via composer.
 
 (If you don't yet have `composer` and wish to install it in an insecure fashion (not recommended, but convenient) you can run `curl -sS https://getcomposer.org/installer | php` or `wget -O- https://getcomposer.org/installer | php`)
 
@@ -54,15 +54,13 @@ $ composer install
 $ composer update globalcitizen/php-iban
 ```
 
-You can see this library on Packagist.
+You can [see this library on Packagist](https://packagist.org/packages/globalcitizen/php-iban).
 
-`composer` installs `autoloader` at `./vendor/autoload.php`. If you use globalcitizen/php-iban in your php script, add:
 
-```php
-require_once 'vendor/autoload.php';
-```
+Installation via git
+--------------------
 
-Or you can use the `git clone` command:
+Use the `git clone` command:
 
 ```sh
 # HTTP
