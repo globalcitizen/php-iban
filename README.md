@@ -88,12 +88,12 @@ Notes:
 
 Now let's take a look at features.
 
-|                                                               | Generation | IIBAN | Unofficial | MT | Human? | Registry                                                               |
-| ------------------------------------------------------------- | ---------- | ----- | ---------- | -- | ------ | ---------------------------------------------------------------------- |
-| __php-iban__                                                  | ✔          | ✔     | ✔          | ✔  | ✔      | [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
-| [Iban](https://github.com/jschaedl/Iban)                      | ✔*         | ✘     | ✘          | ✘  | ✘      | [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
-| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | ✘          | ✘     | ✘          | ✘  | ✘      | [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)    |
-| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities)    | ✘          | ✘     | ✘          | ✘  | ✘      | [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
+|                                                               | Generation | IIBAN | Unofficial | MT  | Human? | Registry                                                               |
+| ------------------------------------------------------------- | ---------- | ----- | ---------- | --- | ------ | ---------------------------------------------------------------------- |
+| __php-iban__                                                  | ✔          | ✔     | ✔          | ✔   | ✔      | [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
+| [Iban](https://github.com/jschaedl/Iban)                      | ✔*         | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
+| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | ✘          | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)    |
+| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities)    | ✘          | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
 
 Note:
  * __Generation__ refers to the capacity to create checksum-accurate potential IBANs programatically. It is the author's opinion that generation features without IIBAN support (ie. authority) are of dubious use, except in one-off migrations.
