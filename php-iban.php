@@ -60,13 +60,15 @@ function iban_to_machine_format($iban) {
 function iban_to_human_format($iban) {
  # First verify validity, or return
  if(!verify_iban($iban)) { return false; }
+ # Remove all spaces
+ $iban = str_replace(' ','',$iban);
  # Add spaces every four characters
  $human_iban = '';
  for($i=0;$i<strlen($iban);$i++) {
   $human_iban .= substr($iban,$i,1);
   if(($i>0) && (($i+1)%4==0)) { $human_iban .= ' '; }
  }
- return $human_iban;
+ return rtrim($human_iban);
 }
 
 # Get the country part from an IBAN
