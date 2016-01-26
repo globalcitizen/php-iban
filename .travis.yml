@@ -7,4 +7,4 @@ php:
  - '7.0'
  - hhvm
  - nightly
-script: php utils/test.php
+script: php utils/test.php && php utils/ootest.php
