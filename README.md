@@ -111,7 +111,10 @@ News: January 2016
 ------------------
 Work continues on providing a major update to include string internationalization.
 
-OO-based tests are now executed following successful procedural tests.
+__Version 2.1.3__ has been released.
+ * Behavior of `iban_to_human_format()` has been fixed when passed input already containing spaces.
+ * OO-based tests are now executed following successful procedural tests.
+ * An additional test library for testing edge-case behavior in general functions is now executed following the main tests.
 
 __Version 2.1.2__ has been released. All known unofficial IBAN country codes are now integrated. As well as minor documentation updates and a shortening of the reported name of Kosovo, this version adds:
  * Ivory Coast (CI)
