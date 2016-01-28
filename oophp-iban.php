@@ -8,9 +8,9 @@ Class IBAN {
   $this->iban = $iban;
  }
 
- public function Verify($iban='',$viciously=false) {
-  if($iban!='') { return verify_iban($iban,$viciously); }
-  return verify_iban($this->iban,$viciously);
+ public function Verify($iban='',$machine_format_only=false) {
+  if($iban!='') { return verify_iban($iban,$machine_format_only); }
+  return verify_iban($this->iban,$machine_format_only);
   # we could throw exceptions of various types, but why - does it really
   # add anything? possibly some slightly better user feedback potential.
   # however, this can be written by hand by performing individual checks
