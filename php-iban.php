@@ -5,12 +5,13 @@
 # Global flag by request
 $__disable_iiban_gmp_extension=false;
 
-# Verify an IBAN number.  Returns true or false.
+# Verify an IBAN number.
+#  If $viciously, do not tolerate unclean (eg. spaces, dashes, leading 'IBAN ' or 'IIBAN ', lower case) input. Returns true or false.
 #  NOTE: Input can be printed 'IIBAN xx xx xx...' or 'IBAN xx xx xx...' or machine 'xxxxx' format.
-function verify_iban($iban) {
+function verify_iban($iban,$viciously=false) {
 
  # First convert to machine format.
- $iban = iban_to_machine_format($iban);
+ if(!$viciously) { $iban = iban_to_machine_format($iban); }
 
  # Get country of IBAN
  $country = iban_get_country_part($iban);

@@ -11,6 +11,29 @@ require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
 
 print "Other tests:\n";
 
+# === verify_iban vicious mode ===============================
+$test_data = array(
+			      # input					# vicious?	# expected
+			array('GB29 NWBK 6016 1331 9268 19',		true,		false),		# spaces present, vicious mode
+			array('GB29 NWBK 6016 1331 9268 19',		false,		true),		# spaces present, normal (relaxed) mode
+			array('IBAN GB29-NWBK-6016-1331-9268 19',	true,		false),		# spaces + prefix + dashes, vicious
+			array('IBAN GB29-NWBK-6016-1331-9268 19',	false,		true),		# spaces + prefix + dashes, normal
+			array('IIBAN GB29-NWBK-6016-1331-9268 19',	false,		true),		# spaces + prefix + dashes, normal
+             );
+$i=0;
+foreach($test_data as $this_test) {
+ print " - verify_iban() test #$i... ";
+ 
+ if(verify_iban($this_test[0],$this_test[1]) !== $this_test[2]) {
+  print "FAILED.\n";
+  exit(1);
+ }
+ else {
+  print "OK.\n";
+ }
+ $i++;
+}
+
 # === swift_official field ===================================
 print " - SWIFT official check for 'AA'... ";
 if(iban_country_get_country_swift_official('AA')) {
