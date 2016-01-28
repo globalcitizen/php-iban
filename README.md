@@ -394,9 +394,16 @@ Validation Functions
 --------------------
 
 ```php
-# Verify an IBAN number.  Returns true or false.
-#  Input can be either printed form ('IBAN xx xx xx...') or machine form ('xxxxx')
-if(!verify_iban($iban)) {
+# Verify an IBAN number.
+#  An optional second argument specifies $machine_format_only (default is false)
+#  If true, the function will not tolerate unclean inputs
+#   (eg. spaces, dashes, leading 'IBAN ' or 'IIBAN ', lower case) input.
+#  If false (default), input can be in either:
+#   - printed ('IIBAN xx xx xx...' or 'IBAN xx xx xx...'); or 
+#   - machine ('xxxxx')
+#  ... string formats.
+#  Returns true or false.
+if(!verify_iban($iban,$machine_format_only=false)) {
  # ...
 }
 
