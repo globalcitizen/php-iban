@@ -7,7 +7,7 @@ php-iban
 [![Latest Stable Version](https://poser.pugx.org/globalcitizen/php-iban/v/stable)](https://packagist.org/packages/globalcitizen/php-iban) 
 [![License](https://poser.pugx.org/globalcitizen/php-iban/license)](https://packagist.org/packages/globalcitizen/php-iban)
 
-All parts of an IBAN an be retrieved, including country code, checksum, BBAN, financial institution or bank code, and where a fixed-length national system is in use, also branch/sort code and account number. IBANs can also be converted between human and machine representation. Finally, intelligent suggestions for originally intended input can be made when an incorrect IBAN is detected and is due to mistranscription error.
+All parts of an IBAN can be retrieved, including country code, checksum, BBAN, financial institution or bank code, and where a fixed-length national system is in use, also branch/sort code and account number. IBANs can also be converted between human and machine representation. Finally, intelligent suggestions for originally intended input can be made when an incorrect IBAN is detected and is due to mistranscription error.
 
 Tested on PHP versions ![PHP Version](https://img.shields.io/badge/version-PHP%205.3%2B-lightgrey.svg) ![PHP Version](https://img.shields.io/badge/version-PHP%205.4%2B-lightgrey.svg) ![PHP Version](https://img.shields.io/badge/version-PHP%205.5%2B-lightgrey.svg) ![PHP Version](https://img.shields.io/badge/version-PHP%205.6%2B-lightgrey.svg) ![PHP Version](https://img.shields.io/badge/version-PHP%207.0%2B-lightgrey.svg) as well as hhvm and nightly.
 
