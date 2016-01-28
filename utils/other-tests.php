@@ -11,14 +11,14 @@ require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
 
 print "Other tests:\n";
 
-# === verify_iban vicious mode ===============================
+# === verify_iban machine_format_only mode ===============================
 $test_data = array(
-			      # input					# vicious?	# expected
-			array('GB29 NWBK 6016 1331 9268 19',		true,		false),		# spaces present, vicious mode
-			array('GB29 NWBK 6016 1331 9268 19',		false,		true),		# spaces present, normal (relaxed) mode
-			array('IBAN GB29-NWBK-6016-1331-9268 19',	true,		false),		# spaces + prefix + dashes, vicious
-			array('IBAN GB29-NWBK-6016-1331-9268 19',	false,		true),		# spaces + prefix + dashes, normal
-			array('IIBAN GB29-NWBK-6016-1331-9268 19',	false,		true),		# spaces + prefix + dashes, normal
+			      # input					# machine_format_only?	# expected
+			array('GB29 NWBK 6016 1331 9268 19',		true,			false),		# spaces present, machine_format_only mode
+			array('GB29 NWBK 6016 1331 9268 19',		false,			true),		# spaces present, normal (relaxed) mode
+			array('IBAN GB29-NWBK-6016-1331-9268 19',	true,			false),		# spaces + prefix + dashes, machine_format_only
+			array('IBAN GB29-NWBK-6016-1331-9268 19',	false,			true),		# spaces + prefix + dashes, normal mode
+			array('IIBAN GB29-NWBK-6016-1331-9268 19',	false,			true),		# spaces + prefix + dashes, normal mode
              );
 $i=0;
 foreach($test_data as $this_test) {
