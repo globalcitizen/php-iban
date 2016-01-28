@@ -63,12 +63,7 @@ function iban_to_human_format($iban) {
  # Remove all spaces
  $iban = str_replace(' ','',$iban);
  # Add spaces every four characters
- $human_iban = '';
- for($i=0;$i<strlen($iban);$i++) {
-  $human_iban .= substr($iban,$i,1);
-  if(($i>0) && (($i+1)%4==0)) { $human_iban .= ' '; }
- }
- return rtrim($human_iban);
+ return wordwrap($iban,4,' ',true);
 }
 
 # Get the country part from an IBAN
