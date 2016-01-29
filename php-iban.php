@@ -302,13 +302,13 @@ function iban_country_get_branchid_stop_offset($iban_country) {
 
 # Get the BBAN (national) checksum start offset for an IBAN country
 #  Returns '' when (often) not present)
-function iban_country_get_national_checksum_start_offset($iban_country) {
+function iban_country_get_nationalchecksum_start_offset($iban_country) {
  return _iban_country_get_info($iban_country,'bban_checksum_start_offset');
 }
 
 # Get the BBAN (national) checksum stop offset for an IBAN country
 #  Returns '' when (often) not present)
-function iban_country_get_national_checksum_stop_offset($iban_country) {
+function iban_country_get_nationalchecksum_stop_offset($iban_country) {
  return _iban_country_get_info($iban_country,'bban_checksum_stop_offset');
 }
 

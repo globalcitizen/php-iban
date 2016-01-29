@@ -150,11 +150,11 @@ Class IBANCountry {
  }
 
  public function NationalChecksumStartOffset() {
-  return iban_country_get_national_checksum_start_offset($this->code);
+  return iban_country_get_nationalchecksum_start_offset($this->code);
  }
 
  public function NationalChecksumStopOffset() {
-  return iban_country_get_national_checksum_stop_offset($this->code);
+  return iban_country_get_nationalchecksum_stop_offset($this->code);
  }
 
  public function RegistryEdition() {
