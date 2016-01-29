@@ -531,6 +531,9 @@ $account = iban_get_account_part($iban);
 
 # Get the checksum part from an IBAN
 $checksum = iban_get_checksum_part($iban);
+
+# Get the national checksum part from an IBAN (if it exists)
+$checksum = iban_get_nationalchecksum_part($iban);
 ```
 
 Internal Functions
@@ -702,4 +705,7 @@ $account = $myIban->Account();
 
 # Get the checksum part from an IBAN
 $checksum = $myIban->Checksum();
+
+# Get the national checksum part from an IBAN (if it exists)
+$checksum = $myIban->NationalChecksum();
 ```
