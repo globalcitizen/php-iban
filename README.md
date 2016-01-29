@@ -406,7 +406,7 @@ Validation Functions
 # Verify an IBAN number.
 #  An optional second argument specifies $machine_format_only (default is false)
 #  If true, the function will not tolerate unclean inputs
-#   (eg. spaces, dashes, leading 'IBAN ' or 'IIBAN ', lower case) input.
+#   (eg. spaces, dashes, leading 'IBAN ' or 'IIBAN ', lower case)
 #  If false (default), input can be in either:
 #   - printed ('IIBAN xx xx xx...' or 'IBAN xx xx xx...'); or 
 #   - machine ('xxxxx')
