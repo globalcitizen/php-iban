@@ -44,6 +44,10 @@ Class IBAN {
   return iban_get_checksum_part($this->iban);
  }
 
+ public function NationalChecksum($iban='') {
+  return iban_get_nationalchecksum_part($this->iban);
+ }
+
  public function BBAN() {
   return iban_get_bban_part($this->iban);
  }
