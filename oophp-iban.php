@@ -149,6 +149,14 @@ Class IBANCountry {
   return iban_country_get_branchid_stop_offset($this->code);
  }
 
+ public function NationalChecksumStartOffset() {
+  return iban_country_get_national_checksum_start_offset($this->code);
+ }
+
+ public function NationalChecksumStopOffset() {
+  return iban_country_get_national_checksum_stop_offset($this->code);
+ }
+
  public function RegistryEdition() {
   return iban_country_get_registry_edition($this->code);
  }
