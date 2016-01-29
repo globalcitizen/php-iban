@@ -74,6 +74,25 @@ foreach($test_data as $input=>$expected_output) {
  $i++;
 }
 
+# === iban_get_nationalchecksum_part ========================
+$test_data = array(	# input				=>	# expected output
+			'AL47212110090000000235698741'	=>	'9',
+			'ES9121000418450200051332'	=>	'45'
+	     );
+$i=0;
+foreach($test_data as $input=>$expected_output) {
+ print " - iban_get_nationalchecksum_part() test #$i... ";
+ $received_output = iban_get_nationalchecksum_part($input);
+ if($received_output != $expected_output) {
+  print "FAILED (expected '$expected_output', received '$received_output')\n";
+  exit(1);
+ }
+ else {
+  print "OK.\n";
+ }
+ $i++;
+}
+
 print "All tests passed.\n";
 exit(0);
 ?>
