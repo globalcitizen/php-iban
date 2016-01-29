@@ -109,7 +109,7 @@ So, fearless user ... __choose php-iban__: the ethical, functional, forward-look
 
 News: January 2016
 ------------------
-Work continues on providing a major update to include string internationalization.
+Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying, checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39).
 
 __Version 2.1.6__ has been released.
  * OO wrapper and documentation updated for new strict `machine_format_only` validation.
