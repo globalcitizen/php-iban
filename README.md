@@ -35,7 +35,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.1.6"
+        "globalcitizen/php-iban": "2.1.7"
     }
 }
 ```
@@ -76,7 +76,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.1.6  | 23   | 11    | 13   | 10,000+* | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.1.7  | 23   | 11    | 13   | 10,000+* | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
@@ -111,11 +111,14 @@ News: January 2016
 ------------------
 Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying, checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39).
 
+__Version 2.1.7__ has been released.
+ * National BBAN checksum offset data added to registry. This can be queried via the new functions `iban_get_nationalchecksum_part()`, `iban_country_get_nationalchecksum_start_offset()` and `iban_country_get_nationalchecksum_stop_offset()` and their OO-wrapper equivalents `$myIban->NationalChecksum()`, `$myCountry->NationalChecksumStartOffset()` and `$mycountry->NationalChecksumStopOffset()`. Test and documentation updated. If you know anything about national checksum algorithms, please lend a hand at [issue #39](https://github.com/globalcitizen/php-iban/issues/39).
+
 __Version 2.1.6__ has been released.
  * OO wrapper and documentation updated for new strict `machine_format_only` validation.
 
 __Version 2.1.5__ has been released.
- * Additional strict `machine_format_only` mode for `verify_iban()` to close issue #22
+ * Additional strict `machine_format_only` mode for `verify_iban()` to close [issue #22](https://github.com/globalcitizen/php-iban/issues/22).
 
 __Version 2.1.4__ has been released.
  * Simplified a function using a php4+ builtin.
@@ -668,6 +671,12 @@ $country_branchid_start_offset = $myCountry->BranchIDStartOffset();
 
 # Get the branch ID stop offset for an IBAN country
 $country_branchid_stop_offset = $myCountry->BranchIDStopOffset();
+
+# Get the national checksum start offset for an IBAN country
+$country_nationalchecksum_start_offset = $myCountry->NationalChecksumStartOffset();
+
+# Get the national checksum stop offset for an IBAN country
+$country_nationalchecksum_stop_offset = $myCountry->NationalChecksumStopOffset();
 
 # Get the registry edition for an IBAN country (note: IIBAN country 'AA' returns 'N/A')
 $country_registry_edition = $myCountry->RegistryEdition();
