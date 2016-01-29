@@ -19,6 +19,11 @@ Class IBAN {
   # maintenance/documentation cost, i say, therefore: no. no exceptions.
  }
 
+ public function VerifyMachineFormatOnly($iban='') {
+  if($iban!='') { return verify_iban($iban,true); }
+  return verify_iban($this->iban,true);
+ }
+
  public function MistranscriptionSuggestions() {
   return iban_mistranscription_suggestions($this->iban);
  }

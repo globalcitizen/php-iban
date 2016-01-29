@@ -558,9 +558,12 @@ Validation Functions
 $iban = 'AZ12345678901234'
 $myIban = new IBAN($iban);
 
-# Verify an IBAN number.  Returns true or false.
-#  Input can be either printed form ('IBAN xx xx xx...') or machine form ('xxxxx')
+# Verify an IBAN number. Tolerates spaces, prefixes "IBAN ...", dashes, lowercase input, etc. Returns true or false.
 if(!$myIban->Verify()) {
+ # ...
+}
+# Verify an IBAN number in machine format only. Does not tolerate lowercase input, separators, whitespace or prefixes. Returns true or false.
+if(!$myIban->VerifyMachineFormatOnly()) {
  # ...
 }
 
