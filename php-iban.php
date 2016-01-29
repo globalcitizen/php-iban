@@ -179,13 +179,14 @@ function iban_mod97_10($numeric_representation) {
 # Get an array of all the parts from an IBAN
 function iban_get_parts($iban) {
  return array(
-         'country'	=>      iban_get_country_part($iban),
- 	 'checksum'	=>	iban_get_checksum_part($iban),
-	 'bban'		=>	iban_get_bban_part($iban),
- 	 'bank'		=>	iban_get_bank_part($iban),
-	 'country'	=>	iban_get_country_part($iban),
-	 'branch'	=>	iban_get_branch_part($iban),
-	 'account'	=>	iban_get_account_part($iban)
+         'country'		=>      iban_get_country_part($iban),
+ 	 'checksum'		=>	iban_get_checksum_part($iban),
+	 'bban'			=>	iban_get_bban_part($iban),
+ 	 'bank'			=>	iban_get_bank_part($iban),
+	 'country'		=>	iban_get_country_part($iban),
+	 'branch'		=>	iban_get_branch_part($iban),
+	 'account'		=>	iban_get_account_part($iban),
+	 'nationalchecksum'	=>	iban_get_nationalchecksum_part($iban)
         );
 }
 
@@ -228,6 +229,18 @@ function iban_get_account_part($iban) {
   return substr($bban,$start+1);
  }
  return '';
+}
+
+# Get the national checksum part from an IBAN
+function iban_get_nationalchecksum_part($iban) {
+ $iban = iban_to_machine_format($iban);
+ $country = iban_get_country_part($iban);
+ $start = iban_country_get_nationalchecksum_start_offset($country);
+ if($start == '') { return ''; }
+ $stop = iban_country_get_nationalchecksum_stop_offset($country);
+ if($stop == '') { return ''; }
+ $bban = iban_get_bban_part($iban);
+ return substr($bban,$start,($stop-$start+1));
 }
 
 # Get the name of an IBAN country
