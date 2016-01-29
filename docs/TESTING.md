@@ -1,7 +1,8 @@
 Testing
 -------
 
-This document describes the project's approach to testing.
+This document describes the project's approach to testing. Essentially we do not require tests
+for all code but do strive to maintain reasonable test coverage.
 
 
 Local testing
