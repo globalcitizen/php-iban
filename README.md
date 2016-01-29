@@ -698,6 +698,9 @@ $iban_parts = $myIban->Parts();
 # Get the country part from an IBAN
 $iban_country = $myIban->Country();
 
+# Get the checksum part from an IBAN
+$checksum = $myIban->Checksum();
+
 # Get the BBAN part from an IBAN
 $bban = $myIban->BBAN();
 
@@ -712,9 +715,7 @@ $sortcode = $myIban->Branch();
 #  (NOTE: only available for some countries)
 $account = $myIban->Account();
 
-# Get the checksum part from an IBAN
-$checksum = $myIban->Checksum();
-
-# Get the national checksum part from an IBAN (if it exists)
+# Get the national checksum part from an IBAN
+#  (NOTE: only available for some countries)
 $checksum = $myIban->NationalChecksum();
 ```
