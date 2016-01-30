@@ -109,7 +109,10 @@ So, fearless user ... __choose php-iban__: the ethical, functional, forward-look
 
 News: January 2016
 ------------------
-Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39).
+Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
+
+__Version 2.1.8__ has been released.
+ * National BBAN checksum offset data for Belgium added.
 
 __Version 2.1.7__ has been released.
  * National BBAN checksum offset data added to registry. This can be queried via the new functions `iban_get_nationalchecksum_part()`, `iban_country_get_nationalchecksum_start_offset()` and `iban_country_get_nationalchecksum_stop_offset()` and their OO-wrapper equivalents `$myIban->NationalChecksum()`, `$myCountry->NationalChecksumStartOffset()` and `$mycountry->NationalChecksumStopOffset()`. Test and documentation updated. If you know anything about national checksum algorithms, please lend a hand at [issue #39](https://github.com/globalcitizen/php-iban/issues/39).

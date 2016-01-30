@@ -77,7 +77,8 @@ foreach($test_data as $input=>$expected_output) {
 # === iban_get_nationalchecksum_part ========================
 $test_data = array(	# input				=>	# expected output
 			'AL47212110090000000235698741'	=>	'9',
-			'ES9121000418450200051332'	=>	'45'
+			'ES9121000418450200051332'	=>	'45',
+			'BE68 5390 0754 7034'		=>	'34'
 	     );
 $i=0;
 foreach($test_data as $input=>$expected_output) {
