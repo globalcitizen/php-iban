@@ -719,3 +719,27 @@ $account = $myIban->Account();
 #  (NOTE: only available for some countries)
 $checksum = $myIban->NationalChecksum();
 ```
+
+
+IBAN Libraries in Other Languages
+---------------------------------
+See for yourself how our approach and features compare favourably with all of these libraries...
+
+| Language   | Library
+| ---------- | --------------------------------------------------------- 
+| C#         | [iban-api-net](https://github.com/aventum-solutions/iban-api-net)
+| Java       | [iban-api-java](https://github.com/aventum-solutions/iban-api-java)
+| Java       | [iban4j](https://github.com/arturmkrtchyan/iban4j)
+| Java       | [java-iban](https://github.com/barend/java-iban)
+| Javascript | [iban.js](https://github.com/arhs/iban.js)
+| Javascript | [ng-iban](https://github.com/mmjmanders/ng-iban)
+| ObjectiveC | [IBAN-Helper](https://github.com/xs4some/IBAN-Helper)
+| ObjectiveC | [ibanValidation](https://github.com/smoldovansky/ibanValidation)
+| Perl       | [various CPAN libraries](http://search.cpan.org/search?query=iban&mode=all)
+| Python     | [django-localflavor](https://github.com/django/django-localflavor)
+| Python     | [iban-generator](https://github.com/lkraider/iban-generator)
+| Ruby       | [bank](https://github.com/max-power/bank)
+| Ruby       | [iban-tools](https://github.com/iulianu/iban-tools)
+| Ruby       | [ibandit](https://github.com/gocardless/ibandit)
+| Ruby       | [ibanizator](https://github.com/softwareinmotion/ibanizator)
+| Ruby       | [iso-iban](https://github.com/apeiros/iso-iban)
