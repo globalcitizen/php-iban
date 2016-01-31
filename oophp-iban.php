@@ -97,6 +97,10 @@ Class IBANCountry {
   $this->code = $code;
  }
 
+ public function Code() {
+  return $this->code;
+ }
+
  public function Name() {
   return iban_country_get_country_name($this->code);
  }
@@ -171,6 +175,14 @@ Class IBANCountry {
 
  public function IsSEPA() {
   return iban_country_is_sepa($this->code);
+ }
+
+ public function IANA() {
+  return iban_country_get_iana($this->code);
+ }
+
+ public function ISO3166() {
+  return iban_country_get_iso3166($this->code);
  }
 
 }
