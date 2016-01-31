@@ -477,7 +477,7 @@ function _iban_load_registry() {
 				'bban_checksum_start_offset'	=>	$bban_checksum_start_offset,
 				'bban_checksum_stop_offset'	=>	$bban_checksum_stop_offset,
 				'country_iana'			=>	$country_iana,
-				'country_iso3166_1_alpha2'	=>	$country_iso3166
+				'country_iso3166'		=>	$country_iso3166
                                );
    }
   }
