@@ -94,6 +94,50 @@ foreach($test_data as $input=>$expected_output) {
  $i++;
 }
 
+# === iban_country_get_iana ==================================
+$test_data = array(	# input				=>	# expected output
+			'AA'				=>	'',			# IIBAN has no IANA code
+			'XK'				=>	'',			# Kosovo has no IANA code
+			'BL'				=>	'',			# Saint Barthélemy has no IANA code
+			'MF'				=>	'',			# Saint Martin (French Part) has no IANA code
+			'MQ'				=>	'mq',			# Martinique is .mq
+			'GB'				=>	'uk'			# Great Britain is .uk
+	     );
+$i=0;
+foreach($test_data as $input=>$expected_output) {
+ print " - iban_country_get_iana() test #$i... ";
+ $received_output = iban_country_get_iana($input);
+ if($received_output != $expected_output) {
+  print "FAILED (expected '$expected_output', received '$received_output')\n";
+  exit(1);
+ }
+ else {
+  print "OK.\n";
+ }
+ $i++;
+}
+
+# === iban_country_get_iso3166 ==============================
+$test_data = array(	# input				=>	# expected output
+			'AA'				=>	'',			# IIBAN has no country
+			'XK'				=>	'',			# Kosovo no longer ISO-allocated
+			'GB'				=>	'GB'			# Great Britain has different IANA code, same ISO3166-1 alpha-2
+	     );
+$i=0;
+foreach($test_data as $input=>$expected_output) {
+ print " - iban_country_get_iso3166() test #$i... ";
+ $received_output = iban_country_get_iso3166($input);
+ if($received_output != $expected_output) {
+  print "FAILED (expected '$expected_output', received '$received_output')\n";
+  exit(1);
+ }
+ else {
+  print "OK.\n";
+ }
+ $i++;
+}
+
+
 print "All tests passed.\n";
 exit(0);
 ?>
