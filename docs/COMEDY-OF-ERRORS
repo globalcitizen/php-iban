@@ -11,7 +11,7 @@ matters that cause issue for implementers:
 
 2016-01-31
 ----------
- - SWIFT released a v65 registry PDF document supposedly
+ - SWIFT released a v63 registry PDF document supposedly
    including a fix for the BBAN example for Israel with reason "typo", however 
    it still does not match with the specified BBAN format.
 
