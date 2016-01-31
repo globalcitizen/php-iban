@@ -15,7 +15,7 @@ The parser was built using regular expressions to adapt the contents of the _off
 
 Various deficiencies in the initial adaptation have since been rectified, and the current version should be a fairly correct and reliable implementation.
 
-Where appropriate, __European Committee for Banking Standards__ (ECBS) recommendations have also been incorporated. (Presently, presentation is affected, however the uppercase only requirement is not enforced. In future, an uppercase-only 'strict ECBS checking' mode may be implemented.)
+Where appropriate, __European Committee for Banking Standards__ (ECBS) recommendations have also been incorporated.
 
 Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the February 2016 release, ie. PDF release #63](https://www.swift.com/sites/default/files/resources/swift_standards_ibanregistry.pdf).
 
