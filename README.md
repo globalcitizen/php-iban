@@ -80,6 +80,8 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
+| [Symfony](https://github.com/symfony/symfony)              | MIT  | ✘    | ✔   | 2013   | 3.0.1  | ?    | ?     | ?    | lots     | French       | lots    |
+/blob/a4f3baae3758b0e72005353f624101f089e4302b/src/Symfony/Component/Validator/Constraints/IbanValidator.php
 
 Notes:
  * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess.  This library also powers [adm-gravity-iban](https://github.com/InternativeNL/adm-gravity-iban) and the [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class.
@@ -91,9 +93,10 @@ Now let's take a look at features.
 |                                                               | Generation | IIBAN | Unofficial | MT  | Human? | Registry                                                               |
 | ------------------------------------------------------------- | ---------- | ----- | ---------- | --- | ------ | ---------------------------------------------------------------------- |
 | __php-iban__                                                  | ✔          | ✔     | ✔          | ✔   | ✔      | [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
-| [Iban](https://github.com/jschaedl/Iban)                      | ✔*         | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
+|Iban](https://github.com/jschaedl/Iban)                      | ✔*         | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | ✘          | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities)    | ✘          | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
+| [Symfony](https://github.com/symfony/symfony)                 | ✘          | ✘     | ✘          | ✘   | ✘      | [partial, hardcoded,](https://github.com/symfony/symfony/blob/09f92ba516b8840f2ee2dc630b75cbccfca5976b/src/Symfony/Component/Validator/Tests/Constraints/IbanValidatorTest.php)[dubious origin](https://github.com/symfony/symfony/blob/a4f3baae3758b0e72005353f624101f089e4302b/src/Symfony/Component/Validator/Constraints/IbanValidator.php
 
 Note:
  * __Generation__ refers to the capacity to create checksum-accurate potential IBANs programatically. It is the author's opinion that generation features without IIBAN support (ie. authority) are of dubious use, except in one-off migrations.
@@ -102,7 +105,7 @@ Note:
  * __MT__ refers to mistranscription support: the capacity to automatically detect what the user probably meant when they make a transcription error on IBANs, such as those manually written or printed in confusing fonts, for instance writing 'L' instead of 'I' or '1', or vice versa.
  * __Human?__ means support for input and output for the human, space-laden or presentation variant of an IBAN, ie. `IBAN XXXX XXXX XXXX XXXX` instead of `XXXXXXXXXXXXXXXX` - a lot more reasonable.
 
-In short, while composer users have apparently lept on rival libraries (particularly Iban), probably due to the time it took us to integrate a composer file, those libraries are often burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), use data from dubious sources, tend to use licenses that are incompatible with certain commercial uses, and are frankly short on features.
+In short, while composer users have apparently lept on rival libraries (particularly Iban), probably due to the time it took us to integrate a composer file, those libraries are often either full-fledged web frameworks or burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), use data from dubious sources, tend to use licenses that are incompatible with certain commercial uses, and are frankly short on features.
 
 So, fearless user ... __choose php-iban__: the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. __Choose to win!__ ;)
 
