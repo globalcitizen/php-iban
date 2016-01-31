@@ -35,7 +35,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.3.0"
+        "globalcitizen/php-iban": "2.3.1"
     }
 }
 ```
@@ -76,7 +76,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.3.0  | 23   | 11    | 13   | 10,000+* | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.3.1  | 23   | 11    | 13   | 10,000+* | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
@@ -110,6 +110,9 @@ So, fearless user ... __choose php-iban__: the ethical, functional, forward-look
 News: January 2016
 ------------------
 Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
+
+__Version 2.3.1__ has been released.
+ * Fix paste error in Bosnia IANA code
 
 __Version 2.3.0__ has been released.
  * All IBAN country records can now be cross-referenced with their corresponding [IANA](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains) and [ISO3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) codes, if available
