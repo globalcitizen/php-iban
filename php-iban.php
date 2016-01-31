@@ -340,6 +340,16 @@ function iban_country_is_sepa($iban_country) {
  return _iban_country_get_info($iban_country,'country_sepa');
 }
 
+# Get the IANA code of an IBAN country
+function iban_country_get_iana($iban_country) {
+ return _iban_country_get_info($iban_country,'country_iana');
+}
+
+# Get the ISO3166-2 code of an IBAN country
+function iban_country_get_iso3166($iban_country) {
+ return _iban_country_get_info($iban_country,'country_iso3166');
+}
+
 # Get the list of all IBAN countries
 function iban_countries() {
  global $_iban_registry;
@@ -441,7 +451,7 @@ function _iban_load_registry() {
     ini_set('display_errors',false);
     $old_error_reporting_value = ini_get('error_reporting');
     ini_set('error_reporting',false);
-    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official,$bban_checksum_start_offset,$bban_checksum_stop_offset) = explode('|',$line);
+    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official,$bban_checksum_start_offset,$bban_checksum_stop_offset,$country_iana,$country_iso3166) = explode('|',$line);
     ini_set('display_errors',$old_display_errors_value);
     ini_set('error_reporting',$old_error_reporting_value);
     # assign to registry
@@ -465,7 +475,9 @@ function _iban_load_registry() {
 				'registry_edition'		=>	$registry_edition,
                                 'country_swift_official'        =>      $country_swift_official,
 				'bban_checksum_start_offset'	=>	$bban_checksum_start_offset,
-				'bban_checksum_stop_offset'	=>	$bban_checksum_stop_offset
+				'bban_checksum_stop_offset'	=>	$bban_checksum_stop_offset,
+				'country_iana'			=>	$country_iana,
+				'country_iso3166'		=>	$country_iso3166
                                );
    }
   }
