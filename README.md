@@ -74,13 +74,13 @@ Comparison of PHP IBAN libraries
 
 The following table compares __php-iban__ to other PHP projects offering IBAN-related functionality, on the basis of general project information and the programming paradigms supported.
 
-| Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star  | Watch | Fork | Installs | Home culture | Deps    |
-| ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ----- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.3.1  | 23    | 11    | 13   | 10,000+* | Global*      | *none*  |
-| [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38    | 10    | 14   | 52,521   | German       | lots    |
-| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241   | 14    | 28   | 36,360   | French       | lots    |
-| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4     | 3     | 3    | 1,394    | German       | phpunit |
-| [Symfony](https://github.com/symfony/symfony)              | MIT  | ✘    | ✔   | 2013   | 3.0.1  | 11637 | 1045  | 4577 | 10M+     | French       | lots    |
+| Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
+| ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.3.1  | 23   | 11    | 13   | 10,000+* | Global*      | *none*  |
+| [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52,521   | German       | lots    |
+| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36,360   | French       | lots    |
+| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1,394    | German       | phpunit |
+| [Symfony](https://github.com/symfony/symfony)              | MIT  | ✘    | ✔   | 2013   | 3.0.1  | 11k+ | 1045  | 4577 | 10M+     | French       | lots    |
 
 Notes:
  * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess.  This library also powers [adm-gravity-iban](https://github.com/InternativeNL/adm-gravity-iban) and the [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class.
