@@ -44,9 +44,22 @@ foreach($_iban_registry as $country) {
 
  # get country code
  $countrycode = $country['country'];
+ $ianacountrycode = $country['country_iana'];
+ $iso3166countrycode = $country['country_iso3166'];
 
  # start section
- print "[$countrycode: " . iban_country_get_country_name($countrycode) . "]\n";
+ print "[$countrycode (";
+ $codes_output=0;
+ if($ianacountrycode!='') {
+  print "IANA:.$ianacountrycode";
+  $codes_output++;
+ }
+ if($iso3166countrycode!='') {
+  if($codes_output>0) { print ", "; }
+  print "ISO3166:$iso3166countrycode";
+ }
+ if($codes_output==0) { print "no IANA or ISO3166 codes"; }
+ print "): " . iban_country_get_country_name($countrycode) . "]\n";
 
  # output remaining country properties
  print "Is a SEPA member? ";
@@ -64,6 +77,7 @@ foreach($_iban_registry as $country) {
  print " - bank     " . iban_get_bank_part($iban) . "\n";
  print " - branch   " . iban_get_branch_part($iban) . "\n";
  print " - account  " . iban_get_account_part($iban) . "\n";
+ print " - natcksum " . iban_get_nationalchecksum_part($iban) . "\n";
  
  # output all properties
  #$parts = iban_get_parts($iban);
@@ -95,6 +109,7 @@ foreach($_iban_registry as $country) {
    print "       (correct checksum version would be '" . $correct . "')\n";
   }
   $errors++;
+  exit(1);
  }
 
  print "\n";
