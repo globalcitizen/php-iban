@@ -113,6 +113,7 @@ Work continues on providing a major update to include string internationalizatio
 
 __Version 2.3.1__ has been released.
  * Fix paste error in Bosnia IANA code
+ * Additional tests for new country functions
 
 __Version 2.3.0__ has been released.
  * All IBAN country records can now be cross-referenced with their corresponding [IANA](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains) and [ISO3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) codes, if available
