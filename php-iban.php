@@ -345,7 +345,7 @@ function iban_country_get_iana($iban_country) {
  return _iban_country_get_info($iban_country,'country_iana');
 }
 
-# Get the ISO3166-2 code of an IBAN country
+# Get the ISO3166-1 alpha-2 code of an IBAN country
 function iban_country_get_iso3166($iban_country) {
  return _iban_country_get_info($iban_country,'country_iso3166');
 }
@@ -477,7 +477,7 @@ function _iban_load_registry() {
 				'bban_checksum_start_offset'	=>	$bban_checksum_start_offset,
 				'bban_checksum_stop_offset'	=>	$bban_checksum_stop_offset,
 				'country_iana'			=>	$country_iana,
-				'country_iso3166'		=>	$country_iso3166
+				'country_iso3166_1_alpha2'	=>	$country_iso3166
                                );
    }
   }

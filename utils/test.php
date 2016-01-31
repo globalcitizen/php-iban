@@ -56,9 +56,9 @@ foreach($_iban_registry as $country) {
  }
  if($iso3166countrycode!='') {
   if($codes_output>0) { print ", "; }
-  print "ISO3166:$iso3166countrycode";
+  print "ISO3166-1 alpha-2:$iso3166countrycode";
  }
- if($codes_output==0) { print "no IANA or ISO3166 codes"; }
+ if($codes_output==0) { print "no IANA or ISO3166-1 alpha-2 codes"; }
  print "): " . iban_country_get_country_name($countrycode) . "]\n";
 
  # output remaining country properties

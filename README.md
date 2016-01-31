@@ -111,6 +111,9 @@ News: January 2016
 ------------------
 Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
 
+__Version 2.3.0__ has been released.
+ * All IBAN country records can now be cross-referenced with their corresponding [IANA](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains) and [ISO3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) codes, if available
+
 __Version 2.2.0__ has been released.
  * Fully up to date with SEPA membership list. (Added new member for 2016, Andorra)
  * Fully up to date with latest SWIFT IBAN registry PDF.
@@ -518,6 +521,12 @@ $country_registry_edition = iban_country_get_registry_edition($iban_country);
 if(!iban_country_get_country_swift_official($iban_country)) {
  # ... do something against decentralization ...
 }
+
+# Get the IANA code for an IBAN country
+$country_iana = iban_country_get_iana($iban_country);
+
+# Get the ISO3166-1 alpha-2 code for an IBAN country
+$country_iso3166 = iban_country_get_iso3166($iban_country);
 ```
 
 
@@ -637,6 +646,9 @@ $myIban->Countries();
 $countrycode = 'DE';
 $myCountry = new IBANCountry($countrycode);
 
+# Get the country code of an IBAN country
+$country_code = $myCountry->Code();
+
 # Get the name of an IBAN country
 $country_name = $myCountry->Name();
 
@@ -697,6 +709,12 @@ $country_registry_edition = $myCountry->RegistryEdition();
 if(!$myCountry->SWIFTOfficial()) {
  # ... do something against decentralization ...
 }
+
+# Get the IANA code for an IBAN country
+$country_iana = $myCountry->IANA();
+
+# Get the ISO3166-1 alpha-2 code for an IBAN country
+$country_iso3166 = $myCountry->ISO3166();
 ```
 
 
