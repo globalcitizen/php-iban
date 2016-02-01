@@ -1,2 +1,16 @@
 #!/bin/bash
-cat registry.txt |cut -d '|' -f1,2 |grep -v country_name|sed 's/\(.*\)|\(.*\)$/* \2 (\1)/'
+cat registry.txt |cut -d '|' -f1,2 |grep -v country_name|sed 's/\(.*\)|\(.*\)$/* \2 (\1)/' \
+ | sed 's/^* Faro/ * Faro/' \
+ | sed 's/^* Greenland/ * Greenland/' \
+ | sed 's/^* Saint Bart/ * Saint Bar/' \
+ | sed 's/^* French Guiana/ * French Guiana/' \
+ | sed 's/^* Guadelop/ * Guadelop/' \
+ | sed 's/^* Saint Mart/ * Saint Mart/' \
+ | sed 's/^* Martin/ * Martin/' \
+ | sed 's/^* Réunion/ * Réunion/' \
+ | sed 's/^* French Polynesia/ * French Polynesia/' \
+ | sed 's/^* French Southern/ * French Southern/' \
+ | sed 's/^* Mayotte/ * Mayotte/' \
+ | sed 's/^* New Cal/ * New Cal/' \
+ | sed 's/^* Saint-P/ * Saint-P/' \
+ | sed 's/^* Wallis/ * Wallis/'
