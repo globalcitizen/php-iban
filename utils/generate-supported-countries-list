@@ -1,0 +1,2 @@
+#!/bin/bash
+cat registry.txt |cut -d '|' -f1,2 |grep -v country_name|sed 's/\(.*\)|\(.*\)$/* \2 (\1)/'
