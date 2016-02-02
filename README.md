@@ -165,7 +165,7 @@ You can [see this library on Packagist](https://packagist.org/packages/globalcit
 Installation via git
 --------------------
 
-Use the `git clone` command:
+For a regular install, use the `git clone` command:
 
 ```sh
 # HTTP
@@ -173,6 +173,43 @@ $ git clone https://github.com/globalcitizen/php-iban.git
 # SSH
 $ git clone git@github.com:globalcitizen/php-iban.git
 ```
+
+Alternatively, to embed the `php-iban` library in your own `git`-managed repository at a specific revision number, such that it is possible to update the version in a predictable way while maintaining a larger system that depends upon its functionality:
+```sh
+# enter your project's git repo
+$ cd my-existing-project-with-a-git-repo/
+# select an appropriate place to create the php-iban subdir
+$ cd lib/
+# add php-iban as a submodule
+$ git submodule add https://github.com/globalcitizen/php-iban.git
+# commit new submodule
+$ git commit -m 'Add php-iban submodule'
+```
+
+Then, when checking out `git` projects with submodules for the first time, normally you need to make a couple of extra steps:
+```sh
+# check out your project as normal
+$ git clone git@your-server.com:your/project.git
+# initialize submodules
+$ git submodule init
+# update submodules
+$ git submodule update
+```
+
+To skip these steps, add the `--recursive`` argument to `git clone` when checking out:
+```sh
+# check out your project, initialize and update all submodules
+$ git clone --recursive git@your-server.com:your/project.git
+```
+
+If you later wish to your project to use a newer version of `php-iban`, run:
+```sh
+# fetch changes
+$ git submodule update --remote php-iban
+# commit
+$ git commit -m 'Update php-iban submodule'
+```
+
 
 Comparison of PHP IBAN libraries
 --------------------------------
