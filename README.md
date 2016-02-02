@@ -174,6 +174,10 @@ $ git clone https://github.com/globalcitizen/php-iban.git
 $ git clone git@github.com:globalcitizen/php-iban.git
 ```
 
+
+Installation via git submodule
+------------------------------
+
 Alternatively, to embed the `php-iban` library in your own `git`-managed repository at a specific revision number, such that it is possible to update the version in a predictable way while maintaining a larger system that depends upon its functionality:
 ```sh
 # enter your project's git repo
