@@ -19,7 +19,7 @@ cat registry.txt |cut -d '|' -f1,2 |grep -v country_name|sed 's/\(.*\)|\(.*\)$/*
 
 # begin constructing 'italicize unofficial countries' sed command
 echo -n "sed -i 's/^\( *\* \)\(.*\)\( (\(" > sedscript.txt
-# append ia list of unofficial countries with sed alternators ('\|') between them
+# append a list of unofficial countries with sed alternators ('\|') between them
 cat registry.txt |cut -d '|' -f1,18 |grep '|0$'|cut -d '|' -f1|xargs echo |sed 's/ /\\|/g' >>sedscript.txt
 # quickly strip trailing newline (in OSX-portable format, can't use GNU head -c -1)
 printf "%s" "$(< sedscript.txt)" >sedscript.txt
