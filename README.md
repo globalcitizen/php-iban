@@ -200,7 +200,7 @@ $ git submodule init
 $ git submodule update
 ```
 
-To skip these steps, add the `--recursive`` argument to `git clone` when checking out:
+To skip these steps, add the `--recursive` argument to `git clone` when checking out:
 ```sh
 # check out your project, initialize and update all submodules
 $ git clone --recursive git@your-server.com:your/project.git
