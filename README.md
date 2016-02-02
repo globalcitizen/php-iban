@@ -215,6 +215,20 @@ $ git commit -m 'Update php-iban submodule'
 ```
 
 
+Manual installation
+-------------------
+
+1. Fetch the latest release from [our github releases page](https://github.com/globalcitizen/php-iban/releases) in either `zip` or `tar.gz` format.
+2. Extract the library using your favourite archive utility, for example `unzip filename.zip` on Unix-like platforms.
+3. Write your code to depend on the library based upon its relative location to your source code. For example if you wish to include `php-ian` from the parent directory's subdirectory `libraries/php-iban` you could use the following [require_once()](http://php.net/manual/en/function.require-once.php) statement:
+```php
+<?php
+require_once(dirname(__FILE__) . '../libraries/php-iban/php-iban.php');
+# ... your code utilizing php-iban
+?>
+```
+
+
 Comparison of PHP IBAN libraries
 --------------------------------
 
