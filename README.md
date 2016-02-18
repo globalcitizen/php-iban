@@ -278,50 +278,50 @@ News: February 2016
 
 Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
 
-__Version 2.4.0__ has been released.
+__[Version 2.4.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.0)__ has been released.
  * It is now possible to determine, verify and set the correct national checksums for some countries that offered a pre-IBAN national checksum algorithm via the new functions `iban_{set|find|verify}_nationalchecksum()` and their OO-wrapper equivalents. Presently Belgium (BE), France (FR) and Spain (ES) are supported. If you would like to see your country supported, please see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
 
 
 News: January 2016
 ------------------
 
-__Version 2.3.1__ has been released.
+__[Version 2.3.1](https://github.com/globalcitizen/php-iban/releases/tag/v2.3.1)__ has been released.
  * Fix paste error in Bosnia IANA code
  * Additional tests for new country functions
 
-__Version 2.3.0__ has been released.
+__[Version 2.3.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.3.0)__ has been released.
  * All IBAN country records can now be cross-referenced with their corresponding [IANA](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains) and [ISO3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) codes, if available
 
-__Version 2.2.0__ has been released.
+__[Version 2.2.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.2.0)__ has been released.
  * Fully up to date with SEPA membership list. (Added new member for 2016, Andorra)
  * Fully up to date with latest SWIFT IBAN registry PDF.
  * Many fixes and new features since 2.1.0
  * All users are encouraged to ugprade.
 
-__Version 2.1.9__ has been released.
+__[Version 2.1.9](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.9)__ has been released.
  * Example field updates attempting to include what is possible from SWIFT IBAN registry PDF version #63. There persist [significant issues with this release process](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS).
 
-__Version 2.1.8__ has been released.
+__[Version 2.1.8](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.8)__ has been released.
  * National BBAN checksum offset data for Belgium added.
 
-__Version 2.1.7__ has been released.
+__[Version 2.1.7](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.7)__ has been released.
  * National BBAN checksum offset data added to registry. This can be queried via the new functions `iban_get_nationalchecksum_part()`, `iban_country_get_nationalchecksum_start_offset()` and `iban_country_get_nationalchecksum_stop_offset()` and their OO-wrapper equivalents `$myIban->NationalChecksum()`, `$myCountry->NationalChecksumStartOffset()` and `$mycountry->NationalChecksumStopOffset()`. Test and documentation updated. If you know anything about national checksum algorithms, please lend a hand at [issue #39](https://github.com/globalcitizen/php-iban/issues/39).
 
-__Version 2.1.6__ has been released.
+__[Version 2.1.6](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.6)__ has been released.
  * OO wrapper and documentation updated for new strict `machine_format_only` validation.
 
-__Version 2.1.5__ has been released.
+__[Version 2.1.5](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.5)__ has been released.
  * Additional strict `machine_format_only` mode for `verify_iban()` to close [issue #22](https://github.com/globalcitizen/php-iban/issues/22).
 
-__Version 2.1.4__ has been released.
+__[Version 2.1.4](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.4)__ has been released.
  * Simplified a function using a php4+ builtin.
 
-__Version 2.1.3__ has been released.
+__[Version 2.1.3](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.3)__ has been released.
  * Behavior of `iban_to_human_format()` has been fixed when passed input already containing spaces.
  * OO-based tests are now executed following successful procedural tests.
  * An additional test library for testing edge-case behavior in general functions is now executed following the main tests.
 
-__Version 2.1.2__ has been released. All known unofficial IBAN country codes are now integrated. As well as minor documentation updates and a shortening of the reported name of Kosovo, this version adds:
+__[Version 2.1.2](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.2)__ has been released. All known unofficial IBAN country codes are now integrated. As well as minor documentation updates and a shortening of the reported name of Kosovo, this version adds:
  * Ivory Coast (CI)
  * Madagascar (MG)
  * Mali (ML)
@@ -329,14 +329,14 @@ __Version 2.1.2__ has been released. All known unofficial IBAN country codes are
  * Senegal (SN)
  * Ukraine (UA)
 
-__Version 2.1.1__ has been released. Currently unofficial IBAN country codes are being integrated, and the process remains ongoing. This version adds:
+__[Version 2.1.1](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.1)__ has been released. Currently unofficial IBAN country codes are being integrated, and the process remains ongoing. This version adds:
  * Burkina Faso (BF)
  * Burundi (BI)
  * Cameroon (CM)
  * Cape Verde (CV)
  * Iran (IR) 
 
-__Version 2.1.0__ has been released.  
+__[Version 2.1.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.1.0)__ has been released.  
 Currently unofficial IBAN country codes are being integrated, and the process remains ongoing.  A new flag has been created to check whether a country is an official, SWIFT-issued record or not. The following new countries have therefore been added.
  * Algeria (DZ)
  * Angola (AO)
@@ -344,7 +344,7 @@ Currently unofficial IBAN country codes are being integrated, and the process re
 
 Note also that the IIBAN (AA) record has been marked unofficial, and features listed in `docs/TODO` have been migrated to Github issues and that file deleted.
 
-__Version 2.0.1__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with changes. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
+__[Version 2.0.1](https://github.com/globalcitizen/php-iban/releases/tag/v2.0.1)__ has been released. This is to celebrate real testing, composer support, as well as finally catching up with changes. This version should be up to date with all registry changes to the present, including changes or additions to the countries:
  * IIBAN (AA)
  * Brazil (BR)
  * Costa Rica (CR)
@@ -358,11 +358,11 @@ __Version 2.0.1__ has been released. This is to celebrate real testing, composer
  * Timor Leste (TL)
  * Turkey (TR)
 
-__Version 1.6.0__ has been released. This version features more registry corrections (newly added territories with faulty data, bad checksums in sample IBANs, etc.) as well as enhanced testing routines, extended documentation, and corrected documentation. All users are advised to upgrade. We now have automated test script execution with Travis CI, to provide additional robustness for all committed code. This took longer than expected as unfortunately I picked the exact time Travis broke their build logs - https://www.traviscistatus.com/incidents/fcllblkclgmb - to see what all the fuss was about... proving again that cloud computing is just *great* for breaking things unexpectedly. Because they want to hide things, there was literally no debug output whatsoever, and I was led to believe this was my fault. Fellow programmers, behold: it is the dawning of the age of the mystical fail.
+__[Version 1.6.0](https://github.com/globalcitizen/php-iban/releases/tag/v1.6.0)__ has been released. This version features more registry corrections (newly added territories with faulty data, bad checksums in sample IBANs, etc.) as well as enhanced testing routines, extended documentation, and corrected documentation. All users are advised to upgrade. We now have automated test script execution with Travis CI, to provide additional robustness for all committed code. This took longer than expected as unfortunately I picked the exact time Travis broke their build logs - https://www.traviscistatus.com/incidents/fcllblkclgmb - to see what all the fuss was about... proving again that cloud computing is just *great* for breaking things unexpectedly. Because they want to hide things, there was literally no debug output whatsoever, and I was led to believe this was my fault. Fellow programmers, behold: it is the dawning of the age of the mystical fail.
 
-__Version 1.5.0__ has been released. There are no code changes, but we now have http://packagist.org/ integration, hopefully this triggers it to start working. If you use packagist, you can now add the library to your project by just running `composer require globalcitizen/php-iban` (thanks to @acoulton for pointing the way)
+__[Version 1.5.0](https://github.com/globalcitizen/php-iban/releases/tag/v1.5.0)__ has been released. There are no code changes, but we now have http://packagist.org/ integration, hopefully this triggers it to start working. If you use packagist, you can now add the library to your project by just running `composer require globalcitizen/php-iban` (thanks to @acoulton for pointing the way)
 
-__Version 1.4.9__ has been released using the new Github-based release process. Hopefully this provides a solid anchor point for those bundling the library with other software. We also have a contributed composer metadata file to ease integration.
+__[Version 1.4.9](https://github.com/globalcitizen/php-iban/releases/tag/v1.4.9)__ has been released using the new Github-based release process. Hopefully this provides a solid anchor point for those bundling the library with other software. We also have a contributed composer metadata file to ease integration.
 New IBAN registry URLs integrated.
 Removed old SVN tag/trunk structure.
 
