@@ -639,6 +639,24 @@ function _iso7064_mod97_10($str) {
  return (98-($check%97));
 }
 
+# Implement the national checksum for an Albania (AL) IBAN
+#  (NOTE: Reverse engineered, may be incorrect, but seems logical due to placement (after subject), works fine on demo IBAN)
+function _iban_nationalchecksum_implementation_al($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $bankbranch = iban_get_bank_part($iban) . iban_get_branch_part($iban);
+ $expected_nationalchecksum = _luhn($bankbranch);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return ($nationalchecksum == $expected_nationalchecksum);
+ }
+}
+
 # Implement the national checksum for an Bosnia (BA) IBAN
 #  (NOTE: Reverse engineered, may be incorrect, but seems to work fine on demo IBAN, uses entire BBAN less checksum characters as input)
 function _iban_nationalchecksum_implementation_ba($iban,$mode) {
@@ -775,6 +793,59 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  elseif($mode=='verify') {
   return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
  }
+}
+
+# ISO/IEC 7064, MOD 97-10
+# @param $input string Must contain only characters ('0123456789').
+# @output A 2 character string containing '0123456789',
+#         or '' (empty string) on failure due to bad input.
+# (Credit: php-iso7064 @ https://github.com/globalcitizen/php-iso7064)
+function _iso7064_mod97_10_generated($input) {
+ $input = strtoupper($input); # normalize
+ if(!preg_match('/^[0123456789]+$/',$input)) { return ''; } # bad input
+ $modulus       = 97;
+ $radix         = 10;
+ $output_values = '0123456789';
+ $p             = 0;
+ for($i=0; $i<strlen($input); $i++) {
+  $val = strpos($output_values,substr($input,$i,1));
+  if($val < 0) { return ''; } # illegal character encountered
+  $p = (($p + $val) * $radix) % $modulus;
+ }
+$p = ($p*$radix) % $modulus;
+ $checksum = ($modulus - $p + 1) % $modulus;
+ $second = $checksum % $radix;
+ $first = ($checksum - $second) / $radix;
+ return substr($output_values,$first,1) . substr($output_values,$second,1);
+}
+
+# Implement the national checksum for an Timor-Lest (TL) IBAN
+#  (NOTE: Reverse engineered, but works on 2 different IBAN from official sources)
+function _iban_nationalchecksum_implementation_tl($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $bban = iban_get_bban_part($iban);
+ $bban_less_checksum = substr($bban,0,strlen($bban)-2);
+ $expected_nationalchecksum = _iso7064_mod97_10_generated($bban_less_checksum);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return ($nationalchecksum == $expected_nationalchecksum);
+ }
+}
+
+# Luhn Check
+# (Credit: Adapted from @gajus' https://gist.github.com/troelskn/1287893#gistcomment-857491)
+function _luhn($string) {
+ $checksum='';
+ foreach (str_split(strrev((string) $string)) as $i => $d) {
+  $checksum .= $i %2 !== 0 ? $d * 2 : $d;
+ }
+ return array_sum(str_split($checksum)) % 10;
 }
 
 ?>
