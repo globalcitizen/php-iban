@@ -77,7 +77,37 @@ foreach($_iban_registry as $country) {
  print " - bank     " . iban_get_bank_part($iban) . "\n";
  print " - branch   " . iban_get_branch_part($iban) . "\n";
  print " - account  " . iban_get_account_part($iban) . "\n";
- print " - natcksum " . iban_get_nationalchecksum_part($iban) . "\n";
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ print " - natcksum " . $nationalchecksum . "\n";
+
+ # if a national checksum was present, validate it
+ $supposed_checksum = iban_find_nationalchecksum($iban);
+ if($supposed_checksum!='') {
+  if($supposed_checksum != $nationalchecksum) {
+   print "    (INVALID! Should be '" . $supposed_checksum . "'!)\n";
+   exit(1);
+  }
+  else {
+   print "    (National checksum manually validated.)\n";
+  }
+  # also check 'verify' codepath
+  if(!iban_verify_nationalchecksum($iban)) {
+   print "    (ERROR: iban_verify_nationalchecksum($iban) did not validate!)\n";
+   exit(1);
+  }
+  else {
+   print "    (National checksum automatically validated.)\n";
+  }
+  # also check 'set' codepath
+  $fixed_iban = iban_set_nationalchecksum($iban);
+  if($fixed_iban != $iban) {
+   print "    (ERROR: iban_set_nationalchecksum('$iban') returned '$fixed_iban')\n";
+   exit(1);
+  }
+  else {
+   print "    (Correction of national checksum functionality validated.)\n";
+  }
+ }
  
  # output all properties
  #$parts = iban_get_parts($iban);

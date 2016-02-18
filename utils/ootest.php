@@ -69,7 +69,38 @@ foreach($countries as $countrycode) {
  print " - bank     " . $myIban->Bank() . "\n";
  print " - branch   " . $myIban->Branch() . "\n";
  print " - account  " . $myIban->Account() . "\n";
- 
+ $nationalchecksum = $myIban->NationalChecksum();
+ print " - natcksum " . $nationalchecksum . "\n";
+
+ # if a national checksum was present, validate it
+ $supposed_checksum = $myIban->FindNationalChecksum();
+ if($supposed_checksum!='') {
+  if($supposed_checksum != $nationalchecksum) {
+   print "    (INVALID! Should be '" . $supposed_checksum . "'!)\n";
+   exit(1);
+  }
+  else {
+   print "    (National checksum manually validated.)\n";
+  }
+  # also check 'verify' codepath
+  if(!$myIban->VerifyNationalChecksum()) {
+   print "    (ERROR: VerifyNationalChecksum($iban) did not validate!)\n";
+   exit(1);
+  }
+  else {
+   print "    (National checksum automatically validated.)\n";
+  }
+  # also check 'set' codepath
+  $myIban->SetNationalChecksum();
+  if($myCountry->IBANExample() != $myIban->iban) {
+   print "    (ERROR: iban_set_nationalchecksum('" . $myCountry->IBANExample() . "') returned '" . $myIban->iban . "')\n";
+   exit(1);
+  }
+  else {
+   print "    (Correction of national checksum functionality validated.)\n";
+  }
+ }
+
  # output all properties
  #$parts = $myIban->Parts();
  #print_r($parts);

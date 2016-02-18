@@ -527,4 +527,182 @@ function _iban_load_mistranscriptions() {
  return true;
 }
 
+# Find the correct national checksum for an IBAN
+#  (Returns the correct national checksum as a string, or '' if unimplemented for this IBAN's country)
+#  (NOTE: only works for some countries)
+function iban_find_nationalchecksum($iban) {
+ return _iban_nationalchecksum_implementation($iban,'find');
+}
+
+# Verify the correct national checksum for an IBAN
+#  (Returns true or false, or '' if unimplemented for this IBAN's country)
+#  (NOTE: only works for some countries)
+function iban_verify_nationalchecksum($iban) {
+ return _iban_nationalchecksum_implementation($iban,'verify');
+}
+
+# Verify the correct national checksum for an IBAN
+#  (Returns the (possibly) corrected IBAN, or '' if unimplemented for this IBAN's country)
+#  (NOTE: only works for some countries)
+function iban_set_nationalchecksum($iban) {
+ $result = _iban_nationalchecksum_implementation($iban,'set');
+ if($result != '' ) {
+  $result = iban_set_checksum($result); # recalculate IBAN-level checksum
+ }
+ return $result;
+}
+
+# Internal function to overwrite the national checksum portion of an IBAN
+function _iban_nationalchecksum_set($iban,$nationalchecksum) {
+ $country = iban_get_country_part($iban);
+ $start = iban_country_get_nationalchecksum_start_offset($country);
+ if($start == '') { return ''; }
+ $stop = iban_country_get_nationalchecksum_stop_offset($country);
+ if($stop == '') { return ''; }
+ # determine the BBAN
+ $bban = iban_get_bban_part($iban);
+ # alter the BBAN
+ $fixed_bban = substr($bban,0,$start) . $nationalchecksum . substr($bban,$stop+1);
+ # reconstruct the fixed IBAN
+ $fixed_iban = $country . iban_get_checksum_part($iban) . $fixed_bban;
+ return $fixed_iban;
+}
+
+# Internal proxy function to access national checksum implementations
+#  $iban = IBAN to work with (length and country must be valid, IBAN checksum and national checksum may be incorrect)
+#  $mode = 'find', 'set', or 'verify'
+#    - In 'find' mode, the correct national checksum for $iban is returned.
+#    - In 'set' mode, a (possibly) modified version of $iban with the national checksum corrected is returned.
+#    - In 'verify' mode, the checksum within $iban is compared to correctly calculated value, and true or false is returned.
+#  If a national checksum algorithm does not exist or remains unimplemented for this country, or the supplied $iban or $mode is invalid, '' is returned.
+#  (NOTE: We cannot collapse 'verify' mode and implement here via simple string comparison between 'find' mode output and the nationalchecksum part,
+#         because some countries have systems which do not map to this approach, for example the Netherlands has no checksum part yet an algorithm exists)
+function _iban_nationalchecksum_implementation($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } #  blank value on return to distinguish from correct execution
+ $iban = iban_to_machine_format($iban);
+ $country = iban_get_country_part($iban);
+ if(strlen($iban)!=iban_country_get_iban_length($country)) { return ''; }
+ $function_name = '_iban_nationalchecksum_implementation_' . strtolower($country);
+ if(function_exists($function_name)) {
+  return $function_name($iban,$mode);
+ }
+ return '';
+}
+
+# Implement the national checksum for a Belgium (BE) IBAN
+#  (Credit: @gaetan-be)
+function _iban_nationalchecksum_implementation_be($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $account = iban_get_account_part($iban);
+ $account_less_checksum = substr($account,strlen($account)-2);
+ $expected_nationalchecksum = bcmod($account_less_checksum, 97);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return ($nationalchecksum == $expected_nationalchecksum);
+ }
+}
+
+# MOD11 helper function for the Spanish (ES) IBAN national checksum implementation
+#  (Credit: @dem3trio, code lifted from Spanish Wikipedia at https://es.wikipedia.org/wiki/C%C3%B3digo_cuenta_cliente)
+function _iban_nationalchecksum_implementation_es_mod11_helper($numero) {
+ if(strlen($numero)!=10) return "?";
+ $cifras = Array(1,2,4,8,5,10,9,7,3,6);
+ $chequeo=0;
+ for($i=0; $i<10; $i++) {
+  $chequeo += substr($numero,$i,1) * $cifras[$i];
+ }
+ $chequeo = 11 - ($chequeo % 11);
+ if ($chequeo == 11) $chequeo = 0;
+ if ($chequeo == 10) $chequeo = 1;
+ return $chequeo;
+}
+
+# Implement the national checksum for a Spanish (ES) IBAN
+#  (Credit: @dem3trio, adapted from code on Spanish Wikipedia at https://es.wikipedia.org/wiki/C%C3%B3digo_cuenta_cliente)
+function _iban_nationalchecksum_implementation_es($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ # extract appropriate substrings
+ $bankprefix = iban_get_bank_part($iban) . iban_get_branch_part($iban);
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $account = iban_get_account_part($iban);
+ $account_less_checksum = substr($account,2);
+ # first we calculate the initial checksum digit, which is MOD11 of the bank prefix with '00' prepended
+ $expected_nationalchecksum  = _iban_nationalchecksum_implementation_es_mod11_helper("00".$bankprefix);
+ # then we append the second digit, which is MOD11 of the account
+ $expected_nationalchecksum .= _iban_nationalchecksum_implementation_es_mod11_helper($account_less_checksum);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return ($nationalchecksum == $expected_nationalchecksum);
+ }
+}
+
+# Helper function for the France (FR) BBAN national checksum implementation
+#  (Credit: @gaetan-be)
+function _iban_nationalchecksum_implementation_fr_letters2numbers_helper($bban) {
+ $allNumbers = "";
+ $conversion = array(
+                     "A" => 1, "B" => 2, "C" => 3, "D" => 4, "E" => 5, "F" => 6, "G" => 7, "H" => 8, "I" => 9, 
+                     "J" => 1, "K" => 2, "L" => 3, "M" => 4, "N" => 5, "O" => 6, "P" => 7, "Q" => 8, "R" => 9, 
+                     "S" => 2, "T" => 3, "U" => 4, "V" => 5, "W" => 6, "X" => 7, "Y" => 8, "Z" => 9
+                    );
+ for ($i=0; $i < strlen($bban); $i++) {
+  if(is_numeric($bban{$i})) {
+   $allNumbers .= $bban{$i};
+  }
+  else {
+   $letter = strtoupper($bban{$i});
+   if(array_key_exists($letter, $conversion)) {
+    $allNumbers .= $conversion[$letter];
+   }
+   else {
+    return null;
+   }
+  }
+ }
+ return $allNumbers;
+}
+
+# Implement the national checksum for a France (FR) IBAN
+#  (Credit: @gaetan-be, http://www.credit-card.be/BankAccount/ValidationRules.htm#FR_Validation and 
+#           https://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm)
+function _iban_nationalchecksum_implementation_fr($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ # first, extract the BBAN
+ $bban = iban_get_bban_part($iban);
+ # convert to numeric form
+ $bban_numeric_form = _iban_nationalchecksum_implementation_fr_letters2numbers_helper($bban);
+ # if the result was null, something is horribly wrong
+ if(is_null($bban_numeric_form)) { return ''; }
+ # extract other parts
+ $bank = substr($bban_numeric_form,0,5);
+ $branch = substr($bban_numeric_form,5,5);
+ $account = substr($bban_numeric_form,10,11);
+ # actual implementation: mod97( (89 x bank number "Code banque") + (15 x branch code "Code guichet") + (3 x account number "Numéro de compte") )
+ $sum = bcadd( bcmul("89", $bank) , bcmul("15", $branch));
+ $sum = bcadd( $sum, bcmul("3", $account));
+ $expected_nationalchecksum = bcsub("97", bcmod($sum, "97"));
+ if(strlen($expected_nationalchecksum) == 1) { $expected_nationalchecksum = '0' . $expected_nationalchecksum; }
+ # return
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
+ }
+}
+
 ?>

@@ -249,13 +249,13 @@ Notes:
 
 Now let's take a look at features.
 
-|                                                               | Gen. | ISO | IANA | SEPA | IIBAN | Unofficial | MT  | Human? | Registry                                                               |
-| ------------------------------------------------------------- | ---- | --- | ---- | ---- | ----- | ---------- | --- | ------ | ---------------------------------------------------------------------- |
-| __php-iban__                                                  | ✔    | ✔   |  ✔   | ✔    | ✔     | ✔          | ✔   | ✔      | 98: [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
-| [Iban](https://github.com/jschaedl/Iban)                      | ✔*   | ✘   |  ✘   | ✘    | ✘     | ✘          | ✘   | ✘      | 54: [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
-| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | ✘    | ✘   |  ✘   | ✘    | ✘     | ✘          | ✘   | ✘      | 66: [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)    |
-| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities)    | ✘    | ✘   |  ✘   | ✘    | ✘     | ✘          | ✘   | ✘      | 89: [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
-| [Symfony](https://github.com/symfony/symfony)                 | ✘    | ✘   |  ✘   | ✘    | ✘     | ✘          | ✘   | ✘      | 95: [partial, hardcoded](https://github.com/symfony/symfony/blob/09f92ba516b8840f2ee2dc630b75cbccfca5976b/src/Symfony/Component/Validator/Tests/Constraints/IbanValidatorTest.php), [dubious origin](https://github.com/symfony/symfony/blob/a4f3baae3758b0e72005353f624101f089e4302b/src/Symfony/Component/Validator/Constraints/IbanValidator.php)
+|                                                               | Gen. | ISO | IANA | SEPA | IIBAN | UO  | MT  | NC  | Human? | Registry                                                               |
+| ------------------------------------------------------------- | ---- | --- | ---- | ---- | ----- | --- | --- | --- | ------ | ---------------------------------------------------------------------- |
+| __php-iban__                                                  | ✔    | ✔   |  ✔   | ✔    | ✔     | ✔   | ✔   | ✔   | ✔      | 98: [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
+| [Iban](https://github.com/jschaedl/Iban)                      | ✔*   | ✘   |  ✘   | ✘    | ✘     | ✘   | ✘   | ✘   | ✘      | 54: [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
+| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | ✘    | ✘   |  ✘   | ✘    | ✘     | ✘   | ✘   | ✘   | ✘      | 66: [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)    |
+| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities)    | ✘    | ✘   |  ✘   | ✘    | ✘     | ✘   | ✘   | ✘   | ✘      | 89: [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
+| [Symfony](https://github.com/symfony/symfony)                 | ✘    | ✘   |  ✘   | ✘    | ✘     | ✘   | ✘   | ✘   | ✘      | 95: [partial, hardcoded](https://github.com/symfony/symfony/blob/09f92ba516b8840f2ee2dc630b75cbccfca5976b/src/Symfony/Component/Validator/Tests/Constraints/IbanValidatorTest.php), [dubious origin](https://github.com/symfony/symfony/blob/a4f3baae3758b0e72005353f624101f089e4302b/src/Symfony/Component/Validator/Constraints/IbanValidator.php)
 
 Note:
  * __Gen.__ refers to the capacity to create checksum-accurate potential IBANs programatically. It is the author's opinion that generation features without IIBAN support (ie. authority) are of dubious use, except in one-off migrations.
@@ -263,8 +263,9 @@ Note:
  * __IANA__ refers to the capacity to convert between IBAN country codes and IANA country codes (eg. 'GB' to '.uk' and vice versa)
  * __SEPA__ refers to the ability to check whether a particular IBAN country is a member of the Single Euro Payments Area (SEPA)
  * __IIBAN__ describes support for the open [proposal](http://www.ifex-project.org/) for decentralized financial endpoint generation by private parties, such as crypto-currency exchanges, whilst maintaining compatibility with the emerging IBAN system. This system has been adopted by major cryptocurrency exchanges such as [Kraken](https://www.kraken.com/).
- * __Unofficial__ refers to support for countries whose IBAN formats have been [published as in informal use](http://www.nordea.com/en/our-services/cashmanagement/iban-validator-and-information/iban-countries/index.html) by major financial institutions, but are not official SWIFT-published registry entries.
+ * __UO__ refers to support for unofficial countries whose IBAN formats have been [published as in informal use](http://www.nordea.com/en/our-services/cashmanagement/iban-validator-and-information/iban-countries/index.html) by major financial institutions, but are not official SWIFT-published registry entries.
  * __MT__ refers to mistranscription support: the capacity to automatically detect what the user probably meant when they make a transcription error on IBANs, such as those manually written or printed in confusing fonts, for instance writing 'L' instead of 'I' or '1', or vice versa.
+ * __NC__ refers to national checksum support: the capacity to verify and, where appopriate, set and extract the national checksum portion of a BBAN, for countries that offered pre-IBAN national checksum algorithms.
  * __Human?__ means support for input and output for the human, space-laden or presentation variant of an IBAN, ie. `IBAN XXXX XXXX XXXX XXXX` instead of `XXXXXXXXXXXXXXXX` - a lot more reasonable.
 
 In short, while composer users have apparently lept on rival libraries (particularly Iban), probably due to the time it took us to integrate a composer file, those libraries are often either full-fledged web frameworks or burdensome in dependencies, less mature, fail to hat-tip to the free software foundation, do not support the procedural programming paradigm (for when AbstractProductClassMakerFactories just won't cut it), use data from dubious sources, tend to use licenses that are incompatible with certain commercial uses, and are frankly short on features.
@@ -272,9 +273,17 @@ In short, while composer users have apparently lept on rival libraries (particul
 So, fearless user ... __choose php-iban__: the ethical, functional, forward-looking, low-hassle library of choice for IBAN and IIBAN processing. __Choose to win!__ ;)
 
 
+News: February 2016
+-------------------
+
+Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
+
+__Version 2.4.0__ has been released.
+ * It is now possible to determine, verify and set the correct national checksums for some countries that offered a pre-IBAN national checksum algorithm via the new functions `iban_{set|find|verify}_nationalchecksum()` and their OO-wrapper equivalents. Presently Belgium (BE), France (FR) and Spain (ES) are supported. If you would like to see your country supported, please see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
+
+
 News: January 2016
 ------------------
-Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
 
 __Version 2.3.1__ has been released.
  * Fix paste error in Bosnia IANA code
@@ -616,7 +625,35 @@ $correct_checksum = iban_find_checksum($iban);
 
 # Set the correct checksum for an IBAN
 $fixed_iban = iban_set_checksum($iban);
+
+# Verify the pre-IBAN era, BBAN-level national checksum for those countries that
+# have such a system and we have implemented.
+# (Returns '' if unimplemented, true or false)
+$result = iban_verify_nationalchecksum($iban);
+if($result == '') {
+ print "National checksum system does not exist or remains unimplemented for the country of IBAN '$iban'.\n";
+}
+elseif($result == true) {
+ print "IBAN '$iban' passes the national checksum algorithm for its country.\n";
+}
+else {
+ print "IBAN '$iban' FAILS the national checksum algorithm for its country.\n";
+}
+
+# Set the pre-IBAN era, BBAN-level national checksum for those countries that
+# have such a system, where that system results in a dedicated checksum
+# substring, and that we have implemented.
+# (Returns '' if unimplemented, or the corrected string)
+# (NOTE: On success, the function also subsequently recalculates the IBAN-level checksum)
+$national_checksum_algorithm_valid_iban = iban_set_nationalchecksum($iban);
+
+# Determine, but do not set, the pre-IBAN era, BBAN-level national checksum 
+# for those countries that have such a system, where that system results in
+# a dedicated checksum substring, and that we have implemented.
+# (Returns '' if unimplemented, or the expected national checksum substring)
+$expected_national_checksum = iban_find_nationalchecksum($iban);
 ```
+
 
 Utility Functions
 -----------------
@@ -786,6 +823,33 @@ $correct_checksum = $myIban->FindChecksum();
 
 # Set the correct checksum for an IBAN
 $fixed_iban = $myIban->SetChecksum()
+
+# Verify the pre-IBAN era, BBAN-level national checksum for those countries that
+# have such a system and we have implemented.
+# (Returns '' if unimplemented, true or false)
+$result = $myIban->VerifyNationalChecksum();
+if($result == '') {
+ print "National checksum system does not exist or remains unimplemented for this IBAN's country.\n";
+}
+elseif($result == true) {
+ print "IBAN passes the national checksum algorithm for its country.\n";
+}
+else {
+ print "IBAN FAILS the national checksum algorithm for its country.\n";
+}
+
+# Set the pre-IBAN era, BBAN-level national checksum for those countries that
+# have such a system, where that system results in a dedicated checksum
+# substring, and that we have implemented.
+# (Returns '' if unimplemented, or the corrected string)
+# (NOTE: On success, the function also subsequently recalculates the IBAN-level checksum)
+$myIban->SetNationalChecksum();
+
+# Determine, but do not set, the pre-IBAN era, BBAN-level national checksum
+# for those countries that have such a system, where that system results in
+# a dedicated checksum substring, and that we have implemented.
+# (Returns '' if unimplemented, or the expected national checksum substring)
+$national_checksum = $myIban->FindNationalChecksum();
 ```
 
 Utility Functions

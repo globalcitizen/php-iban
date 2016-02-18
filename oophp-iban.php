@@ -68,6 +68,18 @@ Class IBAN {
   return iban_checksum_string_replace($this->iban);
  }
 
+ public function FindNationalChecksum() {
+  return iban_find_nationalchecksum($this->iban);
+ }
+
+ public function SetNationalChecksum() {
+  $this->iban = iban_set_nationalchecksum($this->iban);
+ }
+
+ public function VerifyNationalChecksum() {
+  return iban_verify_nationalchecksum($this->iban);
+ }
+
  public function Parts() {
   return iban_get_parts($this->iban);
  }
