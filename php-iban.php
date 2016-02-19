@@ -797,16 +797,116 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  }
 }
 
+# Implement the national checksum for an Estonia (EE) IBAN
+#  (NOTE: Reverse-engineered)
+function _iban_nationalchecksum_implementation_ee($iban,$mode) {
+ return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,1);
+}
+
 # Implement the national checksum for a Hungary (HU) IBAN
 #  (NOTE: Reverse-engineered)
 function _iban_nationalchecksum_implementation_hu($iban,$mode) {
+ return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,1);
+}
+
+# Implement the national checksum for a Luxembourg (LU) IBAN
+#  (NOTE: Reverse-engineered, thought to be broken/incorrect.)
+#   - Two different IBANs respond to two different algorithms, 
+#      - Verhoeff(trailing(c cccc cccc))
+#      - iso7064_mod11_2
+#     ... possibly they have a bank-specific system or one of
+#         the same IBANs is not set with a correct checksum.
+#         The best solution is to find a lot more LU IBANs.
+function _iban_nationalchecksum_implementation_lu_broken_disabled($iban,$mode) {
+ return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,2);
+}
+
+# Implement the national checksum for a Norway (NO) IBAN
+#  (NOTE: Built from description at https://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm, not well tested)
+function _iban_nationalchecksum_implementation_no($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
  # first, extract the BBAN
  $bban = iban_get_bban_part($iban);
- # drop the trailing checksum digit
- $bban_less_checksum = substr($bban,0,strlen($bban)-1);
+ # then, the account
+ $account = iban_get_account_part($iban);
+ # existing checksum
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ # bban less checksum
+ $bban_less_checksum = substr($bban,0,strlen($bban)-strlen($nationalchecksum));
+ # factor table
+ $factors = array(5,4,3,2,7,6,5,4,3,2);
+ # calculate checksum
+ $total = 0;
+ for($i=0;$i<10;$i++) {
+  $total += $bban_less_checksum[$i] * $factors[$i];
+ }
+ $total += $nationalchecksum;
+ # mod11
+ $remainder = $total % 11;
+ # to find the correct check digit, we add the remainder to the current check digit,
+ #  mod10 (ie. rounding at 10, such that 10 = 0, 11 = 1, etc.)
+ $calculated_checksum = ($nationalchecksum + $remainder)%10;
+ if($mode == 'find') {
+  if($remainder == 0) { return $nationalchecksum; }
+  else {
+   return $calculated_checksum;
+  }
+ }
+ elseif($mode == 'set') {
+  return _iban_nationalchecksum_set($iban,$calculated_checksum);
+ }
+ elseif($mode == 'verify') {
+  if($remainder == 0) { return true; }
+  return false;
+ }
+}
+
+# Implement the national checksum for a Sweden (SE) IBAN
+#  (NOTE: Reverse-engineered)
+function _iban_nationalchecksum_implementation_se($iban,$mode) {
+ return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,1,3);
+}
+
+# Implement the national checksum for a Finland (FI) IBAN
+#  (NOTE: Reverse-engineered)
+function _iban_nationalchecksum_implementation_fi($iban,$mode) {
+ return _iban_nationalchecksum_implementation_damm($iban,$mode);
+}
+
+# Implement the national checksum systems based on Damm Algorithm
+function _iban_nationalchecksum_implementation_damm($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ # first, extract the BBAN
+ $bban = iban_get_bban_part($iban);
  # get the current and computed checksum
- $nationalchecksum = iban_get_checksum_part($iban);
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ # drop trailing checksum characters
+ $bban_less_checksum = substr($bban,0,strlen($bban)-strlen($nationalchecksum));
+ # calculate expected checksum
+ $expected_nationalchecksum = _damm($bban_less_checksum);
+ # return
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
+ }
+}
+
+# Implement the national checksum systems based on Verhoeff Algorithm
+function _iban_nationalchecksum_implementation_verhoeff($iban,$mode,$strip_length_end,$strip_length_front=0) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ # first, extract the BBAN
+ $bban = iban_get_bban_part($iban);
+ # if necessary, drop this many leading characters
+ $bban = substr($bban,$strip_length_front);
+ # drop the trailing checksum digit
+ $bban_less_checksum = substr($bban,0,strlen($bban)-$strip_length_end);
+ # get the current and computed checksum
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
  $expected_nationalchecksum = _verhoeff($bban_less_checksum);
  # return
  if($mode=='find') {
@@ -842,6 +942,48 @@ $p = ($p*$radix) % $modulus;
  $second = $checksum % $radix;
  $first = ($checksum - $second) / $radix;
  return substr($output_values,$first,1) . substr($output_values,$second,1);
+}
+
+# Implement the national checksum for an Montenegro (ME) IBAN
+#  (NOTE: Reverse engineered)
+function _iban_nationalchecksum_implementation_me($iban,$mode) {
+ return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
+}
+
+# Implement the national checksum for an Macedonia (MK) IBAN
+#  (NOTE: Reverse engineered)
+function _iban_nationalchecksum_implementation_mk($iban,$mode) {
+ return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
+}
+
+# Implement the national checksum for an Serbia (RS) IBAN
+#  (NOTE: Reverse engineered)
+function _iban_nationalchecksum_implementation_rs($iban,$mode) {
+ return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
+}
+
+# Implement the national checksum for an Slovenia (SI) IBAN
+#  (NOTE: Reverse engineered)
+function _iban_nationalchecksum_implementation_si($iban,$mode) {
+ return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
+}
+
+# Implement the national checksum for MOD97-10 countries
+function _iban_nationalchecksum_implementation_mod97_10($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $bban = iban_get_bban_part($iban);
+ $bban_less_checksum = substr($bban,0,strlen($bban)-2);
+ $expected_nationalchecksum = _iso7064_mod97_10_generated($bban_less_checksum);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return ($nationalchecksum == $expected_nationalchecksum);
+ }
 }
 
 # Implement the national checksum for an Timor-Lest (TL) IBAN
@@ -923,6 +1065,32 @@ function _verhoeff($input) {
    $r = $d[$r][$p[($n+1)%8][$N]];
   }
   return $inv[$r];
+}
+
+# Damm checksum
+# (Credit: https://en.wikibooks.org/wiki/Algorithm_Implementation/Checksums/Damm_Algorithm#PHP)
+function _damm($input) {
+ if($input=='' || preg_match('/[^0-9]/',$input)) { return ''; } # non-numeric input
+ // from http://www.md-software.de/math/DAMM_Quasigruppen.txt
+ $matrix = array(
+                array(0, 3, 1, 7, 5, 9, 8, 6, 4, 2),
+                array(7, 0, 9, 2, 1, 5, 4, 8, 6, 3),
+                array(4, 2, 0, 6, 8, 7, 1, 3, 5, 9),
+                array(1, 7, 5, 0, 9, 8, 3, 4, 2, 6),
+                array(6, 1, 2, 3, 0, 4, 5, 9, 7, 8),
+                array(3, 6, 7, 4, 2, 0, 9, 5, 8, 1),
+                array(5, 8, 6, 9, 7, 2, 0, 1, 3, 4),
+                array(8, 9, 4, 5, 3, 6, 2, 0, 1, 7),
+                array(9, 4, 3, 8, 6, 1, 7, 2, 0, 5),
+                array(2, 5, 8, 1, 4, 3, 6, 7, 9, 0),
+           );
+ $checksum = 0;
+ for ($i=0; $i<strlen($input); $i++) {
+  $character = substr($input,$i,1);
+  #print "(checksum = \$matrix['" . $checksum . "']['" . $character . "'] ... )\n";
+  $checksum = $matrix[$checksum][$character];
+ }
+ return $checksum;
 }
 
 ?>
