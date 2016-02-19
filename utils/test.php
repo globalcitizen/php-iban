@@ -90,16 +90,21 @@ foreach($_iban_registry as $country) {
   else {
    print "    (National checksum manually validated.)\n";
   }
-  # also check 'verify' codepath
-  if(!iban_verify_nationalchecksum($iban)) {
+ }
+ # also check 'verify' codepath
+ $result = iban_verify_nationalchecksum($iban);
+ if($result!='') {
+  if($result!=true) {
    print "    (ERROR: iban_verify_nationalchecksum($iban) did not validate!)\n";
    exit(1);
   }
   else {
    print "    (National checksum automatically validated.)\n";
   }
-  # also check 'set' codepath
-  $fixed_iban = iban_set_nationalchecksum($iban);
+ }
+ # also check 'set' codepath
+ $fixed_iban = iban_set_nationalchecksum($iban);
+ if($fixed_iban != '') {
   if($fixed_iban != $iban) {
    print "    (ERROR: iban_set_nationalchecksum('$iban') returned '$fixed_iban')\n";
    exit(1);
