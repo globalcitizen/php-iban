@@ -279,12 +279,12 @@ Your Help Wanted
  * Work continues on providing a major update to include string internationalization. Translators will shortly be appreciated.
 
  * If you know the URL of __national IBAN, BBAN or national checksum documentation__ from official sources, please let us know at [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
- ** __Italy__ (IT) has a custom checksum system we need some help deciphering.
- ** __Luxembourg__ (LU) requires more test IBANs (real world LU... IBANs) to determine the checksum system with certainty. A web search could probably turn these up, given time.
- ** __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system.
- ** __Monaco__ (MC) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be expected system. A web search for more IBANs (try the casinos and hotels!) would be useful.
- ** __Netherlands__ (NL) has a checksum system without any digits. We are not sure what this is, tips would be appreciated.
- ** __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
+  * __Italy__ (IT) has a custom checksum system we need some help deciphering.
+  * __Luxembourg__ (LU) requires more test IBANs (real world LU... IBANs) to determine the checksum system with certainty. A web search could probably turn these up, given time.
+  * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system.
+  * __Monaco__ (MC) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be expected system. A web search for more IBANs (try the casinos and hotels!) would be useful.
+  * __Netherlands__ (NL) has a checksum system without any digits. We are not sure what this is, tips would be appreciated.
+  * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
 
