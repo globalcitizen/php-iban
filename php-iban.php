@@ -1006,6 +1006,30 @@ function _iban_nationalchecksum_implementation_mk($iban,$mode) {
  return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
 }
 
+# Implement the national checksum for an Netherlands (NL) IBAN
+#  (Credit: Validate_NL PEAR class)
+function _iban_nationalchecksum_implementation_nl($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $account = iban_get_account_part($iban);
+ $checksum = 0;
+ for ($i = 0; $i < 10; $i++) {
+  $checksum += ((int)$account[$i] * (10 - $i));
+ }
+ $remainder = $checksum % 11;
+ if($mode=='verify') {
+  return ($remainder==0); # we return the result of mod11, if 0 it's good
+ }
+ elseif($mode=='set') {
+  if($remainder==0) {
+   return $iban; # we return as expected if the checksum is ok
+  }
+  return ''; # we return unimplemented if the checksum is bad
+ }
+ elseif($mode=='find') {
+  return ''; # does not make sense for this 0-digit checksum
+ }
+}
+
 # Implement the national checksum for an Serbia (RS) IBAN
 #  (NOTE: Reverse engineered)
 function _iban_nationalchecksum_implementation_rs($iban,$mode) {
@@ -1087,6 +1111,7 @@ function _luhn($string) {
 # Verhoeff checksum
 # (Credit: Adapted from Semyon Velichko's code at https://en.wikibooks.org/wiki/Algorithm_Implementation/Checksums/Verhoeff_Algorithm#PHP)
 function _verhoeff($input) {
+ if(preg_match('/[^0-9]/',$input)) { return ''; } # reject non-numeric input
  $d = array(
        array(0,1,2,3,4,5,6,7,8,9),
        array(1,2,3,4,0,6,7,8,9,5),
