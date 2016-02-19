@@ -861,6 +861,56 @@ function _iban_nationalchecksum_implementation_no($iban,$mode) {
  }
 }
 
+# ISO/IEC 7064, MOD 11-2
+# @param $input string Must contain only characters ('0123456789').
+# @output A 1 character string containing '0123456789X',
+#         or '' (empty string) on failure due to bad input.
+# (Credit: php-iso7064 @ https://github.com/globalcitizen/php-iso7064)
+function _iso7064_mod11_2($input) {
+ $input = strtoupper($input); # normalize
+ if(!preg_match('/^[0123456789]+$/',$input)) { return ''; } # bad input
+ $modulus       = 11;
+ $radix         = 2;
+ $output_values = '0123456789X';
+ $p             = 0;
+ for($i=0; $i<strlen($input); $i++) {
+  $val = strpos($output_values,substr($input,$i,1));
+  if($val < 0) { return ''; } # illegal character encountered
+  $p = (($p + $val) * $radix) % $modulus;
+ }
+ $checksum = ($modulus - $p + 1) % $modulus;
+ return substr($output_values,$checksum,1);
+}
+
+# Implement the national checksum systems based on ISO7064 MOD11-2 Algorithm
+function _iban_nationalchecksum_implementation_iso7064_mod11_2($iban,$mode,$drop_at_front=0,$drop_at_end=1) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ # first, extract the BBAN
+ $bban = iban_get_bban_part($iban);
+ # get the current and computed checksum
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ # drop characters from the front and end of the BBAN as requested
+ $bban_less_checksum = substr($bban,$drop_at_front,strlen($bban)-$drop_at_end);
+ # calculate expected checksum
+ $expected_nationalchecksum = _iso7064_mod11_2($bban_less_checksum);
+ # return
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
+ }
+}
+
+# Implement the national checksum for a Poland (PL) IBAN
+#  (NOTE: Reverse-engineered)
+function _iban_nationalchecksum_implementation_pl($iban,$mode) {
+ return _iban_nationalchecksum_implementation_iso7064_mod11_2($iban,$mode,0,17);
+}
+
 # Implement the national checksum for a Sweden (SE) IBAN
 #  (NOTE: Reverse-engineered)
 function _iban_nationalchecksum_implementation_se($iban,$mode) {
