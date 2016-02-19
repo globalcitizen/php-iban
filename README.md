@@ -278,6 +278,9 @@ News: February 2016
 
 Work continues on providing a major update to include string internationalization. __We are also seeking help from you, the user community, to uncover national BBAN format and checksum documentation from official sources__, or failing that simply a large enough list of known valid BBANs from a given country that we can determine the checksum algorithms by deduction. The goal is to support querying (done!), checking, setting (fixing) national BBAN checksums in those countries who support them. We may later attempt something similar at the bank level, if appropriate. To help with the detective work, see [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
 
+__[Version 2.4.4](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.4)__ has been released.
+ * Portugal (PT) national checksum support has been added.
+
 __[Version 2.4.3](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.3)__ has been released.
  * Hungary (HU) national checksum support has been added.
 

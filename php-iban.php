@@ -798,6 +798,7 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
 }
 
 # Implement the national checksum for a Hungary (HU) IBAN
+#  (NOTE: Reverse-engineered)
 function _iban_nationalchecksum_implementation_hu($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
  # first, extract the BBAN
@@ -846,6 +847,25 @@ $p = ($p*$radix) % $modulus;
 # Implement the national checksum for an Timor-Lest (TL) IBAN
 #  (NOTE: Reverse engineered, but works on 2 different IBAN from official sources)
 function _iban_nationalchecksum_implementation_tl($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $bban = iban_get_bban_part($iban);
+ $bban_less_checksum = substr($bban,0,strlen($bban)-2);
+ $expected_nationalchecksum = _iso7064_mod97_10_generated($bban_less_checksum);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return ($nationalchecksum == $expected_nationalchecksum);
+ }
+}
+
+# Implement the national checksum for an Portugal (PT) IBAN
+#  (NOTE: Reverse engineered)
+function _iban_nationalchecksum_implementation_pt($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
  $nationalchecksum = iban_get_nationalchecksum_part($iban);
  $bban = iban_get_bban_part($iban);
