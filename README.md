@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.6"
+        "globalcitizen/php-iban": "2.4.7"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.6  | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.7  | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -283,7 +283,6 @@ Your Help Wanted
   * __Luxembourg__ (LU) requires more test IBANs (real world LU... IBANs) to determine the checksum system with certainty. A web search could probably turn these up, given time.
   * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system.
   * __Monaco__ (MC) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be expected system. A web search for more IBANs (try the casinos and hotels!) would be useful.
-  * __Netherlands__ (NL) has a checksum system without any digits. We are not sure what this is, tips would be appreciated.
   * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
@@ -291,6 +290,9 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.4.7](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.7)__ has been released.
+ * Netherlands (NL) national checksum support has been added.
 
 __[Version 2.4.6](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.6)__ has been released.
  * Poland (PL) national checksum support has been added.
