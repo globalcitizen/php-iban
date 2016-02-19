@@ -562,7 +562,9 @@ function _iban_nationalchecksum_set($iban,$nationalchecksum) {
  # determine the BBAN
  $bban = iban_get_bban_part($iban);
  # alter the BBAN
- $fixed_bban = substr($bban,0,$start) . $nationalchecksum . substr($bban,$stop+1);
+ $firstbit = substr($bban,0,$start);  # 'string before the checksum'
+ $lastbit = substr($bban,$stop+1);    # 'string after the checksum'
+ $fixed_bban = $firstbit . $nationalchecksum . $lastbit;
  # reconstruct the fixed IBAN
  $fixed_iban = $country . iban_get_checksum_part($iban) . $fixed_bban;
  return $fixed_iban;
@@ -795,6 +797,28 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  }
 }
 
+# Implement the national checksum for a Hungary (HU) IBAN
+function _iban_nationalchecksum_implementation_hu($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ # first, extract the BBAN
+ $bban = iban_get_bban_part($iban);
+ # drop the trailing checksum digit
+ $bban_less_checksum = substr($bban,0,strlen($bban)-1);
+ # get the current and computed checksum
+ $nationalchecksum = iban_get_checksum_part($iban);
+ $expected_nationalchecksum = _verhoeff($bban_less_checksum);
+ # return
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
+ }
+}
+
 # ISO/IEC 7064, MOD 97-10
 # @param $input string Must contain only characters ('0123456789').
 # @output A 2 character string containing '0123456789',
@@ -846,6 +870,39 @@ function _luhn($string) {
   $checksum .= $i %2 !== 0 ? $d * 2 : $d;
  }
  return array_sum(str_split($checksum)) % 10;
+}
+
+# Verhoeff checksum
+# (Credit: Adapted from Semyon Velichko's code at https://en.wikibooks.org/wiki/Algorithm_Implementation/Checksums/Verhoeff_Algorithm#PHP)
+function _verhoeff($input) {
+ $d = array(
+       array(0,1,2,3,4,5,6,7,8,9),
+       array(1,2,3,4,0,6,7,8,9,5),
+       array(2,3,4,0,1,7,8,9,5,6),
+       array(3,4,0,1,2,8,9,5,6,7),
+       array(4,0,1,2,3,9,5,6,7,8),
+       array(5,9,8,7,6,0,4,3,2,1),
+       array(6,5,9,8,7,1,0,4,3,2),
+       array(7,6,5,9,8,2,1,0,4,3),
+       array(8,7,6,5,9,3,2,1,0,4),
+       array(9,8,7,6,5,4,3,2,1,0)
+      );
+  $p = array(
+        array(0,1,2,3,4,5,6,7,8,9),
+        array(1,5,7,6,2,8,3,0,9,4),
+        array(5,8,0,3,7,9,6,1,4,2),
+        array(8,9,1,6,0,4,3,5,2,7),
+        array(9,4,5,3,1,2,6,8,7,0),
+        array(4,2,8,6,5,7,3,9,0,1),
+        array(2,7,9,3,8,0,6,4,1,5),
+        array(7,0,4,6,9,1,3,2,5,8)
+       );
+  $inv = array(0,4,3,2,1,5,6,7,8,9);
+  $r = 0;
+  foreach(array_reverse(str_split($input)) as $n => $N) {
+   $r = $d[$r][$p[($n+1)%8][$N]];
+  }
+  return $inv[$r];
 }
 
 ?>
