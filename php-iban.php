@@ -765,6 +765,12 @@ function _iban_nationalchecksum_implementation_fr_letters2numbers_helper($bban) 
  return $allNumbers;
 }
 
+# Implement the national checksum for a Monaco (MC) IBAN
+#  (Credit: @gaetan-be)
+function _iban_nationalchecksum_implementation_mc($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
 # Implement the national checksum for a France (FR) IBAN
 #  (Credit: @gaetan-be, http://www.credit-card.be/BankAccount/ValidationRules.htm#FR_Validation and 
 #           https://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm)
