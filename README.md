@@ -580,7 +580,6 @@ Earlier in the month... *Small maintenance release*, not critical.
 News: June 2011
 ---------------
  * We are now well over 1000 downloads: not bad considering how specific this project is!
- * If you are using `php-iban`, you are encouraged to join the [http://groups.google.com/group/php-iban-users mailing list]. This way you can get news of updates and announcements (very infrequent, but better than not knowing!)
  * A *new version* has been released that fixes many important changes to the official registry, plus adds some new features.
    * *Add New French Territories* (GF,GP,MQ,RE)
      Older versions of the specification did not include the GF,GP,MQ,RE French territories, only the PF,TF,YT,NC,PM,WF French territories. The new territories have now been added to the database.
