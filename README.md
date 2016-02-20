@@ -279,7 +279,7 @@ Your Help Wanted
  * Work continues on providing a major update to include string internationalization. Translators will shortly be appreciated.
 
  * If you know the URL of __national IBAN, BBAN or national checksum documentation__ from official sources, please let us know at [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
-  * __Faroe Islands__ (FO) appears to either use a Luhn-check or ISO7064 MOD37-2, but we need another FO IBAN to test with to determine which. These are hard to find!
+  * __Faroe Islands__ (FO) appears to either use a Luhn-check or ISO7064 MOD37-2, but we need another FO IBAN to test with to determine which. These are hard to find! I have emailed the Danish National Bank asking them to clarify.
   * __Italy__ (IT) has a custom checksum system we need some help deciphering. Note that it is not the [Italian fiscal code](https://en.wikipedia.org/wiki/Italian_fiscal_code_card).
   * __Luxembourg__ (LU) does not seem to conform to any single checksum system. While some IBAN do validate with reasonably common systems, others don't or use others. The suggestion that Luxembourg has a national checksum system may in fact be incorrect. We need some clarification here, hopefully someone can dig up an official statement.
   * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system.
