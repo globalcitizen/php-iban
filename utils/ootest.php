@@ -50,8 +50,23 @@ foreach($countries as $countrycode) {
  # instantiate
  $myCountry = new IBANCountry($countrycode);
 
+ # get country code
+ $ianacountrycode = $myCountry->IANA();
+ $iso3166countrycode = $myCountry->ISO3166();
+
  # start section
- print "[$countrycode: " . $myCountry->Name() . "]\n";
+ print "[$countrycode (";
+ $codes_output=0;
+ if($ianacountrycode!='') {
+  print "IANA:.$ianacountrycode";
+  $codes_output++;
+ }
+ if($iso3166countrycode!='') {
+  if($codes_output>0) { print ", "; }
+  print "ISO3166-1 alpha-2:$iso3166countrycode";
+ }
+ if($codes_output==0) { print "no IANA or ISO3166-1 alpha-2 codes"; }
+ print "): " .  $myCountry->Name() . "]\n";
 
  # output remaining country properties
  print "Is a SEPA member? ";
