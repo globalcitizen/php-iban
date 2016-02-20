@@ -197,6 +197,10 @@ Class IBANCountry {
   return iban_country_get_iso3166($this->code);
  }
 
+ public function ParentRegistrar() {
+  return iban_country_get_parent_registrar($this->code);
+ }
+
 }
 
 ?>

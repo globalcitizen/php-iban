@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.8"
+        "globalcitizen/php-iban": "2.4.9"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.8  | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.9  | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -290,6 +290,12 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.4.9](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.9)__ has been released.
+ * New registry field `parent_registrar` stores the parent registrar IBAN country of an IBAN country, for example:
+  * Åland Islands (AX) parent registrar is Finland (FI)
+  * Faroe Islands (FO) parent registrar is Denmark (DK)
+  * New Caledonia (NC) parent registrar is France (FR)
 
 __[Version 2.4.8](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.8)__ has been released.
  * Monaco (MC) national checksum support has been added.
@@ -777,6 +783,18 @@ $country_iana = iban_country_get_iana($iban_country);
 
 # Get the ISO3166-1 alpha-2 code for an IBAN country
 $country_iso3166 = iban_country_get_iso3166($iban_country);
+
+# Get the parent registrar IBAN country of an IBAN country
+# (Returns '' in the normal case that the country is independently registered)
+$registrar_country = iban_country_get_parent_registrar($iban_country);
+if($registrar_country=='') {
+ print "The mighty nation of '$iban_country' stands strong and proud...\n";
+ print " ... with its own heirarchy of bureaucrats!\n";
+}
+else {
+ print "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
+ print "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
+}
 ```
 
 
@@ -992,6 +1010,18 @@ $country_iana = $myCountry->IANA();
 
 # Get the ISO3166-1 alpha-2 code for an IBAN country
 $country_iso3166 = $myCountry->ISO3166();
+
+# Get the parent registrar IBAN country of an IBAN country
+# (Returns '' in the normal case that the country is independently registered)
+$registrar_country = $myCountry->ParentRegistrar();
+if($registrar_country=='') {
+ print "The mighty nation of '$iban_country' stands strong and proud...\n";
+ print " ... with its own heirarchy of bureaucrats!\n";
+}
+else {
+ print "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
+ print "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
+}
 ```
 
 

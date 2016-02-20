@@ -66,6 +66,16 @@ foreach($_iban_registry as $country) {
  if(iban_country_is_sepa($countrycode)) { print "Yes"; } else { print "No"; }
  print ".\n";
 
+ # parent_registrar
+ print "Has own team of bureaucrats? ";
+ $parent_registrar = iban_country_get_parent_registrar($countrycode);
+ if($parent_registrar!='') {
+  print "No (outsources to the wise experts of '" . $parent_registrar . "')\n";
+ }
+ else {
+  print "Yes.\n";
+ }
+
  # get example iban
  $iban = $country['iban_example'];
 
