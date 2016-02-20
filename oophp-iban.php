@@ -201,6 +201,10 @@ Class IBANCountry {
   return iban_country_get_parent_registrar($this->code);
  }
 
+ public function CurrencyISO4217() {
+  return iban_country_get_currency_iso4217($this->code);
+ }
+
 }
 
 ?>

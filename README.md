@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.9"
+        "globalcitizen/php-iban": "2.4.10"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.9  | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.10 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -290,6 +290,12 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.4.10](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.10)__ has been released.
+ * New registry field `currency_iso4217` stores the official currency of the country in ISO4217 alpha code format, for example:
+  * The currency of Iceland (IS) is ISD
+  * The currency of Saint-Pierre and Miquelon (PM) is EUR
+  * The currency of Wallis and Futuna (WF) is XPF
 
 __[Version 2.4.9](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.9)__ has been released.
  * New registry field `parent_registrar` stores the parent registrar IBAN country of an IBAN country, for example:
@@ -795,6 +801,13 @@ else {
  print "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
  print "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
 }
+
+# Get the official currency of an IBAN country as an ISO4217 alpha code
+# (Returns '' in the Internet (IIBAN) case, ie. no official currency)
+$official_currency = iban_country_get_currency_iso4217($iban_country);
+if($official_currency == '') {
+ print "There is no official currency for the IBAN country '$iban_country'.\n";
+}
 ```
 
 
@@ -1021,6 +1034,13 @@ if($registrar_country=='') {
 else {
  print "It has been foretold that the downtrodden natives of '$iban_country' will one day\n";
  print "rise up and throw off the shackles of the evil '$registrar_country' oppressors!\n";
+}
+
+# Get the official currency of an IBAN country as an ISO4217 alpha code
+# (Returns '' in the Internet (IIBAN) case, ie. no official currency)
+$official_currency = $myCountry->CurrencyISO4217();
+if($official_currency == '') {
+ print "There is no official currency for the IBAN country '$iban_country'.\n";
 }
 ```
 

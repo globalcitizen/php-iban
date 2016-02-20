@@ -76,6 +76,17 @@ foreach($_iban_registry as $country) {
   print "Yes.\n";
  }
 
+ # official currency
+ print "Official currency: ";
+ $official_currency = iban_country_get_currency_iso4217($countrycode);
+ if($official_currency == '') {
+  print "None.";
+ }
+ else {
+  print $official_currency;
+ }
+ print "\n";
+
  # get example iban
  $iban = $country['iban_example'];
 
