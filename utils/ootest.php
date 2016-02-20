@@ -58,6 +58,27 @@ foreach($countries as $countrycode) {
  if($myCountry->IsSEPA()) { print "Yes"; } else { print "No"; }
  print ".\n";
 
+ # parent_registrar
+ print "Has own team of bureaucrats? ";
+ $parent_registrar = $myCountry->ParentRegistrar();
+ if($parent_registrar!='') {
+  print "No (outsources to the wise experts of '" . $parent_registrar . "')\n";
+ }
+ else {
+  print "Yes.\n";
+ }
+
+ # official currency
+ print "Official currency: ";
+ $official_currency = $myCountry->CurrencyISO4217();
+ if($official_currency == '') {
+  print "None.";
+ }
+ else {
+  print $official_currency;
+ }
+ print "\n";
+
  # get example iban
  $myIban = new IBAN($myCountry->IBANExample());
 
