@@ -1,6 +1,7 @@
 #!/bin/bash
 # extract registry country names and codes
 cat registry.txt |cut -d '|' -f1,2 |grep -v country_name|sed 's/\(.*\)|\(.*\)$/* \2 (\1)/' \
+ | sed 's/^* Åland/ * Åland/' \
  | sed 's/^* Faro/ * Faro/' \
  | sed 's/^* Greenland/ * Greenland/' \
  | sed 's/^* Saint Bart/ * Saint Bar/' \
