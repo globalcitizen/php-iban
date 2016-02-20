@@ -27,7 +27,6 @@ Countries Supported
 
 The following 98 official and *unofficial* IBAN countries are supported.
 
-* Åland Islands (AX)
 * Albania (AL)
 * *Algeria* (DZ)
 * Andorra (AD)
@@ -56,6 +55,7 @@ The following 98 official and *unofficial* IBAN countries are supported.
 * Dominican Republic (DO)
 * Estonia (EE)
 * Finland (FI)
+ * Åland Islands (AX)
 * France (FR)
  * French Guiana (GF)
  * French Polynesia (PF)
