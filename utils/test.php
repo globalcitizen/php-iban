@@ -66,6 +66,21 @@ foreach($_iban_registry as $country) {
  if(iban_country_is_sepa($countrycode)) { print "Yes"; } else { print "No"; }
  print ".\n";
 
+ # central bank
+ print "Central Bank: ";
+ $central_bank_name = iban_country_get_central_bank_name($countrycode);
+ if($central_bank_name!='') {
+  print $central_bank_name;
+  $central_bank_url = iban_country_get_central_bank_url($countrycode);
+  if($central_bank_url!='') {
+   print " ($central_bank_url)";
+  }
+ }
+ else {
+  print "None.";
+ }
+ print "\n";
+
  # parent_registrar
  print "Has own team of bureaucrats? ";
  $parent_registrar = iban_country_get_parent_registrar($countrycode);

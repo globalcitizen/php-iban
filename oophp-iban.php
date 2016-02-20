@@ -205,6 +205,14 @@ Class IBANCountry {
   return iban_country_get_currency_iso4217($this->code);
  }
 
+ public function CentralBankURL() {
+  return iban_country_get_central_bank_url($this->code);
+ }
+
+ public function CentralBankName() {
+  return iban_country_get_central_bank_name($this->code);
+ }
+
 }
 
 ?>

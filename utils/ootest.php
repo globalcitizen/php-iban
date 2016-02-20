@@ -58,6 +58,21 @@ foreach($countries as $countrycode) {
  if($myCountry->IsSEPA()) { print "Yes"; } else { print "No"; }
  print ".\n";
 
+ # central bank
+ print "Central Bank: ";
+ $central_bank_name = $myCountry->CentralBankName();
+ if($central_bank_name!='') {
+  print $central_bank_name;
+  $central_bank_url = $myCountry->CentralBankURL();
+  if($central_bank_url!='') {
+   print " ($central_bank_url)";
+  }
+ }
+ else {
+  print "None.";
+ }
+ print "\n";
+
  # parent_registrar
  print "Has own team of bureaucrats? ";
  $parent_registrar = $myCountry->ParentRegistrar();

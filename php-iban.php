@@ -361,6 +361,22 @@ function iban_country_get_currency_iso4217($iban_country) {
  return _iban_country_get_info($iban_country,'currency_iso4217');
 }
 
+# Get the URL of an IBAN country's central bank
+# (Note: Returns '' if there is no central bank. Also, note that
+#        sometimes multiple countries share one central bank)
+function iban_country_get_central_bank_url($iban_country) {
+ $result = _iban_country_get_info($iban_country,'central_bank_url');
+ if($result!='') { $result = 'http://' . $result . '/'; }
+ return $result;
+}
+
+# Get the name of an IBAN country's central bank
+# (Note: Returns '' if there is no central bank. Also, note that
+#        sometimes multiple countries share one central bank)
+function iban_country_get_central_bank_name($iban_country) {
+ return _iban_country_get_info($iban_country,'central_bank_name');
+}
+
 # Get the list of all IBAN countries
 function iban_countries() {
  global $_iban_registry;
@@ -462,7 +478,7 @@ function _iban_load_registry() {
     ini_set('display_errors',false);
     $old_error_reporting_value = ini_get('error_reporting');
     ini_set('error_reporting',false);
-    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official,$bban_checksum_start_offset,$bban_checksum_stop_offset,$country_iana,$country_iso3166,$parent_registrar,$currency_iso4217) = explode('|',$line);
+    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official,$bban_checksum_start_offset,$bban_checksum_stop_offset,$country_iana,$country_iso3166,$parent_registrar,$currency_iso4217,$central_bank_url,$central_bank_name) = explode('|',$line);
     ini_set('display_errors',$old_display_errors_value);
     ini_set('error_reporting',$old_error_reporting_value);
     # assign to registry
@@ -490,7 +506,9 @@ function _iban_load_registry() {
 				'country_iana'			=>	$country_iana,
 				'country_iso3166'		=>	$country_iso3166,
 				'parent_registrar'		=>	$parent_registrar,
-				'currency_iso4217'		=>	$currency_iso4217
+				'currency_iso4217'		=>	$currency_iso4217,
+				'central_bank_url'		=>	$central_bank_url,
+				'central_bank_name'		=>	$central_bank_name
                                );
    }
   }

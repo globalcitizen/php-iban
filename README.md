@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.10"
+        "globalcitizen/php-iban": "2.4.11"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.10 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.11 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -290,6 +290,12 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.4.11](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.11)__ has been released.
+ * It is now possible to query the central bank name and URL for each country, from new registry fields `central_bank_url` and `central_bank_name`, for example:
+  * The central bank for New Caledonia (NC) is the 'Overseas Issuing Institute (Institut d'émission d'Outre-Mer)' and their URL is http://www.ieom.fr/
+  * The central bank for the British Virgin Islands (BV) is 'The British Virgin Islands Financial Services Commission' and their URL is http://www.bvifsc.vg/
+  * There is no central bank for the IIBAN (Internet) (AA).
 
 __[Version 2.4.10](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.10)__ has been released.
  * New registry field `currency_iso4217` stores the official currency of the country in ISO4217 alpha code format, for example:
@@ -808,6 +814,16 @@ $official_currency = iban_country_get_currency_iso4217($iban_country);
 if($official_currency == '') {
  print "There is no official currency for the IBAN country '$iban_country'.\n";
 }
+
+# Get the URL of an IBAN country's central bank
+# (Note: Returns '' if there is no central bank. Also, note that
+#        sometimes multiple countries share one central bank)
+$central_bank_url = iban_country_get_central_bank_url($iban_country);
+
+# Get the name of an IBAN country's central bank
+# (Note: Returns '' if there is no central bank. Also, note that
+#        sometimes multiple countries share one central bank)
+$central_bank_name = iban_country_get_central_bank_name($iban_country);
 ```
 
 
@@ -1042,6 +1058,16 @@ $official_currency = $myCountry->CurrencyISO4217();
 if($official_currency == '') {
  print "There is no official currency for the IBAN country '$iban_country'.\n";
 }
+
+# Get the URL of an IBAN country's central bank
+# (Note: Returns '' if there is no central bank. Also, note that
+#        sometimes multiple countries share one central bank)
+$central_bank_url = $myCountry->CentralBankURL();
+
+# Get the name of an IBAN country's central bank
+# (Note: Returns '' if there is no central bank. Also, note that
+#        sometimes multiple countries share one central bank)
+$central_bank_name = $myCountry->CentralBankName();
 ```
 
 
