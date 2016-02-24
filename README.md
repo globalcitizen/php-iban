@@ -223,7 +223,7 @@ Manual installation
 3. Write your code to depend on the library based upon its relative location to your source code. For example if you wish to include `php-iban` from the parent directory's subdirectory `libraries/php-iban` you could use the following [require_once()](http://php.net/manual/en/function.require-once.php) statement:
 ```php
 <?php
-require_once(dirname(__FILE__) . '../libraries/php-iban/php-iban.php');
+require_once(dirname(__FILE__) . '/../libraries/php-iban/php-iban.php');
 # ... your code utilizing php-iban
 ?>
 ```
