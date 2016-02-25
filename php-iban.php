@@ -996,9 +996,15 @@ function _iban_nationalchecksum_implementation_mk($iban,$mode) {
 }
 
 # Implement the national checksum for an Netherlands (NL) IBAN
-#  (Credit: Validate_NL PEAR class)
+#  This applies to most banks, but not to 'INGB', therefore we
+#  treat it specially here.
+#  (Original code: Validate_NL PEAR class, since extended)
 function _iban_nationalchecksum_implementation_nl($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $bank = iban_get_bank_part($iban);
+ if(strtoupper($bank) == 'INGB') {
+  return '';
+ }
  $account = iban_get_account_part($iban);
  $checksum = 0;
  for ($i = 0; $i < 10; $i++) {
