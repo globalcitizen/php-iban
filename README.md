@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.12"
+        "globalcitizen/php-iban": "2.4.13"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.12 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.13 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -292,6 +292,13 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.4.13](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.13)__ has been released.
+ * This release is mostly about bugfixes, after spending a lot of time gathering IBANs online and using them for further testing.
+ * Tunisia (TN) national checksum support has been removed, after additional testing with IBAN gathered from the internet it was found not to be correct. Perils of reverse-engineering!
+ * A couple of other bugfixes:
+  * The function `iban_mistranscription_suggestions()` now behaves correctly when passed loosely formatted IBAN-like strings
+  * The checksum algorithm `_verhoeff()` which supports certain national checksum implementations now behaves correctly when passed invalid input
 
 __[Version 2.4.12](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.12)__ has been released.
  * Tunisia (TN) national checksum support has been added.

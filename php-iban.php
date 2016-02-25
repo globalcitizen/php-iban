@@ -388,6 +388,9 @@ function iban_countries() {
 # mistranscriptions.
 function iban_mistranscription_suggestions($incorrect_iban) {
  
+ # remove funky characters
+ $incorrect_iban = iban_to_machine_format($incorrect_iban);
+ 
  # abort on ridiculous length input (but be liberal)
  $length = strlen($incorrect_iban);
  if($length<5 || $length>34) { return array('(supplied iban length insane)'); }
@@ -601,27 +604,6 @@ function _iban_nationalchecksum_set($iban,$nationalchecksum) {
  return $fixed_iban;
 }
 
-# Internal proxy function to access national checksum implementations
-#  $iban = IBAN to work with (length and country must be valid, IBAN checksum and national checksum may be incorrect)
-#  $mode = 'find', 'set', or 'verify'
-#    - In 'find' mode, the correct national checksum for $iban is returned.
-#    - In 'set' mode, a (possibly) modified version of $iban with the national checksum corrected is returned.
-#    - In 'verify' mode, the checksum within $iban is compared to correctly calculated value, and true or false is returned.
-#  If a national checksum algorithm does not exist or remains unimplemented for this country, or the supplied $iban or $mode is invalid, '' is returned.
-#  (NOTE: We cannot collapse 'verify' mode and implement here via simple string comparison between 'find' mode output and the nationalchecksum part,
-#         because some countries have systems which do not map to this approach, for example the Netherlands has no checksum part yet an algorithm exists)
-function _iban_nationalchecksum_implementation($iban,$mode) {
- if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } #  blank value on return to distinguish from correct execution
- $iban = iban_to_machine_format($iban);
- $country = iban_get_country_part($iban);
- if(strlen($iban)!=iban_country_get_iban_length($country)) { return ''; }
- $function_name = '_iban_nationalchecksum_implementation_' . strtolower($country);
- if(function_exists($function_name)) {
-  return $function_name($iban,$mode);
- }
- return '';
-}
-
 # Currently unused but may be useful for Norway. 
 # ISO7064 MOD11-2
 # Adapted from https://gist.github.com/andreCatita/5714353 by Andrew Catita
@@ -670,24 +652,6 @@ function _iso7064_mod97_10($str) {
   $check+= ($ai * ((int)$ch));
  }
  return (98-($check%97));
-}
-
-# Implement the national checksum for an Albania (AL) IBAN
-#  (NOTE: Reverse engineered, may be incorrect, but seems logical due to placement (after subject), works fine on demo IBAN)
-function _iban_nationalchecksum_implementation_al($iban,$mode) {
- if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
- $nationalchecksum = iban_get_nationalchecksum_part($iban);
- $bankbranch = iban_get_bank_part($iban) . iban_get_branch_part($iban);
- $expected_nationalchecksum = _luhn($bankbranch);
- if($mode=='find') {
-  return $expected_nationalchecksum;
- }
- elseif($mode=='set') {
-  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
- }
- elseif($mode=='verify') {
-  return ($nationalchecksum == $expected_nationalchecksum);
- }
 }
 
 # Implement the national checksum for an Bosnia (BA) IBAN
@@ -1135,13 +1099,6 @@ function _iban_nationalchecksum_implementation_tl($iban,$mode) {
  }
 }
 
-# Implement the national checksum for an Tunisia (TN) IBAN
-#  (NOTE: Reverse engineered)
-function _iban_nationalchecksum_implementation_tn($iban,$mode) {
- return _iban_nationalchecksum_implementation_fr($iban,$mode);
-}
-
-
 # Luhn Check
 # (Credit: Adapted from @gajus' https://gist.github.com/troelskn/1287893#gistcomment-857491)
 function _luhn($string) {
@@ -1155,7 +1112,7 @@ function _luhn($string) {
 # Verhoeff checksum
 # (Credit: Adapted from Semyon Velichko's code at https://en.wikibooks.org/wiki/Algorithm_Implementation/Checksums/Verhoeff_Algorithm#PHP)
 function _verhoeff($input) {
- if(preg_match('/[^0-9]/',$input)) { return ''; } # reject non-numeric input
+ if($input == '' || preg_match('/[^0-9]/',$input)) { return ''; } # reject non-numeric input
  $d = array(
        array(0,1,2,3,4,5,6,7,8,9),
        array(1,2,3,4,0,6,7,8,9,5),
@@ -1206,10 +1163,30 @@ function _damm($input) {
  $checksum = 0;
  for ($i=0; $i<strlen($input); $i++) {
   $character = substr($input,$i,1);
-  #print "(checksum = \$matrix['" . $checksum . "']['" . $character . "'] ... )\n";
   $checksum = $matrix[$checksum][$character];
  }
  return $checksum;
+}
+
+# Internal proxy function to access national checksum implementations
+#  $iban = IBAN to work with (length and country must be valid, IBAN checksum and national checksum may be incorrect)
+#  $mode = 'find', 'set', or 'verify'
+#    - In 'find' mode, the correct national checksum for $iban is returned.
+#    - In 'set' mode, a (possibly) modified version of $iban with the national checksum corrected is returned.
+#    - In 'verify' mode, the checksum within $iban is compared to correctly calculated value, and true or false is returned.
+#  If a national checksum algorithm does not exist or remains unimplemented for this country, or the supplied $iban or $mode is invalid, '' is returned.
+#  (NOTE: We cannot collapse 'verify' mode and implement here via simple string comparison between 'find' mode output and the nationalchecksum part,
+#         because some countries have systems which do not map to this approach, for example the Netherlands has no checksum part yet an algorithm exists)
+function _iban_nationalchecksum_implementation($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } #  blank value on return to distinguish from correct execution
+ $iban = iban_to_machine_format($iban);
+ $country = iban_get_country_part($iban);
+ if(strlen($iban)!=iban_country_get_iban_length($country)) { return ''; }
+ $function_name = '_iban_nationalchecksum_implementation_' . strtolower($country);
+ if(function_exists($function_name)) {
+  return $function_name($iban,$mode);
+ }
+ return '';
 }
 
 ?>
