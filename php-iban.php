@@ -900,12 +900,6 @@ function _iban_nationalchecksum_implementation_pl($iban,$mode) {
  return _iban_nationalchecksum_implementation_iso7064_mod11_2($iban,$mode,0,17);
 }
 
-# Implement the national checksum for a Sweden (SE) IBAN
-#  (NOTE: Reverse-engineered)
-function _iban_nationalchecksum_implementation_se($iban,$mode) {
- return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,1,3);
-}
-
 # Implement the national checksum for a Finland (FI) IBAN
 #  (NOTE: Reverse-engineered)
 function _iban_nationalchecksum_implementation_fi($iban,$mode) {
