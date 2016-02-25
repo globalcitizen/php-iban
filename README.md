@@ -293,6 +293,9 @@ Your Help Wanted
 News: February 2016
 -------------------
 
+__[Version 2.4.17](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.17)__ has been released.
+ * Bank of Slovenia (bank code `01` under Slovenia (SI)) does not implement the national checksum scheme, as a special case. An exception has been added to the Slovenia national checksum implementation.
+
 __[Version 2.4.16](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.16)__ has been released.
  * Another bugfix release, based on further real world test IBANs from certain countries:
   * Remove Sweden (SE) national checksum support

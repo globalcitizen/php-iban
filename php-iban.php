@@ -1045,8 +1045,17 @@ function _iban_nationalchecksum_implementation_rs($iban,$mode) {
 }
 
 # Implement the national checksum for an Slovenia (SI) IBAN
+#  Note: It appears that the central bank does not use these
+#        checksums, thus an exception has been added.
 #  (NOTE: Reverse engineered)
 function _iban_nationalchecksum_implementation_si($iban,$mode) {
+ $bank = iban_get_bank_part($iban);
+ # Bank of Slovenia does not use the legacy checksum scheme.
+ #  Accounts in this namespace appear to be the central bank 
+ #  accounts for licensed local banks.
+ if($bank == '01') {
+  return '';
+ }
  return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
 }
 
