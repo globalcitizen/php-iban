@@ -1067,6 +1067,25 @@ function _iban_nationalchecksum_implementation_nl($iban,$mode) {
  }
 }
 
+# Implement the national checksum for an Portugal (PT) IBAN
+#  (NOTE: Reverse engineered)
+function _iban_nationalchecksum_implementation_pt($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $bban = iban_get_bban_part($iban);
+ $bban_less_checksum = substr($bban,0,strlen($bban)-2);
+ $expected_nationalchecksum = _iso7064_mod97_10_generated($bban_less_checksum);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return ($nationalchecksum == $expected_nationalchecksum);
+ }
+}
+
 # Implement the national checksum for an Serbia (RS) IBAN
 #  (NOTE: Reverse engineered)
 function _iban_nationalchecksum_implementation_rs($iban,$mode) {
@@ -1116,24 +1135,12 @@ function _iban_nationalchecksum_implementation_tl($iban,$mode) {
  }
 }
 
-# Implement the national checksum for an Portugal (PT) IBAN
+# Implement the national checksum for an Tunisia (TN) IBAN
 #  (NOTE: Reverse engineered)
-function _iban_nationalchecksum_implementation_pt($iban,$mode) {
- if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
- $nationalchecksum = iban_get_nationalchecksum_part($iban);
- $bban = iban_get_bban_part($iban);
- $bban_less_checksum = substr($bban,0,strlen($bban)-2);
- $expected_nationalchecksum = _iso7064_mod97_10_generated($bban_less_checksum);
- if($mode=='find') {
-  return $expected_nationalchecksum;
- }
- elseif($mode=='set') {
-  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
- }
- elseif($mode=='verify') {
-  return ($nationalchecksum == $expected_nationalchecksum);
- }
+function _iban_nationalchecksum_implementation_tn($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
 }
+
 
 # Luhn Check
 # (Credit: Adapted from @gajus' https://gist.github.com/troelskn/1287893#gistcomment-857491)
