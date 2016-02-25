@@ -798,18 +798,6 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  }
 }
 
-# Implement the national checksum for an Estonia (EE) IBAN
-#  (NOTE: Reverse-engineered)
-function _iban_nationalchecksum_implementation_ee($iban,$mode) {
- return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,1);
-}
-
-# Implement the national checksum for a Hungary (HU) IBAN
-#  (NOTE: Reverse-engineered)
-function _iban_nationalchecksum_implementation_hu($iban,$mode) {
- return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,1);
-}
-
 # Implement the national checksum for a Luxembourg (LU) IBAN
 #  (NOTE: Reverse-engineered, thought to be broken/incorrect.)
 #   - Two different IBANs respond to two different algorithms, 
