@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.11"
+        "globalcitizen/php-iban": "2.4.12"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.11 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.12 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -281,7 +281,7 @@ Your Help Wanted
  * Work continues on providing a major update to include string internationalization. Translators will shortly be appreciated.
 
  * If you know the URL of __national IBAN, BBAN or national checksum documentation__ from official sources, please let us know at [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
-  * __Faroe Islands__ (FO) appears to either use a Luhn-check or ISO7064 MOD37-2, but we need another FO IBAN to test with to determine which. These are hard to find! I have emailed the Danish National Bank asking them to clarify.
+  * __Faroe Islands__ (FO) appears to either use a Luhn-check or ISO7064 MOD37-2, but we need another FO IBAN to test with to determine which. These are hard to find! I have emailed a few banks and at the suggestion of the Danish National Bank.
   * __Italy__ (IT) has a custom checksum system we need some help deciphering. Note that it is not the [Italian fiscal code](https://en.wikipedia.org/wiki/Italian_fiscal_code_card).
   * __Luxembourg__ (LU) does not seem to conform to any single checksum system. While some IBAN do validate with reasonably common systems, others don't or use others. The suggestion that Luxembourg has a national checksum system may in fact be incorrect. We need some clarification here, hopefully someone can dig up an official statement.
   * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system.
@@ -292,6 +292,9 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.4.12](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.12)__ has been released.
+ * Tunisia (TN) national checksum support has been added.
 
 __[Version 2.4.11](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.11)__ has been released.
  * It is now possible to query the central bank name and URL for each country, from new registry fields `central_bank_url` and `central_bank_name`, for example:
