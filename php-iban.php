@@ -894,12 +894,6 @@ function _iban_nationalchecksum_implementation_iso7064_mod11_2($iban,$mode,$drop
  }
 }
 
-# Implement the national checksum for a Finland (FI) IBAN
-#  (NOTE: Reverse-engineered)
-function _iban_nationalchecksum_implementation_fi($iban,$mode) {
- return _iban_nationalchecksum_implementation_damm($iban,$mode);
-}
-
 # Implement the national checksum systems based on Damm Algorithm
 function _iban_nationalchecksum_implementation_damm($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
