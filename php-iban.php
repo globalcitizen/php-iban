@@ -894,12 +894,6 @@ function _iban_nationalchecksum_implementation_iso7064_mod11_2($iban,$mode,$drop
  }
 }
 
-# Implement the national checksum for a Poland (PL) IBAN
-#  (NOTE: Reverse-engineered)
-function _iban_nationalchecksum_implementation_pl($iban,$mode) {
- return _iban_nationalchecksum_implementation_iso7064_mod11_2($iban,$mode,0,17);
-}
-
 # Implement the national checksum for a Finland (FI) IBAN
 #  (NOTE: Reverse-engineered)
 function _iban_nationalchecksum_implementation_fi($iban,$mode) {
