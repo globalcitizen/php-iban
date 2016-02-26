@@ -654,28 +654,6 @@ function _iso7064_mod97_10($str) {
  return (98-($check%97));
 }
 
-# Implement the national checksum for an Bosnia (BA) IBAN
-#  (NOTE: Reverse engineered, may be incorrect, but seems to work fine on demo IBAN, uses entire BBAN less checksum characters as input)
-function _iban_nationalchecksum_implementation_ba($iban,$mode) {
- if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
- $nationalchecksum = iban_get_nationalchecksum_part($iban);
- $bban = iban_get_bban_part($iban);
- $bban_less_checksum = substr($bban,strlen($bban)-1);
- $bankbranch = iban_get_bank_part($iban) . iban_get_branch_part($iban);
- $account = iban_get_account_part($iban);
- $account_less_checksum = substr($account,strlen($account)-1); 
- $expected_nationalchecksum = _iso7064_mod97_10($bban_less_checksum);
- if($mode=='find') {
-  return $expected_nationalchecksum;
- }
- elseif($mode=='set') {
-  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
- }
- elseif($mode=='verify') {
-  return ($nationalchecksum == $expected_nationalchecksum);
- }
-}
-
 # Implement the national checksum for a Belgium (BE) IBAN
 #  (Credit: @gaetan-be)
 function _iban_nationalchecksum_implementation_be($iban,$mode) {
