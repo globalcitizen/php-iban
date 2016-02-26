@@ -309,7 +309,7 @@ __[Version 2.5.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.0)
   * Slovenia (SI) - including exception for `01` (Bank of Slovenia) who do not honour checksums
   * Timor Lest (TL)
  * In addition, a library of test IBANs is being maintained under `utils/example-ibans` which has a good number of entries for a good number of countries already. This should simplify future research.
- * Documented ideas (in code) for the enhancement of the mistranscription error correction suggestion function.
+ * Documented [ideas for the enhancement of the mistranscription error correction suggestion function](https://github.com/globalcitizen/php-iban/commit/045f39b33468e04ff4a64a3bd8cba92611149935#diff-61178a0267b9e23c2b5c19c0f4671a22).
 
 __[Version 2.4.20](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.20)__ has been released.
  * Another bugfix release, based on further real world test IBANs from certain countries:
