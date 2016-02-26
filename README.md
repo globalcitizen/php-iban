@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.20"
+        "globalcitizen/php-iban": "2.5.0"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.20 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.0  | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -292,6 +292,24 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.5.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.0)__ has been released.
+ * All users are encouraged to upgrade; this release is considered long term stable.
+ * The following national checksum schemes added in the 2.4.x series are now included and well validated, while invalid assumptions have been removed:
+  * Beligum (BE)
+  * Spain (ES)
+  * Monaco (MC)
+  * France (FR)
+  * Norway (NO)
+  * Montenegro (ME)
+  * Macedonia (MK)
+  * Netherlands (NL) - including exception for `INGB` (ING Bank) who have dropped the original checksum
+  * Portugal (PT)
+  * Serbia (RS)
+  * Slovenia (SI) - including exception for `01` (Bank of Slovenia) who do not honour checksums
+  * Timor Lest (TL)
+ * In addition, a library of test IBANs is being maintained under `utils/example-ibans` which has a good number of entries for a good number of countries already. This should simplify future research.
+ * Documented ideas (in code) for the enhancement of the mistranscription error correction suggestion function.
 
 __[Version 2.4.20](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.20)__ has been released.
  * Another bugfix release, based on further real world test IBANs from certain countries:

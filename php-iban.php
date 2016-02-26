@@ -386,6 +386,15 @@ function iban_countries() {
 # Given an incorrect IBAN, return an array of zero or more checksum-valid
 # suggestions for what the user might have meant, based upon common
 # mistranscriptions.
+#  IDEAS:
+#   - length correction via adding/removing leading zeros from any single component
+#   - overlength correction via dropping final digit(s)
+#   - national checksum algorithm checks (apply same testing methodology, abstract to separate function)
+#   - length correction by removing double digits (xxyzabxybaaz = change aa to a, or xx to x)
+#   - validate bank codes
+#   - utilize format knowledge with regards to alphanumeric applicability in that offset in that national BBAN format
+#   - turkish TL/TK thing
+#   - norway NO gets dropped due to mis-identification with "No." for number (ie. if no country code try prepending NO)
 function iban_mistranscription_suggestions($incorrect_iban) {
  
  # remove funky characters
