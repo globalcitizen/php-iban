@@ -299,7 +299,7 @@ __[Version 2.5.1](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.1)
 __[Version 2.5.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.0)__ has been released.
  * All users are encouraged to upgrade; this release is considered long term stable.
  * The following national checksum schemes added in the 2.4.x series are now included and well validated, while invalid assumptions have been removed:
-  * Beligum (BE)
+  * Belgium (BE)
   * Spain (ES)
   * Monaco (MC)
   * France (FR)
