@@ -294,7 +294,7 @@ News: February 2016
 -------------------
 
 __[Version 2.5.1](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.1)__ has been released.
- * The 'Narodna banka Srbije' (`908`) bank in Serbia (RS) appears to have multiple live IBANs with broken checksums, so we ignore all checksums on accounts from that bank.
+ * The 'Narodna banka Srbije' (`908`) bank in Serbia (RS) appears to have multiple live IBANs with broken national checksums, so we ignore all national checksums on accounts from that bank.
 
 __[Version 2.5.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.0)__ has been released.
  * All users are encouraged to upgrade; this release is considered long term stable.
