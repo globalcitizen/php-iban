@@ -1014,8 +1014,14 @@ function _iban_nationalchecksum_implementation_pt($iban,$mode) {
 }
 
 # Implement the national checksum for an Serbia (RS) IBAN
-#  (NOTE: Reverse engineered)
+#  (NOTE: Reverse engineered, including bank 'Narodna banka Srbije' (908) exception. For two 
+#         separately published and legitimate looking IBANs from that bank, there appears to
+#         be a +97 offset on the checksum, so we simply ignore all checksums for this bank.)
 function _iban_nationalchecksum_implementation_rs($iban,$mode) {
+ $bank = iban_get_bank_part($iban);
+ if($bank == '908') {
+  return '';
+ }
  return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
 }
 
