@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.4.16"
+        "globalcitizen/php-iban": "2.4.18"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.16 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.4.18 | 27   | 11    | 13   | 10k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -292,6 +292,10 @@ Your Help Wanted
 
 News: February 2016
 -------------------
+
+__[Version 2.4.18](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.18)__ has been released.
+ * Another bugfix release, based on further real world test IBANs from certain countries:
+  * Remove Poland (PL) national checksum support
 
 __[Version 2.4.17](https://github.com/globalcitizen/php-iban/releases/tag/v2.4.17)__ has been released.
  * Bank of Slovenia (bank code `01` under Slovenia (SI)) does not implement the national checksum scheme, as a special case. An exception has been added to the Slovenia national checksum implementation.
