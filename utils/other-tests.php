@@ -137,6 +137,38 @@ foreach($test_data as $input=>$expected_output) {
  $i++;
 }
 
+# Verify all of the example IBANs using the validate-list script
+$example_ibans_dir = dirname(__FILE__) . '/example-ibans/';
+if(!file_exists($example_ibans_dir) && is_dir($example_ibans_dir)) {
+ print "Example IBANs library is missing, not found or is not a directory at '" . $example_ibans_dir . "'.\n";
+ exit(99);
+}
+print "\nTesting example IBANs by country...\n";
+if ($dh = opendir($example_ibans_dir)) {
+ while (($file = readdir($dh)) !== false) {
+  $file = $example_ibans_dir . '/' . $file;
+  # only process files
+  if(filetype($file) == 'file') {
+   print ' - ' . basename($file) . '... ';
+   $cmd = dirname(__FILE__) . '/validate-list.php ' . escapeshellarg($file);
+   $output=array();
+   exec($cmd,$output,$exit_code);
+   if($exit_code !== 0) {
+    print "FAILED.\n================ output was ===================\n";
+    print join("\n",$output) . "\n";
+    exit(1);
+   }
+   else {
+    print "ok\n";
+   }
+  }
+ }
+ closedir($dh);
+}
+else {
+ print "Failed to open example IBANs directory at '" . $example_ibans_dir . "'!";
+ exit(99);
+}
 
 print "All tests passed.\n";
 exit(0);
