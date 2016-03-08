@@ -1,7 +1,7 @@
 php-iban
 ========
 
-`php-iban` is a library for parsing and validating IBAN (and IIBAN) bank account information in PHP.
+`php-iban` is a library for parsing, validating and generating IBAN (and IIBAN) bank account information in PHP.
 
 [![Build Status](https://travis-ci.org/globalcitizen/php-iban.png)](https://travis-ci.org/globalcitizen/php-iban)
 [![Latest Stable Version](https://poser.pugx.org/globalcitizen/php-iban/v/stable)](https://packagist.org/packages/globalcitizen/php-iban) 
