@@ -785,18 +785,6 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  }
 }
 
-# Implement the national checksum for a Luxembourg (LU) IBAN
-#  (NOTE: Reverse-engineered, thought to be broken/incorrect.)
-#   - Two different IBANs respond to two different algorithms, 
-#      - Verhoeff(trailing(c cccc cccc))
-#      - iso7064_mod11_2
-#     ... possibly they have a bank-specific system or one of
-#         the same IBANs is not set with a correct checksum.
-#         The best solution is to find a lot more LU IBANs.
-function _iban_nationalchecksum_implementation_lu_broken_disabled($iban,$mode) {
- return _iban_nationalchecksum_implementation_verhoeff($iban,$mode,2);
-}
-
 # Implement the national checksum for a Norway (NO) IBAN
 #  (NOTE: Built from description at https://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm, not well tested)
 function _iban_nationalchecksum_implementation_no($iban,$mode) {
