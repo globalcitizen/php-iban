@@ -22,3 +22,6 @@ In the spirit of [Falsehoods Programmers Believe About Phone Numbers](https://gi
 
 7. **IBANs are always written the same way.**
    Some countries tend to continue to use methods of spacing/delineation amongst legacy components present within the IBAN. Others tend to concatenate the entire IBAN to a machine-readable single word. Still others use the human-style formatting with four characters per block, `XXXX YYYY ZZZZ 0000`. It is difficult to know how to best present an IBAN to a customer. In general, reasonable practice is that if the user is likely to manually transcribe (eg. via pen and paper) then a human format (four characters per block) is recommended. If the output is likely to be copy-pasted, however, then a single word (machine format) is preferred... in which case care should be taken to exclude neighbouring punctuation.
+
+8. **IBAN solves input errors.**
+   IBAN has a strong checksum system built in, however this does not really help you to help the user find the source of an input problem. The `php-iban` library includes a flexible and robust mistranscription error detection system which can assist you in presenting possible errors to the user for manual evaluation.
