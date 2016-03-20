@@ -11,7 +11,7 @@ All parts of an IBAN can be retrieved, including country code, checksum, BBAN, f
 
 Tested on PHP versions ![PHP 5.3](https://img.shields.io/badge/version-PHP%205.3%2B-lightgrey.svg) ![PHP 5.4](https://img.shields.io/badge/version-PHP%205.4%2B-lightgrey.svg) ![PHP 5.5](https://img.shields.io/badge/version-PHP%205.5%2B-lightgrey.svg) ![PHP 5.6](https://img.shields.io/badge/version-PHP%205.6%2B-lightgrey.svg) ![PHP 7.0](https://img.shields.io/badge/version-PHP%207.0%2B-lightgrey.svg) as well as HHVM and nightly.
 
-The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as errors and omissions in SWIFT's official specifications: https://php-php-iban.googlecode.com/git/docs/COMEDY-OF-ERRORS 
+The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as [errors and omissions in SWIFT's official specifications](https://raw.githubusercontent.com/globalcitizen/php-iban/master/docs/COMEDY-OF-ERRORS).
 
 Various deficiencies in the initial adaptation have since been rectified, and the current version should be a fairly correct and reliable implementation.
 
@@ -140,7 +140,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.5.2"
+        "globalcitizen/php-iban": "2.5.3"
     }
 }
 ```
@@ -236,7 +236,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.2  | 29   | 11    | 13   | 11k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.3  | 31   | 11    | 13   | 12k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -288,6 +288,24 @@ Your Help Wanted
   * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+
+News: March 2016
+----------------
+
+__[Version 2.5.3](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.3)__ has been released.
+ * Added [Falsehoods Programmers Believe About IBANs](https://github.com/globalcitizen/php-iban/blob/master/docs/FALSEHOODS.md), inspired by...
+  * [Falsehoods Programmers Believe About Phone Numbers](https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md)
+  * [Falsehoods Programmers Believe About Names](http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
+  * [Falsehoods Programmers Believe About Time](http://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time)
+  * [Falsehoods Programmers Believe About Geography](http://wiesmann.codiferes.net/wordpress/?p=15187)
+  * [Falsehoods Programmers Believe About Addresses](https://www.mjt.me.uk/posts/falsehoods-programmers-believe-about-addresses/)
+ * Additional example IBANs
+  * Azerbaijan (AZ)
+  * Austria (AT)
+  * Angola (AO)
+  * San Marino (SM)
+ * Various minor changes
 
 
 News: February 2016
