@@ -1,0 +1,18 @@
+# Falsehoods Programmers Believe About IBANs
+
+In the spirit of (Falsehoods Programmers Believe About Phone Numbers)[https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md], here is a list of mistaken perspectives on International Bank Account Numbers (IBAN)...
+
+1. **IBANs are global.**
+   While the IBAN system has been deployed in some states on most continents, it is a long way from achieving universal adoption. Certain states, such as Australia, when their High Value Clearing Payments Association were queried regarding their decision not to adopt IBAN, first refused to respond for upwards of 12 months then finally refused to release any reasoning. There are a lot of established interests that are against reduced barriers to financial systems integration.
+
+2. **IBAN country codes are the same as ISO3166-1 alpha-2 country codes.**
+   Quite dangerously this is mostly, but not always the case. Take for example the United Kingdom (`UK` vs. `GB`) or various dependent territories which may use the parent jurisdiction's code instead of their own.
+
+2. **IBAN represents a 'free' and 'neutral' namespace for global financial cooperation.**
+   In fact, under the IBAN standard, which is managed by defacto global monopoly SWIFT, which has significant political significance to and affinity for US interests despite being a nominally Belgium-registered international cooperative, the only people who can create endpoints are existing financial institutions within countries holding an ISO3166-1 alpha-2 country code, a list which excludes many legitimate actors, virtually all innovators, plus the various states of the world with limited recognition. For a potentially mutually interoperable system adopted by some actors (eg. Bitcoin exchange Kraken) see the Internet IBAN (IIBAN) proposal at http://ifex-project.org/
+
+3. **Pre-IBAN national checksums are still in operation.**
+   There is no way to reliably determine whether or not a given country had a national, pre-IBAN checksum system, whether that system was actually applied to all banks (certain central banks are known exceptions), or whether that system is still in operation after IBAN adoption. The `php-iban` library represents a best-effort approach to gathering this knowledge as appropriate.
+
+4. **IBAN is clearly published standard.**
+   There are significant problems with the current dual-format publishing process used by SWIFT, which are documented (over here)[https://raw.githubusercontent.com/globalcitizen/php-iban/master/docs/COMEDY-OF-ERRORS].
