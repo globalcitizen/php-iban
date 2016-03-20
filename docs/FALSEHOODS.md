@@ -1,6 +1,6 @@
 # Falsehoods Programmers Believe About IBANs
 
-In the spirit of (Falsehoods Programmers Believe About Phone Numbers)[https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md], here is a list of mistaken perspectives on International Bank Account Numbers (IBAN)...
+In the spirit of [Falsehoods Programmers Believe About Phone Numbers](https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md), here is a list of mistaken perspectives on International Bank Account Numbers (IBAN)...
 
 1. **IBANs are global.**
    While the IBAN system has been deployed in some states on most continents, it is a long way from achieving universal adoption. Certain states, such as Australia, when their High Value Clearing Payments Association were queried regarding their decision not to adopt IBAN, first refused to respond for upwards of 12 months then finally refused to release any reasoning. There are a lot of established interests that are against reduced barriers to financial systems integration.
@@ -15,4 +15,4 @@ In the spirit of (Falsehoods Programmers Believe About Phone Numbers)[https://gi
    There is no way to reliably determine whether or not a given country had a national, pre-IBAN checksum system, whether that system was actually applied to all banks (certain central banks are known exceptions), or whether that system is still in operation after IBAN adoption. The `php-iban` library represents a best-effort approach to gathering this knowledge as appropriate.
 
 4. **IBAN is clearly published standard.**
-   There are significant problems with the current dual-format publishing process used by SWIFT, which are documented (over here)[https://raw.githubusercontent.com/globalcitizen/php-iban/master/docs/COMEDY-OF-ERRORS].
+   There are significant problems with the current dual-format publishing process used by SWIFT, which are documented [over here](https://raw.githubusercontent.com/globalcitizen/php-iban/master/docs/COMEDY-OF-ERRORS).
