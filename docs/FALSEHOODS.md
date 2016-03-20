@@ -6,10 +6,10 @@ In the spirit of [Falsehoods Programmers Believe About Phone Numbers](https://gi
    While the IBAN system has been deployed in some states on most continents, it is a long way from achieving universal adoption. Certain states, such as Australia, when their High Value Clearing Payments Association were queried regarding their decision not to adopt IBAN, first refused to respond for upwards of 12 months then finally refused to release any reasoning. There are a lot of established interests that are against reduced barriers to financial systems integration.
 
 2. **IBAN country codes are the same as ISO3166-1 alpha-2 country codes.**
-   Quite dangerously this is mostly, but not always the case. Take for example the United Kingdom (`UK` vs. `GB`) or various dependent territories which may use the parent jurisdiction's code instead of their own.
+   Quite dangerously this is mostly, but not always the case. Take for example the United Kingdom (`UK` vs. `GB`), unofficial codes such as `AA` or various dependent territories which may use the parent jurisdiction's code instead of their own.
 
 3. **IBAN country codes are the same as IANA country codes.**
-   Quite dangerously this is mostly, but not always the case. Take for example `XK` or various dependent territories which may use the parent jurisdiction's code instead of their own.
+   Quite dangerously this is mostly, but not always the case. Take for example `XK`, unofficial codes such as `AA`, or various dependent territories which may use the parent jurisdiction's code instead of their own.
 
 4. **IBAN represents a 'free' and 'neutral' namespace for global financial cooperation.**
    In fact, under the IBAN standard, which is managed by defacto global monopoly SWIFT, which has significant political significance to and affinity for US interests despite being a nominally Belgium-registered international cooperative, the only people who can create endpoints are existing financial institutions within countries holding an ISO3166-1 alpha-2 country code, a list which excludes many legitimate actors, virtually all innovators, plus the various states of the world with limited recognition. For a potentially mutually interoperable system adopted by some actors (eg. Bitcoin exchange Kraken) see the Internet IBAN (IIBAN) proposal at http://ifex-project.org/
