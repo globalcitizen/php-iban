@@ -1,6 +1,6 @@
 <?php
 
-# PHP IBAN - http://code.google.com/p/php-iban - LGPLv3
+# PHP IBAN - http://github.com/globalcitizen/php-iban - LGPLv3
 
 # Global flag by request
 $__disable_iiban_gmp_extension=false;
