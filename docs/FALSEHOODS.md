@@ -16,3 +16,6 @@ In the spirit of [Falsehoods Programmers Believe About Phone Numbers](https://gi
 
 4. **IBAN is clearly published standard.**
    There are significant problems with the current dual-format publishing process used by SWIFT, which are documented [over here](https://raw.githubusercontent.com/globalcitizen/php-iban/master/docs/COMEDY-OF-ERRORS).
+
+5. **IBANs are always written the same way.**
+   Some countries tend to continue to use methods of spacing/delineation amongst legacy components present within the IBAN. Others tend to concatenate the entire IBAN to a machine-readable single word. Still others use the human-style formatting with four characters per block, `XXXX YYYY ZZZZ 0000`. It is difficult to know how to best present an IBAN to a customer. In general, reasonable practice is that if the user is likely to manually transcribe (eg. via pen and paper) then a human format (four characters per block) is recommended. If the output is likely to be copy-pasted, however, then a single word (machine format) is preferred... in which case care should be taken to exclude neighbouring punctuation.
