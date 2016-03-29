@@ -26,6 +26,23 @@ foreach($list as $iban) {
   print $iban . " ... ";
   if(!verify_iban($iban)) {
    print "FAILED";
+########## try to provide better output #############
+   $iban = iban_to_machine_format($iban);
+   $country = iban_get_country_part($iban);
+   $observed_length = strlen($iban);
+   $expected_length = iban_country_get_iban_length($country);
+   if($observed_length!=$expected_length) {
+    print " (length $observed_length does not match expected length $expected_length for country $country)";
+   }
+   $checksum = iban_get_checksum_part($iban);
+   if(!iban_verify_checksum($iban)) {
+    print " (checksum $checksum invalid)";
+   }
+   $regex = '/'.iban_country_get_iban_format_regex($country).'/';
+   if(!preg_match($regex,$iban)) {
+    print " (does not match regex $regex for country $country)";
+   }
+####################################################
    $errors++;
    $suggestions = iban_mistranscription_suggestions($iban);
    if(is_array($suggestions)) {
