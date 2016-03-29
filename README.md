@@ -17,7 +17,7 @@ Various deficiencies in the initial adaptation have since been rectified, and th
 
 Where appropriate, __European Committee for Banking Standards__ (ECBS) recommendations have also been incorporated.
 
-Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the February 2016 release, ie. PDF release #63](https://www.swift.com/sites/default/files/resources/swift_standards_ibanregistry.pdf).
+Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the March 2016 release, ie. PDF release #64](https://www.swift.com/sites/default/files/resources/swift_standards_ibanregistry.pdf).
 
 Licensed under LGPL, it is free to use in commercial settings.
 
@@ -25,7 +25,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 Countries Supported
 -------------------
 
-The following 98 official and *unofficial* IBAN countries are supported.
+The following 99 official and *unofficial* IBAN countries are supported.
 
 * Albania (AL)
 * *Algeria* (DZ)
@@ -114,6 +114,7 @@ The following 98 official and *unofficial* IBAN countries are supported.
 * Saudi Arabia (SA)
 * *Senegal* (SN)
 * Serbia (RS)
+* Seychelles (SC)
 * Slovakia (SK)
 * Slovenia (SI)
 * Spain (ES)
@@ -140,7 +141,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.5.3"
+        "globalcitizen/php-iban": "2.5.4"
     }
 }
 ```
@@ -236,7 +237,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.3  | 31   | 11    | 13   | 12k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.4  | 31   | 11    | 13   | 12k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -251,7 +252,7 @@ Now let's take a look at features.
 
 |                                                               | +   | ISO | IANA | SEPA | ₶   | UO  | MT  | NC  | ₴   | CB  | H?  | Registry                                                               |
 | ------------------------------------------------------------- | --- | --- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | ---------------------------------------------------------------------- |
-| __php-iban__                                                  | ✔   | ✔   |  ✔   | ✔    | ✔   | ✔   | ✔   | ✔   | ✔   | ✔   | ✔   | 98: [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
+| __php-iban__                                                  | ✔   | ✔   |  ✔   | ✔    | ✔   | ✔   | ✔   | ✔   | ✔   | ✔   | ✔   | 99: [full, error-corrected CSV](https://github.com/globalcitizen/php-iban/blob/master/registry.txt) with [open-source toolchain](https://github.com/globalcitizen/php-iban/blob/master/utils/convert-registry.php) and [documentation](https://github.com/globalcitizen/php-iban/blob/master/docs/COMEDY-OF-ERRORS) |
 | [Iban](https://github.com/jschaedl/Iban)                      | ✔*  | ✘   |  ✘   | ✘    | ✘   | ✘   | ✘   | ✘   | ✘   | ✘   | ✘   | 54: [partial, hardcoded, dubious origin](https://github.com/jschaedl/Iban/blob/master/library/IBAN/Core/Constants.php#L44)   |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)         | ✘   | ✘   |  ✘   | ✘    | ✘   | ✘   | ✘   | ✘   | ✘   | ✘   | ✘   | 66: [partial, hardcoded, dubious origin](https://github.com/ronanguilloux/IsoCodes/blob/master/src/IsoCodes/Iban.php#L25)    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities)    | ✘   | ✘   |  ✘   | ✘    | ✘   | ✘   | ✘   | ✘   | ✘   | ✘   | ✘   | 89: [partial, hardcoded, dubious origin](https://github.com/AbcAeffchen/SepaUtilities/blob/master/src/SepaUtilities.php#L89) |
@@ -292,6 +293,11 @@ Your Help Wanted
 
 News: March 2016
 ----------------
+
+__[Version 2.5.4](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.4)__ has been released.
+ * Update to conform with latest edition (March 2016, version 64) registry release
+  * Added Seychelles (SC)
+  * The three other changes apparently corrected registry errors we had already caught during record ingestion and testing
 
 __[Version 2.5.3](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.3)__ has been released.
  * Added [Falsehoods Programmers Believe About IBANs](https://github.com/globalcitizen/php-iban/blob/master/docs/FALSEHOODS.md), inspired by...
