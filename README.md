@@ -953,17 +953,6 @@ $checksum = iban_get_checksum_part($iban);
 $checksum = iban_get_nationalchecksum_part($iban);
 ```
 
-Internal Functions
-------------------
-
-```php
-# Perform MOD97-10 checksum calculation
-$mod97_10 = iban_mod97_10($string);
-
-# Character substitution required for IBAN MOD97-10 checksum validation/generation
-$mod97_internal_stuff = iban_checksum_string_replace($s);
-```
-
 
 Documentation (Object Oriented Wrapper/Discouraged)
 ===================================================
