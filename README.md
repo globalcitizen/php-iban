@@ -141,7 +141,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.5.5"
+        "globalcitizen/php-iban": "2.5.6"
     }
 }
 ```
@@ -237,7 +237,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.5  | 78   | 13    | 14   | 17k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.6  | 78   | 13    | 14   | 17k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -289,6 +289,20 @@ Your Help Wanted
   * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+
+News: May 2016
+--------------
+
+__[Version 2.5.6](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.6)__ has been released.
+ * Update to conform with latest edition (May 2016, version 66) registry release
+  * Many of the corrections we had apparently already resolved on initial data import
+  * Moldova (MD): Split 20!c to 2!c18!c
+  * Seychelles (SC): Fix IBAN format (SWIFT markup)
+  * Tunisia (TN): Remove hardcoded 59 as IBAN checksum (following SWIFT; though inefficient)
+ * Minor documentation updates
+  * Update stats/figures for php-iban installs/stars/etc.
+  * Add new 'powered by'
 
 
 News: April 2016
