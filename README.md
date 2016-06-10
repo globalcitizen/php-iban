@@ -239,9 +239,9 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
 | __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.7  | 100  | 13    | 17   | 25k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 41   | 10    | 15   | 80k      | German       | lots    |
-| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
-| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
-| [Symfony](https://github.com/symfony/symfony)              | MIT  | ✘    | ✔   | 2013   | 3.0.1  | 11k+ | 1045  | 4577 | 10M+     | French       | lots    |
+| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.0  | 392  | 18    | 42   | 57k      | French       | lots    |
+| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 3.7k     | German       | phpunit |
+| [Symfony](https://github.com/symfony/symfony)              | MIT  | ✘    | ✔   | 2013   | 3.1.0  | 12k+ | 1093  | 4874 | 12M+     | French       | lots    |
 
 Notes:
  * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess (~11k + composer installs + a little bit now and then).  This library also powers [Dolibarr ERP &amp; CRM](http://www.dolibarr.org/), [adm-gravity-iban](https://github.com/InternativeNL/adm-gravity-iban), [commerce_sepa](https://github.com/StephanGeorg/commerce_sepa) and [IBAN Validator](https://www.drupal.org/sandbox/encelado/1936168) for Drupal, [fieldwork: Web forms for cool people](https://github.com/jmversteeg/fieldwork) and the [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class.
