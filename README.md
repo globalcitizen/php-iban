@@ -17,7 +17,7 @@ Various deficiencies in the initial adaptation have since been rectified, and th
 
 Where appropriate, __European Committee for Banking Standards__ (ECBS) recommendations have also been incorporated.
 
-Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the April 2016 release, ie. PDF release #65](https://www.swift.com/sites/default/files/resources/swift_standards_ibanregistry.pdf).
+Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the May 2016 release, ie. PDF release #66](https://www.swift.com/sites/default/files/resources/swift_standards_ibanregistry.pdf).
 
 Licensed under LGPL, it is free to use in commercial settings.
 
@@ -141,7 +141,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.5.6"
+        "globalcitizen/php-iban": "2.5.7"
     }
 }
 ```
@@ -237,7 +237,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.6  | 91   | 13    | 17   | 19k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.7  | 100  | 13    | 17   | 19k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 38   | 10    | 14   | 52k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.0.0  | 241  | 14    | 28   | 36k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 1.4k     | German       | phpunit |
@@ -285,10 +285,20 @@ Your Help Wanted
   * __Faroe Islands__ (FO) banks do not respond, neither does the Danish National Bank who referred me to them.
   * __Italy__ (IT) has a custom checksum system we need some help deciphering. Note that it is not the [Italian fiscal code](https://en.wikipedia.org/wiki/Italian_fiscal_code_card).
   * __Luxembourg__ (LU) does not seem to conform to any single checksum system. While some IBAN do validate with reasonably common systems, others don't or use others. The suggestion that Luxembourg has a national checksum system may in fact be incorrect. We need some clarification here, hopefully someone can dig up an official statement.
-  * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system.
+  * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system. Previously the IBAN here was always fixed to '13' checksum digits, however as of registry v66 it is now dynamic, which suggests a changed or at least now nationally relaxed checksum system.
   * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+
+News: June 2016
+---------------
+
+__[Version 2.5.7](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.7)__ has been released.
+ * Minor changes missed in latest edition (May 2016, version 66) registry release
+  * New Seychelles (SC) example IBAN
+  * Unfix Mauritania (MR) checksum digits (no functional change)
+ * Minor documentation updates
 
 
 News: May 2016
