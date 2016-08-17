@@ -141,7 +141,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.5.7"
+        "globalcitizen/php-iban": "2.5.8"
     }
 }
 ```
@@ -237,7 +237,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.7  | 124  | 18    | 22   | 45k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.8  | 124  | 18    | 22   | 50k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 41   | 10    | 15   | 80k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.0  | 392  | 18    | 42   | 57k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 3.7k     | German       | phpunit |
@@ -289,6 +289,14 @@ Your Help Wanted
   * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+
+News: August 2016
+-----------------
+
+__[Version 2.5.8](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.8)__ has been released.
+ * Fix [issue #52](https://github.com/globalcitizen/php-iban/issues/52) (thanks to [@simeucci](https://github.com/simeucci) for reporting), apologies for the delay!
+ * Minor documentation updates
 
 
 News: June 2016
