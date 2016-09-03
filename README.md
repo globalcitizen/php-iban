@@ -19,7 +19,7 @@ Where appropriate, __European Committee for Banking Standards__ (ECBS) recommend
 
 Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the May 2016 release, ie. PDF release #66](https://www.swift.com/sites/default/files/resources/swift_standards_ibanregistry.pdf).
 
-Licensed under LGPL, it is free to use in commercial settings.
+Licensed under LGPL, it is free to use in commercial settings, however please note that [small financial contributions are gratefully received from commercial users and can result in free consulting and other benefits](https://www.patreon.com/bePatron?patAmt=1&u=3937179)!
 
 
 Countries Supported
