@@ -17,7 +17,7 @@ Various deficiencies in the initial adaptation have since been rectified, and th
 
 Where appropriate, __European Committee for Banking Standards__ (ECBS) recommendations have also been incorporated.
 
-Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the May 2016 release, ie. PDF release #66](https://www.swift.com/sites/default/files/resources/swift_standards_ibanregistry.pdf).
+Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the August 2016 release, ie. PDF release #69](https://www.swift.com/standards/data-standards/iban).
 
 Licensed under LGPL, it is free to use in commercial settings, however please note that [small financial contributions are gratefully received from commercial users and can result in free consulting and other benefits](https://www.patreon.com/bePatron?patAmt=1&u=3937179)!
 
@@ -141,7 +141,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.5.8"
+        "globalcitizen/php-iban": "2.5.9"
     }
 }
 ```
@@ -237,7 +237,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.8  | 124  | 18    | 22   | 50k+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.9  | 131  | 18    | 21   | 70k+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 41   | 10    | 15   | 80k      | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.0  | 392  | 18    | 42   | 57k      | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 3.7k     | German       | phpunit |
@@ -289,6 +289,15 @@ Your Help Wanted
   * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+
+News: October 2016
+------------------
+
+__[Version 2.5.9](https://github.com/globalcitizen/php-iban/releases/tag/v2.5.9)__ has been released.
+ * Bring us up to date with IBAN registry release #69 from #66
+   * Release #67: fixes broken Costa Rica format and disables Croatia SEPA status 
+   * Release #69: adds Sao Tome and Principe bank + branch offsets
 
 
 News: August 2016
