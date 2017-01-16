@@ -60,8 +60,6 @@ function iban_to_machine_format($iban) {
 # recommendations available at:
 # http://www.europeanpaymentscouncil.eu/knowledge_bank_download.cfm?file=ECBS%20standard%20implementation%20guidelines%20SIG203V3.2.pdf 
 function iban_to_human_format($iban) {
- # First verify validity, or return
- if(!verify_iban($iban)) { return false; }
  # Remove all spaces
  $iban = str_replace(' ','',$iban);
  # Add spaces every four characters
