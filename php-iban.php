@@ -177,7 +177,6 @@ function iban_mod97_10($numeric_representation) {
 # Get an array of all the parts from an IBAN
 function iban_get_parts($iban) {
  return array(
-         'country'		=>      iban_get_country_part($iban),
  	 'checksum'		=>	iban_get_checksum_part($iban),
 	 'bban'			=>	iban_get_bban_part($iban),
  	 'bank'			=>	iban_get_bank_part($iban),
