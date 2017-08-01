@@ -1,11 +1,9 @@
 language: php
-dist: trusty
 php:
  - '5.3'
  - '5.4'
  - '5.5'
  - '5.6'
  - '7.0'
- - hhvm
  - nightly
 script: php utils/test.php && php utils/ootest.php && php utils/other-tests.php
