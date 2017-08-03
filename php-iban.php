@@ -744,6 +744,29 @@ function _iban_nationalchecksum_implementation_fr_letters2numbers_helper($bban) 
  return $allNumbers;
 }
 
+# NOTE: Worryingly at least one domestic number found within CF online is
+#       not passing national checksum support. Perhaps banks do not issue
+#       with correct RIB (French-style national checksum) despite using
+#       the legacy format? Perhaps this is a mistranscribed number?
+#        http://www.radiomariacentrafrique.org/virement-bancaire.aspx
+#	  ie. CF19 20001 00001 01401832401 40
+#	The following two numbers work:
+#        http://fondationvoixducoeur.net/fr/pour-contribuer.html
+#	  ie. CF4220002002003712551080145 and CF4220001004113717538890110
+#       Since in the latter case the bank is the same as the former and
+#       the French structure, terminology and 2/3 correct is a fairly high
+#       correlation, we are going to assume that the first error is theirs.
+#
+# Implement the national checksum for a Central African Republic (CF) IBAN
+function _iban_nationalchecksum_implementation_cf($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
+# Implement the national checksum for a Congo (CG) IBAN
+function _iban_nationalchecksum_implementation_cg($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
 # Implement the national checksum for a Monaco (MC) IBAN
 #  (Credit: @gaetan-be)
 function _iban_nationalchecksum_implementation_mc($iban,$mode) {
