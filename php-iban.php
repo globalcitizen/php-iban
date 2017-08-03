@@ -767,6 +767,11 @@ function _iban_nationalchecksum_implementation_td($iban,$mode) {
  return _iban_nationalchecksum_implementation_fr($iban,$mode);
 }
 
+# Implement the national checksum for a Comoros (KM) IBAN
+function _iban_nationalchecksum_implementation_km($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
 # Implement the national checksum for a Congo (CG) IBAN
 function _iban_nationalchecksum_implementation_cg($iban,$mode) {
  return _iban_nationalchecksum_implementation_fr($iban,$mode);
