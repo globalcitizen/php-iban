@@ -782,6 +782,11 @@ function _iban_nationalchecksum_implementation_dj($iban,$mode) {
  return _iban_nationalchecksum_implementation_fr($iban,$mode);
 }
 
+# Implement the national checksum for a Egypt (EG) IBAN
+function _iban_nationalchecksum_implementation_eg($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
 # Implement the national checksum for a Gabon (GA) IBAN
 function _iban_nationalchecksum_implementation_ga($iban,$mode) {
  return _iban_nationalchecksum_implementation_fr($iban,$mode);
