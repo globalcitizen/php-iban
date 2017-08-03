@@ -777,6 +777,11 @@ function _iban_nationalchecksum_implementation_cg($iban,$mode) {
  return _iban_nationalchecksum_implementation_fr($iban,$mode);
 }
 
+# Implement the national checksum for a Djibouti (DJ) IBAN
+function _iban_nationalchecksum_implementation_dj($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
 # Implement the national checksum for a Gabon (GA) IBAN
 function _iban_nationalchecksum_implementation_ga($iban,$mode) {
  return _iban_nationalchecksum_implementation_fr($iban,$mode);
