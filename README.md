@@ -262,7 +262,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 Notes:
  * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess (~11k + composer installs + a little bit now and then).
- * '''php-iban''' also powers:
+ * __php-iban__ also powers:
     * [adm-gravity-iban](https://github.com/InternativeNL/adm-gravity-iban)
     * [basepa Payment Gateway for WooCommerce](https://github.com/besepa/woocommerce-besepa)
     * [commerce_sepa](https://github.com/StephanGeorg/commerce_sepa)
