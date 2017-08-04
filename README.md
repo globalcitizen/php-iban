@@ -11,23 +11,21 @@ All parts of an IBAN can be retrieved, including country code, checksum, BBAN, f
 
 Tested on PHP versions ![PHP 5.3](https://img.shields.io/badge/version-PHP%205.3%2B-lightgrey.svg) ![PHP 5.4](https://img.shields.io/badge/version-PHP%205.4%2B-lightgrey.svg) ![PHP 5.5](https://img.shields.io/badge/version-PHP%205.5%2B-lightgrey.svg) ![PHP 5.6](https://img.shields.io/badge/version-PHP%205.6%2B-lightgrey.svg) ![PHP 7.0](https://img.shields.io/badge/version-PHP%207.0%2B-lightgrey.svg) as well as nightly.
 
-The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT at https://www.swift.com/node/11971 then only manually modified for special cases such as [errors and omissions in SWIFT's official specifications](https://raw.githubusercontent.com/globalcitizen/php-iban/master/docs/COMEDY-OF-ERRORS).
+The parser was built using regular expressions to adapt the contents of the _official_ IBAN registry available from SWIFT then manually modified for special cases such as [errors and omissions in SWIFT's official specifications](https://raw.githubusercontent.com/globalcitizen/php-iban/master/docs/COMEDY-OF-ERRORS).
 
 Various deficiencies in the initial adaptation have since been rectified, and the current version should be a fairly correct and reliable implementation.
 
 Where appropriate, __European Committee for Banking Standards__ (ECBS) recommendations have also been incorporated.
 
-Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the August 2016 release, ie. PDF release #69](https://www.swift.com/standards/data-standards/iban).
+Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the May 2017 release, ie. PDF release #77](https://www.swift.com/standards/data-standards/iban).
 
-__NOTICE__: In approximately September-October 2016, a 'complete revision' was made to the registry document, after which no change tracking has been published as it was in the past. This makes it very tedious and time consuming to re-check each release against the previous one to keep up to date with changes. In short, we will need to recheck all countries' information on a per-release basis. It is possible that the text format (CSV release) has been resolved, further investigation is required. __No further updates will be published until the situation has been investigated, and this will require nontrivial amount of time, which means it is not likely to happen immediately. If anyone wants to volunteer to compare the new registry and our own, this work would be well received as a contribution.__
-
-Licensed under LGPL, it is free to use in commercial settings, however please note that [small financial contributions are gratefully received from commercial users and can result in free consulting and other benefits](https://www.patreon.com/bePatron?patAmt=1&u=3937179)!
+Licensed under LGPL, it is free to use in commercial settings.
 
 
 Countries Supported
 -------------------
 
-The following 99 official and *unofficial* IBAN countries are supported.
+The following 116 official and *unofficial* IBAN countries are supported.
 
 * Albania (AL)
 * *Algeria* (DZ)
@@ -36,6 +34,7 @@ The following 99 official and *unofficial* IBAN countries are supported.
 * Austria (AT)
 * Azerbaijan (AZ)
 * Bahrain (BH)
+* Belarus (BY)
 * Belgium (BE)
 * *Benin* (BJ)
 * Bosnia and Herzegovina (BA)
@@ -45,7 +44,11 @@ The following 99 official and *unofficial* IBAN countries are supported.
 * *Burkina Faso* (BF)
 * *Burundi* (BI)
 * *Cameroon* (CM)
+* *Central African Republic* (CF)
+* *Chad* (TD)
 * *Cape Verde* (CV)
+* *Comoros* (KM)
+* *Congo* (CG)
 * Costa Rica (CR)
 * *Côte d'Ivoire* (CI)
 * Croatia (HR)
@@ -54,7 +57,12 @@ The following 99 official and *unofficial* IBAN countries are supported.
 * Denmark (DK)
  * Faroe Islands (FO)
  * Greenland (GL)
+* *Djibouti* (DJ)
 * Dominican Republic (DO)
+* East Timor (TL)
+* *Egypt* (EG)
+* El Salvador (SV)
+* *Equitorial Guinea* (GQ)
 * Estonia (EE)
 * Finland (FI)
  * Åland Islands (AX)
@@ -71,15 +79,19 @@ The following 99 official and *unofficial* IBAN countries are supported.
  * Saint Martin (French Part) (MF)
  * Saint-Pierre and Miquelon (PM)
  * Wallis and Futuna (WF)
+* *Gabon* (GA)
 * Georgia (GE)
 * Germany (DE)
 * Gibraltar (GI)
 * Greece (GR)
 * Guatemala (GT)
+* *Guinea-Bissau* (GW)
+* *Honduras* (HN)
 * Hungary (HU)
 * Iceland (IS)
 * *IIBAN (Internet)* (AA)
 * *Iran* (IR)
+* Iraq (IQ)
 * Ireland (IE)
 * Israel (IL)
 * Italy (IT)
@@ -101,8 +113,11 @@ The following 99 official and *unofficial* IBAN countries are supported.
 * Moldova (MD)
 * Monaco (MC)
 * Montenegro (ME)
+* *Morocco* (MA)
 * *Mozambique* (MZ)
 * Netherlands (NL)
+* *Nicaragua* (NI)
+* *Niger* (NE)
 * Norway (NO)
 * Pakistan (PK)
 * Palestine (PS)
@@ -122,7 +137,7 @@ The following 99 official and *unofficial* IBAN countries are supported.
 * Spain (ES)
 * Sweden (SE)
 * Switzerland (CH)
-* Timor-Leste (TL)
+* *Togo* (TG)
 * Tunisia (TN)
 * Turkey (TR)
 * *Ukraine* (UA)
@@ -143,7 +158,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.5.9"
+        "globalcitizen/php-iban": "2.6.0"
     }
 }
 ```
@@ -239,14 +254,28 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.5.9  | 146  | 20    | 25   | 100k+*   | Global*      | *none*  |
-| [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.1.6  | 41   | 10    | 15   | 80k      | German       | lots    |
-| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.0  | 392  | 18    | 42   | 57k      | French       | lots    |
-| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.1.2  | 4    | 3     | 3    | 3.7k     | German       | phpunit |
-| [Symfony](https://github.com/symfony/symfony)              | MIT  | ✘    | ✔   | 2013   | 3.1.0  | 12k+ | 1093  | ~5k  | 12M+     | French       | lots    |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.6.0  | 186  | 21    | 31   | 200k+*   | Global*      | *none*  |
+| [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.3.0  | 50   | 9     | 19   | 178.39k  | German       | lots    |
+| [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.1  | 466  | 22    | 54   | 145k     | French       | lots    |
+| [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.2.3  | 8    | 4     | 3    | 25k      | German       | phpunit |
+| [Symfony](https://github.com/symfony/symfony)              | MIT  | ✘    | ✔   | 2013   | 3.3.6  | 15k  | 1214  | 5.6k | 23M+     | French       | lots    |
 
 Notes:
- * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess (~11k + composer installs + a little bit now and then).  This library also powers [Dolibarr ERP &amp; CRM](http://www.dolibarr.org/), [adm-gravity-iban](https://github.com/InternativeNL/adm-gravity-iban), [commerce_sepa](https://github.com/StephanGeorg/commerce_sepa) and [IBAN Validator](https://www.drupal.org/sandbox/encelado/1936168) for Drupal, [fieldwork: Web forms for cool people](https://github.com/jmversteeg/fieldwork), the [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class, [WooCommerce Germanized](http://hookr.io/plugins/woocommerce-germanized/), and [WooCommerce SEPA Payment Gateway](https://codecanyon.net/item/woocommerce-sepa-payment-gateway/7963419).
+ * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess (~11k + composer installs + a little bit now and then).
+ * '''php-iban''' also powers:
+    * [adm-gravity-iban](https://github.com/InternativeNL/adm-gravity-iban)
+    * [basepa Payment Gateway for WooCommerce](https://github.com/besepa/woocommerce-besepa)
+    * [commerce_sepa](https://github.com/StephanGeorg/commerce_sepa)
+    * [contao-haste_plus](https://github.com/heimrichhannot/contao-haste_plus)
+    * [Dolibarr ERP &amp; CRM](http://www.dolibarr.org/)
+    * [fieldwork: Web forms for cool people](https://github.com/jmversteeg/fieldwork)
+    * [IBAN Validator](https://www.drupal.org/sandbox/encelado/1936168) for Drupal
+    * [identity](https://github.com/mpijierro/identity) component for Laravel to check Spanish IDs
+    * [lib-bankaccount](https://github.com/majestixx/lib-bankaccount) (conversion to/from legacy German account format)
+    * [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class
+    * [SEPA Payment Plugin](https://github.com/subs-guru/sepa-payment-plugin) for [SubsGuru](http://subs.guru/)
+    * [WooCommerce Germanized](http://hookr.io/plugins/woocommerce-germanized/)
+    * [WooCommerce SEPA Payment Gateway](https://codecanyon.net/item/woocommerce-sepa-payment-gateway/7963419)
  * php-iban's author is an Australian born, Australia/New Zealand/German citizen based in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
  * The IsoCodes and SepaUtil's projects cover standards other than IBAN so their popularity should be considered in this light. (In essence, there is really only one directly competing library, Iban)
 
@@ -281,8 +310,6 @@ So, fearless user ... __choose php-iban__: the ethical, functional, forward-look
 Your Help Wanted
 ----------------
 
- * Work continues on providing a major update to include string internationalization. Translators will shortly be appreciated.
-
  * If you know the URL of __national IBAN, BBAN or national checksum documentation__ from official sources, please let us know at [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
   * __Faroe Islands__ (FO) banks do not respond, neither does the Danish National Bank who referred me to them.
   * __Italy__ (IT) has a custom checksum system we need some help deciphering. Note that it is not the [Italian fiscal code](https://en.wikipedia.org/wiki/Italian_fiscal_code_card).
@@ -291,6 +318,37 @@ Your Help Wanted
   * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+
+News: August 2017
+-----------------
+
+__[Version 2.6.0](https://github.com/globalcitizen/php-iban/releases/tag/v2.6.0)__ has been released.
+ * World = conquered.
+   * We now have well over 100 supported countries.
+   * According to packagist, we are now the most popular IBAN-related project for PHP ... and quite possibly the internet!
+ * Addition of official countries
+   * Belarus (BY)
+   * El Salvador (SV)
+   * Iraq (IQ)
+ * Addition of unofficial countries
+   * Central African Republic (CF)
+   * Chad (TD)
+   * Comoros (KM)
+   * Congo (CG)
+   * Djibouti (DJ)
+   * Egypt (EG)
+   * Equitorial Guinea (GQ)
+   * Gabon (GA)
+   * Guinea-Bissau (GW)
+   * Honduras (HN)
+   * Morocco (MA)
+   * Nicaragua (NI)
+   * Niger (NE)
+   * Togo (TG)
+ * Additional example Iran (IR) IBANs.
+ * As HHVM is no longer supported by Travis we have dropped it from our automated testing, although php-iban should continue to work fine on HHVM.
+ * Minor documentation updates
 
 
 News: October 2016
