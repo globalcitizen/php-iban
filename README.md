@@ -264,15 +264,18 @@ Notes:
  * Original download records for __php-iban__ releases were hosted on Google Code and are now lost. Prior to establishing a release process on Github, we just expected that people would download the code... so we're really not sure how many installs exist, but this is a fair guess (~11k + composer installs + a little bit now and then).
  * __php-iban__ also powers:
     * [adm-gravity-iban](https://github.com/InternativeNL/adm-gravity-iban)
+    * [Azzana consulting's XML Solver for ISO20022](http://www.azzana-consulting.com/xmlsolver/)
     * [basepa Payment Gateway for WooCommerce](https://github.com/besepa/woocommerce-besepa)
+    * [org.civicoop.ibanaccounts extension](https://github.com/CiviCooP/org.civicoop.ibanaccounts) for [CiviCoop](http://www.civicoop.org/)
     * [commerce_sepa](https://github.com/StephanGeorg/commerce_sepa)
     * [contao-haste_plus](https://github.com/heimrichhannot/contao-haste_plus)
-    * [Dolibarr ERP &amp; CRM](http://www.dolibarr.org/)
+    * [Dolibarr ERP &amp; CRM](http://www.dolibarr.org/) ([website](https://github.com/Dolibarr/dolibarr/tree/develop/htdocs/includes/php-iban))
     * [fieldwork: Web forms for cool people](https://github.com/jmversteeg/fieldwork)
     * [IBAN Validator](https://www.drupal.org/sandbox/encelado/1936168) for Drupal
     * [identity](https://github.com/mpijierro/identity) component for Laravel to check Spanish IDs
     * [lib-bankaccount](https://github.com/majestixx/lib-bankaccount) (conversion to/from legacy German account format)
-    * [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class
+    * [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class ([github](https://github.com/dmitrirussu/php-sepa-xml-generator))
+    * [Project60 SEPA direct debit](https://github.com/Project60/org.project60.sepa)
     * [SEPA Payment Plugin](https://github.com/subs-guru/sepa-payment-plugin) for [SubsGuru](http://subs.guru/)
     * [WooCommerce Germanized](http://hookr.io/plugins/woocommerce-germanized/)
     * [WooCommerce SEPA Payment Gateway](https://codecanyon.net/item/woocommerce-sepa-payment-gateway/7963419)
