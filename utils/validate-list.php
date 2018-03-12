@@ -85,6 +85,7 @@ if($errors==0) { exit(0); }
 exit(10+$errors);
 
 function usage() {
+ global $argv;
  print $argv[0] . " <list-file>\n";
  exit(1);
 }
