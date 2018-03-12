@@ -279,6 +279,8 @@ Notes:
     * [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class ([github](https://github.com/dmitrirussu/php-sepa-xml-generator))
     * [Project60 SEPA direct debit](https://github.com/Project60/org.project60.sepa)
     * [SEPA Payment Plugin](https://github.com/subs-guru/sepa-payment-plugin) for [SubsGuru](http://subs.guru/)
+    * [Silverstripe CMS module](https://github.com/denkfabrik-neueMedien/silverstripe-siteinfo)
+    * [statement](https://github.com/hiwye/statement) 
     * [WooCommerce Germanized](http://hookr.io/plugins/woocommerce-germanized/)
     * [WooCommerce SEPA Payment Gateway](https://codecanyon.net/item/woocommerce-sepa-payment-gateway/7963419)
  * php-iban's author is an Australian born, Australia/New Zealand/German citizen based in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
