@@ -150,7 +150,7 @@ if ($dh = opendir($example_ibans_dir)) {
   # only process files
   if(filetype($file) == 'file') {
    print ' - ' . basename($file) . '... ';
-   $cmd = dirname(__FILE__) . '/validate-list.php ' . escapeshellarg($file);
+   $cmd = "php " . dirname(__FILE__) . '/validate-list.php ' . escapeshellarg($file);
    $output=array();
    exec($cmd,$output,$exit_code);
    if($exit_code !== 0) {
