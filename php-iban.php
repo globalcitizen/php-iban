@@ -667,7 +667,7 @@ function _iban_nationalchecksum_implementation_be($iban,$mode) {
  $nationalchecksum = iban_get_nationalchecksum_part($iban);
  $account = iban_get_account_part($iban);
  $account_less_checksum = substr($account,strlen($account)-2);
- $expected_nationalchecksum = bcmod($account_less_checksum, 97);
+ $expected_nationalchecksum = $account_less_checksum % 97;
  if($mode=='find') {
   return $expected_nationalchecksum;
  }
@@ -819,9 +819,9 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  $branch = substr($bban_numeric_form,5,5);
  $account = substr($bban_numeric_form,10,11);
  # actual implementation: mod97( (89 x bank number "Code banque") + (15 x branch code "Code guichet") + (3 x account number "Numéro de compte") )
- $sum = bcadd( bcmul("89", $bank) , bcmul("15", $branch));
- $sum = bcadd( $sum, bcmul("3", $account));
- $expected_nationalchecksum = bcsub("97", bcmod($sum, "97"));
+ $sum = (89*($bank+0)) + ((15*($branch+0)));
+ $sum += (3*($account+0));
+ $expected_nationalchecksum = 97 - ($sum % 97);
  if(strlen($expected_nationalchecksum) == 1) { $expected_nationalchecksum = '0' . $expected_nationalchecksum; }
  # return
  if($mode=='find') {
