@@ -148,7 +148,7 @@ function iban_mod97_10_checksum($numeric_representation) {
 function iban_mod97_10($numeric_representation) {
  global $__disable_iiban_gmp_extension;
  # prefer php5 gmp extension if available
- if(!($__disable_iiban_gmp_extension) && function_exists('gmp_intval')) { return gmp_intval(gmp_mod(gmp_init($numeric_representation, 10),'97')) === 1; }
+ if(!($__disable_iiban_gmp_extension) && function_exists('gmp_intval') && $numeric_representation!='') { return gmp_intval(gmp_mod(gmp_init($numeric_representation, 10),'97')) === 1; }
 
 /*
  # old manual processing (~16x slower)
