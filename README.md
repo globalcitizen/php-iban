@@ -335,7 +335,7 @@ __[Version 2.6.5](https://github.com/globalcitizen/php-iban/releases/tag/v2.6.5)
  * Thanks to @marcovo
 
 __[Version 2.6.4](https://github.com/globalcitizen/php-iban/releases/tag/v2.6.4)__ has been released.
- * Remove spurious dependency on bcmath extension
+ * Remove spurious dependency on `bcmath` extension
  * Minor documentation updates
 
 __[Version 2.6.3](https://github.com/globalcitizen/php-iban/releases/tag/v2.6.3)__ has been released.
