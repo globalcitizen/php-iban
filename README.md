@@ -327,6 +327,13 @@ Your Help Wanted
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
 
 
+News: June 2018
+---------------
+
+__[Version 2.6.6](https://github.com/globalcitizen/php-iban/releases/tag/v2.6.6)__ has been released.
+ * Fixed generation of voluminous errors in environments without `ini_set` enabled
+ * Thanks to @agil-NUBBA
+
 News: March 2018
 ----------------
 
