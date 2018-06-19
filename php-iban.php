@@ -482,14 +482,20 @@ function _iban_load_registry() {
   # loop through lines
   foreach($lines as $line) {
    if($line!='') {
-    # split to fields
-    $old_display_errors_value = ini_get('display_errors');
-    ini_set('display_errors',false);
-    $old_error_reporting_value = ini_get('error_reporting');
-    ini_set('error_reporting',false);
+    # avoid spewing tonnes of PHP warnings under bad PHP configs - see issue #69
+    if(function_exists('ini_set')) {
+     # split to fields
+     $old_display_errors_value = ini_get('display_errors');
+     ini_set('display_errors',false);
+     $old_error_reporting_value = ini_get('error_reporting');
+     ini_set('error_reporting',false);
+    }
     list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official,$bban_checksum_start_offset,$bban_checksum_stop_offset,$country_iana,$country_iso3166,$parent_registrar,$currency_iso4217,$central_bank_url,$central_bank_name) = explode('|',$line);
-    ini_set('display_errors',$old_display_errors_value);
-    ini_set('error_reporting',$old_error_reporting_value);
+    # avoid spewing tonnes of PHP warnings under bad PHP configs - see issue #69
+    if(function_exists('ini_set')) {
+     ini_set('display_errors',$old_display_errors_value);
+     ini_set('error_reporting',$old_error_reporting_value);
+    }
     # assign to registry
     $_iban_registry[$country] = array(
                                 'country'			=>	$country,
