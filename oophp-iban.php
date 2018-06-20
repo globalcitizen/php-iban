@@ -235,7 +235,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function Name()
     {
@@ -243,7 +243,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function DomesticExample()
     {
@@ -251,7 +251,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BBANExample()
     {
@@ -259,7 +259,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BBANFormatSWIFT()
     {
@@ -267,7 +267,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BBANFormatRegex()
     {
@@ -275,7 +275,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BBANLength()
     {
@@ -283,7 +283,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function IBANExample()
     {
@@ -291,7 +291,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function IBANFormatSWIFT()
     {
@@ -299,7 +299,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function IBANFormatRegex()
     {
@@ -307,7 +307,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function IBANLength()
     {
@@ -315,7 +315,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BankIDStartOffset()
     {
@@ -323,7 +323,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BankIDStopOffset()
     {
@@ -331,7 +331,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BranchIDStartOffset()
     {
@@ -339,7 +339,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function BranchIDStopOffset()
     {
@@ -347,7 +347,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function NationalChecksumStartOffset()
     {
@@ -355,7 +355,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function NationalChecksumStopOffset()
     {
@@ -363,7 +363,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function RegistryEdition()
     {
@@ -371,7 +371,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function SWIFTOfficial()
     {
@@ -379,7 +379,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function IsSEPA()
     {
@@ -387,7 +387,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function IANA()
     {
@@ -395,7 +395,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function ISO3166()
     {
@@ -403,7 +403,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function ParentRegistrar()
     {
@@ -411,7 +411,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function CurrencyISO4217()
     {
@@ -419,7 +419,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool|string
+     * @return mixed|string
      */
     public function CentralBankURL()
     {
@@ -427,7 +427,7 @@ Class IBANCountry
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
     public function CentralBankName()
     {
