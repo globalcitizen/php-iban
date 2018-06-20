@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/php-iban.php');
+require_once(dirname(__FILE__) . '/php-iban.php');
 
 # OO wrapper for 'php-iban.php'
 
