@@ -143,7 +143,7 @@ foreach($countries as $countrycode) {
   }
   # also check 'set' codepath
   $myIban->SetNationalChecksum();
-  if($myCountry->IBANExample() != $myIban->iban) {
+  if($myCountry->IBANExample() != $myIban->getIban()) {
    print "    (ERROR: iban_set_nationalchecksum('" . $myCountry->IBANExample() . "') returned '" . $myIban->iban . "')\n";
    exit(1);
   }
@@ -159,10 +159,10 @@ foreach($countries as $countrycode) {
  # verify
  print "\nChecking validity... ";
  if($myIban->Verify()) {
-  print "IBAN $myIban->iban is valid.\n";
+  print "IBAN ".$myIban->getIban()." is valid.\n";
  }
  else {
-  print "ERROR: IBAN $myIban->iban is invalid.\n";
+  print "ERROR: IBAN ".$myIban->getIban()." is invalid.\n";
   $correct = $myIban->SetChecksum();
   if($correct == $iban) {
    print "       (checksum is correct, structure must have issues.)\n";
