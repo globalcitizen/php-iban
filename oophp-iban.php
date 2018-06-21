@@ -5,6 +5,8 @@ require_once(dirname(__FILE__).'/php-iban.php');
 # OO wrapper for 'php-iban.php'
 Class IBAN {
 
+ public $iban;
+
  function __construct($iban = '') {
   $this->iban = $iban;
  }
@@ -104,6 +106,8 @@ Class IBAN {
 
 # IBANCountry
 Class IBANCountry {
+
+ public $code;
 
  # constructor with code
  function __construct($code = '') {
