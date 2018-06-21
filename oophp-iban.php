@@ -37,15 +37,15 @@ Class IBAN {
   return iban_to_human_format($this->iban);
  }
 
- public function Country($iban='') {
+ public function Country() {
   return iban_get_country_part($this->iban);
  }
 
- public function Checksum($iban='') {
+ public function Checksum() {
   return iban_get_checksum_part($this->iban);
  }
 
- public function NationalChecksum($iban='') {
+ public function NationalChecksum() {
   return iban_get_nationalchecksum_part($this->iban);
  }
 
