@@ -3,16 +3,30 @@
 require_once(dirname(__FILE__) . '/php-iban.php');
 
 # OO wrapper for 'php-iban.php'
+
+/**
+ * Class IBAN
+ */
 Class IBAN
 {
 
+    /** @var string */
     public $iban;
 
+    /**
+     * @param string $iban
+     */
     function __construct($iban = '')
     {
         $this->iban = $iban;
     }
 
+    /**
+     * @param string $iban
+     * @param bool   $machine_format_only
+     *
+     * @return bool
+     */
     public function Verify($iban = '', $machine_format_only = false)
     {
         if ($iban != '') {
@@ -28,6 +42,11 @@ Class IBAN
         # maintenance/documentation cost, i say, therefore: no. no exceptions.
     }
 
+    /**
+     * @param string $iban
+     *
+     * @return bool
+     */
     public function VerifyMachineFormatOnly($iban = '')
     {
         if ($iban != '') {
@@ -37,239 +56,379 @@ Class IBAN
         return verify_iban($this->iban, true);
     }
 
+    /**
+     * @return array
+     */
     public function MistranscriptionSuggestions()
     {
         return iban_mistranscription_suggestions($this->iban);
     }
 
+    /**
+     * @return null|string|string[]
+     */
     public function MachineFormat()
     {
         return iban_to_machine_format($this->iban);
     }
 
+    /**
+     * @return string
+     */
     public function HumanFormat()
     {
         return iban_to_human_format($this->iban);
     }
 
+    /**
+     * @return bool|string
+     */
     public function Country()
     {
         return iban_get_country_part($this->iban);
     }
 
+    /**
+     * @return bool|string
+     */
     public function Checksum()
     {
         return iban_get_checksum_part($this->iban);
     }
 
+    /**
+     * @return bool|string
+     */
     public function NationalChecksum()
     {
         return iban_get_nationalchecksum_part($this->iban);
     }
 
+    /**
+     * @return bool|string
+     */
     public function BBAN()
     {
         return iban_get_bban_part($this->iban);
     }
 
+    /**
+     * @return bool
+     */
     public function VerifyChecksum()
     {
         return iban_verify_checksum($this->iban);
     }
 
+    /**
+     * @return string
+     */
     public function FindChecksum()
     {
         return iban_find_checksum($this->iban);
     }
 
+    /**
+     *
+     */
     public function SetChecksum()
     {
         $this->iban = iban_set_checksum($this->iban);
     }
 
+    /**
+     * @return mixed
+     */
     public function ChecksumStringReplace()
     {
         return iban_checksum_string_replace($this->iban);
     }
 
+    /**
+     * @return string
+     */
     public function FindNationalChecksum()
     {
         return iban_find_nationalchecksum($this->iban);
     }
 
+    /**
+     *
+     */
     public function SetNationalChecksum()
     {
         $this->iban = iban_set_nationalchecksum($this->iban);
     }
 
+    /**
+     * @return string
+     */
     public function VerifyNationalChecksum()
     {
         return iban_verify_nationalchecksum($this->iban);
     }
 
+    /**
+     * @return array
+     */
     public function Parts()
     {
         return iban_get_parts($this->iban);
     }
 
+    /**
+     * @return bool|string
+     */
     public function Bank()
     {
         return iban_get_bank_part($this->iban);
     }
 
+    /**
+     * @return bool|string
+     */
     public function Branch()
     {
         return iban_get_branch_part($this->iban);
     }
 
+    /**
+     * @return bool|string
+     */
     public function Account()
     {
         return iban_get_account_part($this->iban);
     }
 
+    /**
+     * @return array
+     */
     public function Countries()
     {
         return iban_countries();
     }
 }
 
-# IBANCountry
+/**
+ * Class IBANCountry
+ */
 Class IBANCountry
 {
 
+    /** @var string */
     public $code;
 
-    # constructor with code
+    /**
+     * @param string $code
+     */
     function __construct($code = '')
     {
         $this->code = $code;
     }
 
+    /**
+     * @return string
+     */
     public function Code()
     {
         return $this->code;
     }
 
+    /**
+     * @return string
+     */
     public function Name()
     {
         return iban_country_get_country_name($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function DomesticExample()
     {
         return iban_country_get_domestic_example($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function BBANExample()
     {
         return iban_country_get_bban_example($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function BBANFormatSWIFT()
     {
         return iban_country_get_bban_format_swift($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function BBANFormatRegex()
     {
         return iban_country_get_bban_format_regex($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function BBANLength()
     {
         return iban_country_get_bban_length($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function IBANExample()
     {
         return iban_country_get_iban_example($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function IBANFormatSWIFT()
     {
         return iban_country_get_iban_format_swift($this->code);
     }
 
+    /**
+     * @return string
+     */
     public function IBANFormatRegex()
     {
         return iban_country_get_iban_format_regex($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function IBANLength()
     {
         return iban_country_get_iban_length($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function BankIDStartOffset()
     {
         return iban_country_get_bankid_start_offset($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function BankIDStopOffset()
     {
         return iban_country_get_bankid_stop_offset($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function BranchIDStartOffset()
     {
         return iban_country_get_branchid_start_offset($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function BranchIDStopOffset()
     {
         return iban_country_get_branchid_stop_offset($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function NationalChecksumStartOffset()
     {
         return iban_country_get_nationalchecksum_start_offset($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function NationalChecksumStopOffset()
     {
         return iban_country_get_nationalchecksum_stop_offset($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function RegistryEdition()
     {
         return iban_country_get_registry_edition($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function SWIFTOfficial()
     {
         return iban_country_get_country_swift_official($this->code);
     }
 
+    /**
+     * @return bool
+     */
     public function IsSEPA()
     {
         return iban_country_is_sepa($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function IANA()
     {
         return iban_country_get_iana($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function ISO3166()
     {
         return iban_country_get_iso3166($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function ParentRegistrar()
     {
         return iban_country_get_parent_registrar($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function CurrencyISO4217()
     {
         return iban_country_get_currency_iso4217($this->code);
     }
 
+    /**
+     * @return bool|string
+     */
     public function CentralBankURL()
     {
         return iban_country_get_central_bank_url($this->code);
     }
 
+    /**
+     * @return bool|mixed
+     */
     public function CentralBankName()
     {
         return iban_country_get_central_bank_name($this->code);
