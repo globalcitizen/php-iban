@@ -1,10 +1,11 @@
 <?php
 
+require_once(dirname(__FILE__).'/php-iban.php');
+
 # OO wrapper for 'php-iban.php'
 Class IBAN {
 
  function __construct($iban = '') {
-  require_once('php-iban.php'); # load the procedural codebase
   $this->iban = $iban;
  }
 
