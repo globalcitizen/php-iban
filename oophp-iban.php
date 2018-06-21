@@ -22,6 +22,14 @@ Class IBAN
     }
 
     /**
+     * @return string
+     */
+    public function getIban()
+    {
+        return $this->iban;
+    }
+
+    /**
      * @param string $iban
      * @param bool   $machine_format_only
      *
