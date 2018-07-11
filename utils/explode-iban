@@ -10,4 +10,4 @@ $iban = $argv[1];
 $parts = iban_get_parts($argv[1]);
 print_r($parts);
 exit(0);
-?>
+
