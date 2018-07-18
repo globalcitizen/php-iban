@@ -273,7 +273,7 @@ Notes:
     * [contao-haste_plus](https://github.com/heimrichhannot/contao-haste_plus)
     * [Dolibarr ERP &amp; CRM](http://www.dolibarr.org/) ([website](https://github.com/Dolibarr/dolibarr/tree/develop/htdocs/includes/php-iban))
     * [fieldwork: Web forms for cool people](https://github.com/jmversteeg/fieldwork)
-    * [IBAN Validator](https://www.drupal.org/sandbox/encelado/1936168) for Drupal
+    * [IBAN Validator](https://www.drupal.org/project/iban_validator) for Drupal
     * [identity](https://github.com/mpijierro/identity) component for Laravel to check Spanish IDs
     * [lib-bankaccount](https://github.com/majestixx/lib-bankaccount) (conversion to/from legacy German account format)
     * [PHP SEPA XML](http://www.phpclasses.org/package/8179-PHP-Generate-XML-for-the-Single-Euro-Payments-Area.html) class ([github](https://github.com/dmitrirussu/php-sepa-xml-generator))
