@@ -1084,6 +1084,25 @@ function _iban_nationalchecksum_implementation_si($iban,$mode) {
  return _iban_nationalchecksum_implementation_mod97_10($iban,$mode);
 }
 
+# Implement the national checksum for Slovak Republic (SK) IBAN
+# Source of algorithm: https://www.nbs.sk/_img/Documents/_Legislativa/_Vestnik/OPAT8-09.pdf
+# Account number is currently verified only, it's possible to also add validation for bank code and account number prefix
+function _iban_nationalchecksum_implementation_sk($iban,$mode) {
+ if ($mode !== 'verify') {
+  return '';
+ }
+
+ $account = iban_get_account_part($iban);
+ $weights = [6, 3, 7, 9, 10, 5, 8, 4, 2, 1];
+
+ $sum = 0;
+ for ($i=0; $i < 10; $i++) {
+  $sum += $account[$i] * $weights[$i];
+ }
+
+ return $sum % 11 === 0;
+}
+
 # Implement the national checksum for MOD97-10 countries
 function _iban_nationalchecksum_implementation_mod97_10($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
