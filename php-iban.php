@@ -1093,7 +1093,7 @@ function _iban_nationalchecksum_implementation_sk($iban,$mode) {
  }
 
  $account = iban_get_account_part($iban);
- $weights = [6, 3, 7, 9, 10, 5, 8, 4, 2, 1];
+ $weights = array(6, 3, 7, 9, 10, 5, 8, 4, 2, 1);
 
  $sum = 0;
  for ($i=0; $i < 10; $i++) {
