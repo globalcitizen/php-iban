@@ -144,7 +144,7 @@ function iban_mod97_10_checksum($numeric_representation) {
  return $checksum;
 }
 
-# Perform MOD97-10 checksum calculation ('Germanic-level effiency' version - thanks Chris!)
+# Perform MOD97-10 checksum calculation ('Germanic-level efficiency' version - thanks Chris!)
 function iban_mod97_10($numeric_representation) {
  global $__disable_iiban_gmp_extension;
  # prefer php5 gmp extension if available
@@ -1208,6 +1208,59 @@ function _damm($input) {
  }
  return $checksum;
 }
+
+# Implement the national checksum for an Italian (IT) IBAN
+function _iban_nationalchecksum_implementation_it($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $bban = iban_get_bban_part($iban);
+ $bban_less_checksum = substr($bban,1);
+ $expected_nationalchecksum = _italian($bban_less_checksum);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
+ }
+}
+
+# Italian checksum
+# (Credit: Translated by Francesco Zanoni from http://community.visual-basic.it/lucianob/archive/2004/12/26/2464.aspx)
+function _italian($input)
+{
+  $digits = str_split('0123456789');
+  $letters = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ-. ');
+  $bbanWithoutChecksumLength = 22;
+  $divisor = 26;
+  $evenList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+  $oddList = [1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 2, 4, 18, 20, 11, 3, 6, 8, 12, 14, 16, 10, 22, 25, 24, 23, 27, 28, 26];
+
+  // Character value computation
+  $sum = 0;
+
+  for ($k = 0; $k < $bbanWithoutChecksumLength; $k++) {
+
+    $i = array_search($input[$k], $digits);
+    if ($i === false) {
+      $i = array_search($input[$k], $letters);
+    }
+
+    // In case of wrong characters,
+    // an unallowed checksum value is returned.
+    if ($i === false) {
+      return '';
+    }
+
+    $sum += (($k % 2) == 0 ? $oddList[$i] : $evenList[$i]);
+
+  }
+
+  return $letters[$sum % $divisor];
+}
+
 
 # Internal proxy function to access national checksum implementations
 #  $iban = IBAN to work with (length and country must be valid, IBAN checksum and national checksum may be incorrect)
