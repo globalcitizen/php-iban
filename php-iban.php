@@ -1229,30 +1229,17 @@ function _iban_nationalchecksum_implementation_it($iban,$mode) {
 
 # Implement the national checksum for a San Marino (SM) IBAN
 function _iban_nationalchecksum_implementation_sm($iban,$mode) {
- if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
- $nationalchecksum = iban_get_nationalchecksum_part($iban);
- $bban = iban_get_bban_part($iban);
- $bban_less_checksum = substr($bban,1);
   // San Marino adheres to Italian rules.
- $expected_nationalchecksum = _italian($bban_less_checksum);
- if($mode=='find') {
-  return $expected_nationalchecksum;
- }
- elseif($mode=='set') {
-  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
- }
- elseif($mode=='verify') {
-  return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
- }
+  return _iban_nationalchecksum_implementation_it($iban,$mode);
 }
 
-# Italian checksum
+# Italian (and San Marino's) checksum
 # (Credit: Translated by Francesco Zanoni from http://community.visual-basic.it/lucianob/archive/2004/12/26/2464.aspx)
+# (Source: European Commettee of Banking Standards' Register of European Account Numbers (TR201 V3.23 — FEBRUARY 2007), available at URL http://www.cnb.cz/cs/platebni_styk/iban/download/TR201.pdf)
 function _italian($input)
 {
   $digits = str_split('0123456789');
   $letters = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ-. ');
-  $bbanWithoutChecksumLength = 22;
   $divisor = 26;
   $evenList = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28);
   $oddList = array(1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 2, 4, 18, 20, 11, 3, 6, 8, 12, 14, 16, 10, 22, 25, 24, 23, 27, 28, 26);
@@ -1260,7 +1247,7 @@ function _italian($input)
   // Character value computation
   $sum = 0;
 
-  for ($k = 0; $k < $bbanWithoutChecksumLength; $k++) {
+  for ($k = 0; $k < count($input); $k++) {
 
     $i = array_search($input[$k], $digits);
     if ($i === false) {
