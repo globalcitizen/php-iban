@@ -1227,6 +1227,25 @@ function _iban_nationalchecksum_implementation_it($iban,$mode) {
  }
 }
 
+# Implement the national checksum for a San Marino (SM) IBAN
+function _iban_nationalchecksum_implementation_sm($iban,$mode) {
+ if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
+ $nationalchecksum = iban_get_nationalchecksum_part($iban);
+ $bban = iban_get_bban_part($iban);
+ $bban_less_checksum = substr($bban,1);
+  // San Marino adheres to Italian rules.
+ $expected_nationalchecksum = _italian($bban_less_checksum);
+ if($mode=='find') {
+  return $expected_nationalchecksum;
+ }
+ elseif($mode=='set') {
+  return _iban_nationalchecksum_set($iban,$expected_nationalchecksum);
+ }
+ elseif($mode=='verify') {
+  return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
+ }
+}
+
 # Italian checksum
 # (Credit: Translated by Francesco Zanoni from http://community.visual-basic.it/lucianob/archive/2004/12/26/2464.aspx)
 function _italian($input)

@@ -319,10 +319,8 @@ Your Help Wanted
 
  * If you know the URL of __national IBAN, BBAN or national checksum documentation__ from official sources, please let us know at [issue #39](https://github.com/globalcitizen/php-iban/issues/39) and [issue #41](https://github.com/globalcitizen/php-iban/issues/41).
   * __Faroe Islands__ (FO) banks do not respond, neither does the Danish National Bank who referred me to them.
-  * __Italy__ (IT) has a custom checksum system we need some help deciphering. Note that it is not the [Italian fiscal code](https://en.wikipedia.org/wiki/Italian_fiscal_code_card).
   * __Luxembourg__ (LU) does not seem to conform to any single checksum system. While some IBAN do validate with reasonably common systems, others don't or use others. The suggestion that Luxembourg has a national checksum system may in fact be incorrect. We need some clarification here, hopefully someone can dig up an official statement.
   * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system. Previously the IBAN here was always fixed to '13' checksum digits, however as of registry v66 it is now dynamic, which suggests a changed or at least now nationally relaxed checksum system.
-  * __San Marino__ (SM) has an alphabetic checksum with an unknown algorithm.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
 
