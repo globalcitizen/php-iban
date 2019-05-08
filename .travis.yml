@@ -11,12 +11,10 @@ php:
  - '5.5'
  - '5.6'
  - '7.0'
- - nightly
  - hhvm-3.3
  - hhvm-3.6
  - hhvm-3.9
  - hhvm-3.12
  - hhvm-3.15
  - hhvm-3.18
- - hhvm-nightly
 script: php utils/test.php && php utils/ootest.php && php utils/other-tests.php
