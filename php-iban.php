@@ -734,11 +734,11 @@ function _iban_nationalchecksum_implementation_fr_letters2numbers_helper($bban) 
                      "S" => 2, "T" => 3, "U" => 4, "V" => 5, "W" => 6, "X" => 7, "Y" => 8, "Z" => 9
                     );
  for ($i=0; $i < strlen($bban); $i++) {
-  if(is_numeric($bban{$i})) {
-   $allNumbers .= $bban{$i};
+  if(is_numeric($bban[$i])) {
+   $allNumbers .= $bban[$i];
   }
   else {
-   $letter = strtoupper($bban{$i});
+   $letter = strtoupper($bban[$i]);
    if(array_key_exists($letter, $conversion)) {
     $allNumbers .= $conversion[$letter];
    }
