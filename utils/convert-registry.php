@@ -3,8 +3,8 @@
 # this script converts the IBAN_registry.txt file's entries to registry.txt format (php-iban's required internal format).
 
 # init
-require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
-date_default_timezone_set('UTC'); # mutes a warning
+require_once(\dirname(\dirname(__FILE__)) . '/php-iban.php');
+\date_default_timezone_set('UTC'); # mutes a warning
 
 # read registry
 $data = `iconv -f utf8 -t ascii --byte-subst="<0x%x>" --unicode-subst="<U+%04X>" 'IBAN_Registry.txt'`;
@@ -14,19 +14,19 @@ if($data == '') { die("Couldn't read IBAN_Registry.txt - try downloading from th
 print "country_code|country_name|domestic_example|bban_example|bban_format_swift|bban_format_regex|bban_length|iban_example|iban_format_swift|iban_format_regex|iban_length|bban_bankid_start_offset|bban_bankid_stop_offset|bban_branchid_start_offset|bban_branchid_stop_offset|registry_edition|country_sepa\n";
 
 # break in to lines
-$lines = preg_split('/[\r\n]+/',$data);
+$lines = \preg_split('/[\r\n]+/',$data);
 
 # display
 foreach($lines as $line) {
  # if it's not a blank line, and it's not the header row
- if($line != '' && !preg_match('/SEPA Country/',$line)) {
+ if($line != '' && !\preg_match('/SEPA Country/',$line)) {
   # extract individual tab-separated fields
-  $bits = explode("\t",$line);
+  $bits = \explode("\t",$line);
   # remove quotes and superfluous whitespace on fields that have them.
-  for($i=0;$i<count($bits);$i++) {
-   $bits[$i] = preg_replace('/^"(.*)"$/','$1',$bits[$i]);
-   $bits[$i] = preg_replace('/^ */','',$bits[$i]);
-   $bits[$i] = preg_replace('/ *$/','',$bits[$i]);
+  for($i=0;$i<\count($bits);$i++) {
+   $bits[$i] = \preg_replace('/^"(.*)"$/','$1',$bits[$i]);
+   $bits[$i] = \preg_replace('/^ */','',$bits[$i]);
+   $bits[$i] = \preg_replace('/ *$/','',$bits[$i]);
   }
   # assigned fields to named variables
 #  print "-------\n";
@@ -34,20 +34,20 @@ foreach($lines as $line) {
 #  print "-------\n";
   list($country_name,$country_code,$domestic_example,$bban,$bban_structure,$bban_length,$bban_bi_position,$bban_bi_length,$bban_bi_example,$bban_example,$iban,$iban_structure,$iban_length,$iban_electronic_example,$iban_print_example,$country_sepa,$contact_details) = $bits;
   # sanitise
-  $country_code = strtoupper(substr($country_code,0,2));       # sanitise comments away
-  $bban_structure = preg_replace('/[:;]/','',$bban_structure); # errors seen in Germany, Hungary entries
-  $iban_structure = preg_replace('/, .*$/','',$iban_structure); # duplicates for FO, GL seen in DK
-  $iban_electronic_example = preg_replace('/, .*$/','',$iban_electronic_example); # duplicates for FO, GL seen in DK
+  $country_code = \strtoupper(\substr($country_code,0,2));       # sanitise comments away
+  $bban_structure = \preg_replace('/[:;]/','',$bban_structure); # errors seen in Germany, Hungary entries
+  $iban_structure = \preg_replace('/, .*$/','',$iban_structure); # duplicates for FO, GL seen in DK
+  $iban_electronic_example = \preg_replace('/, .*$/','',$iban_electronic_example); # duplicates for FO, GL seen in DK
   if($country_code=='MU') {
-   $iban_electronic_example = str_replace(' ','',$iban_electronic_example); # MU example has a spurious space
+   $iban_electronic_example = \str_replace(' ','',$iban_electronic_example); # MU example has a spurious space
   }
   if($country_code=='CZ') {
-   $iban_electronic_example = preg_replace('/ \w{10,}+$/','',$iban_electronic_example); # extra example for CZ
-   $iban_print_example = preg_replace('/^(CZ.. .... .... .... .... ....).*$/','$1',$iban_print_example); # extra example
+   $iban_electronic_example = \preg_replace('/ \w{10,}+$/','',$iban_electronic_example); # extra example for CZ
+   $iban_print_example = \preg_replace('/^(CZ.. .... .... .... .... ....).*$/','$1',$iban_print_example); # extra example
   }
   if($country_code=='FI') {
    # remove additional example
-   $iban_electronic_example = preg_replace('/ or .*$/','',$iban_electronic_example);
+   $iban_electronic_example = \preg_replace('/ or .*$/','',$iban_electronic_example);
    # fix bban example to remove verbosity and match domestic example
    $bban = '12345600000785';
   }
@@ -64,12 +64,12 @@ foreach($lines as $line) {
   if($country_code=='JO') {
    $bban_bi_length=4; # not '4!a' as suggested
   }
-  $iban_print_example = preg_replace('/, .*$/','',$iban_print_example); # DK includes FO and GL examples in one record
+  $iban_print_example = \preg_replace('/, .*$/','',$iban_print_example); # DK includes FO and GL examples in one record
 
   # drop leading 2!a in iban structure.
   #  .. should actually be the country code in question
-  if(substr($iban_structure,0,3) == '2!a') {
-   $iban_structure = $country_code . substr($iban_structure,3);
+  if(\substr($iban_structure,0,3) == '2!a') {
+   $iban_structure = $country_code . \substr($iban_structure,3);
   }
 
   # calculate $bban_regex from $bban_structure
@@ -99,9 +99,9 @@ foreach($lines as $line) {
  }
 
   # calculate numeric $bban_length
-  $bban_length = preg_replace('/[^\d]/','',$bban_length);
+  $bban_length = \preg_replace('/[^\d]/','',$bban_length);
   # calculate numeric $iban_length
-  $iban_length = preg_replace('/[^\d]/','',$iban_length);
+  $iban_length = \preg_replace('/[^\d]/','',$iban_length);
   # calculate bban_bankid_<start|stop>_offset
   # .... First we have to parse the freetext $bban_bi_position, eg: 
   # Bank Identifier 1-3, Branch Identifier
@@ -125,10 +125,10 @@ foreach($lines as $line) {
   #
   #  ... our algorithm is as follows:
   #   - find all <digit>-<digit> tokens
-  preg_match_all('/(\d)-(\d\d?)/',$bban_bi_position,$matches);
+  \preg_match_all('/(\d)-(\d\d?)/',$bban_bi_position,$matches);
   #   - discard overlaps ({1-5,1-2,3-5} becomes {1-2,3-5})
   $tmptokens = array();
-  for($j=0;$j<count($matches[0]);$j++) {
+  for($j=0;$j<\count($matches[0]);$j++) {
    #print "tmptokens was... " . print_r($tmptokens,1) . "\n";
    $from = $matches[1][$j];
    $to = $matches[2][$j];
@@ -151,8 +151,8 @@ foreach($lines as $line) {
    unset($tmptokens[2]);
   }
   #   - assume any subsequent token, if present, is the branch identifier.
-  $tmpkeys = array_keys($tmptokens);
-  $start = array_shift($tmpkeys);
+  $tmpkeys = \array_keys($tmptokens);
+  $start = \array_shift($tmpkeys);
   unset($tmpkeys); # done
   $bban_branchid_start_offset='';
   $bban_branchid_stop_offset='';
@@ -168,21 +168,21 @@ foreach($lines as $line) {
    # remaining non-tiny field (tiny fields on the end of a BBAN typically
    # being checksums) and, if so, assume that the first/shorter one is the
    # branch identifier.
-   $reduced_bban_structure = preg_replace('/^\d+![nac]/','',$bban_structure);
+   $reduced_bban_structure = \preg_replace('/^\d+![nac]/','',$bban_structure);
 #   print "[DEBUG] reduced BBAN structure = $reduced_bban_structure\n";
    $tokens = swift_tokenize($reduced_bban_structure,1);
 #   print "[DEBUG] tokens = " + json_encode($tokens,1);
    # discard any tokens of length 1 or 2
-   for($t=0;$t<count($tokens[0]);$t++) {
+   for($t=0;$t<\count($tokens[0]);$t++) {
     if($tokens[1][$t] < 3) {
      $tokens['discarded'][$t] = 1;
     }
    }
    # interesting fields are those that are not discarded...
    if(!isset($tokens['discarded'])) {
-    $interesting_field_count = count($tokens[0]); }
+    $interesting_field_count = \count($tokens[0]); }
    else {
-    $interesting_field_count = (count($tokens[0])-count($tokens['discarded']));
+    $interesting_field_count = (\count($tokens[0])-\count($tokens['discarded']));
    }
 #   print "[DEBUG] interesting field count = $interesting_field_count\n";
    # ...if we have at least two of them, there's a branchid-type field
@@ -190,7 +190,7 @@ foreach($lines as $line) {
     # now loop through until we assign the branchid start offset
     # (this occurs just after the first non-discarded field)
     $found=0;
-    for($f=0; (($found==0) && ($f<count($tokens[0]))); $f++) {
+    for($f=0; (($found==0) && ($f<\count($tokens[0]))); $f++) {
      # if this is a non-discarded token, of >2 length...
      if((!isset($tokens['discarded'][$f]) || $tokens['discarded'][$f] != 1) && $tokens[1][$f]>2) {
       # ... then assign.
@@ -215,9 +215,9 @@ foreach($lines as $line) {
   # NOTE: This is buggy due to the free inclusion of random text by the registry publishers.
   #       Notably it requires modification for places like Finland and Portugal where these
   #       comments are known to exist.
-  if(strtolower($country_sepa)=='yes') { $country_sepa=1; } else { $country_sepa = 0; }
+  if(\strtolower($country_sepa)=='yes') { $country_sepa=1; } else { $country_sepa = 0; }
   # set registry edition
-  $registry_edition = date('Y-m-d');
+  $registry_edition = \date('Y-m-d');
 
   # now prepare generate our registry lines...
   $to_generate = array($country_code=>$country_name);
@@ -232,22 +232,22 @@ foreach($lines as $line) {
   foreach($to_generate as $country_code=>$country_name) {
    # fixes for fields duplicating country code
    #print "CHECKSUM-BEFORE[$country_code] = $iban_electronic_example\n";
-   $iban_electronic_example = iban_set_checksum($country_code .  substr($iban_electronic_example,2));
+   $iban_electronic_example = iban_set_checksum($country_code .  \substr($iban_electronic_example,2));
    #print "CHECKSUM-AFTER[$country_code]  = $iban_electronic_example\n";
-   $iban_structure = $country_code . substr($iban_structure,2);
+   $iban_structure = $country_code . \substr($iban_structure,2);
    # step 1
    $iban_regex_fixed = '^' . $country_code;
-   $tmp_country_code = substr($iban_regex,1,2);
+   $tmp_country_code = \substr($iban_regex,1,2);
    #print "[DEBUG] $tmp_country_code\n";
    # route #1 ... here we are dealing with a country code in the string already
-   if(preg_match('/^[A-Z][A-Z]$/',$tmp_country_code)) {
+   if(\preg_match('/^[A-Z][A-Z]$/',$tmp_country_code)) {
     #print "[DEBUG] route #1\n";
-    $iban_regex_fixed = $iban_regex_fixed . substr($iban_regex,3);
+    $iban_regex_fixed = $iban_regex_fixed . \substr($iban_regex,3);
    }
    # route #2 ... here there is no country code yet present
    else {
     #print "[DEBUG] route #2\n";
-    $iban_regex_fixed = $iban_regex_fixed . substr($iban_regex,1);
+    $iban_regex_fixed = $iban_regex_fixed . \substr($iban_regex,1);
    }
    #print "[DEBUG] substited '$iban_regex_fixed' for '$iban_regex'\n";
    # output
@@ -266,7 +266,7 @@ function swift_to_regex($swift) {
  # now replace bits
  $tr = '^' . $swift . '$';
  # loop through each matched token
- for($i=0;$i<count($matches[0]);$i++) {
+ for($i=0;$i<\count($matches[0]);$i++) {
   # calculate replacement
   $replacement = '(TOKEN)';
   # type 'n'
@@ -294,9 +294,9 @@ function swift_to_regex($swift) {
   else {
    $length = '1,' . $matches[1][$i];
   }
-  $replacement = preg_replace('/length/',$length,$replacement,1);
+  $replacement = \preg_replace('/length/',$length,$replacement,1);
   # finally, replace the entire token with the replacement
-  $tr = preg_replace('/' . $matches[0][$i] . '/',$replacement,$tr,1);
+  $tr = \preg_replace('/' . $matches[0][$i] . '/',$replacement,$tr,1);
  }
  return $tr;
 }
@@ -304,10 +304,10 @@ function swift_to_regex($swift) {
 # swift_tokenize()
 #  fetch individual tokens in a swift structural string
 function swift_tokenize($string,$calculate_offsets=0) {
- preg_match_all('/((?:\d*?[1-2])?\d)(!)?([anc])/',$string,$matches);
+ \preg_match_all('/((?:\d*?[1-2])?\d)(!)?([anc])/',$string,$matches);
  if($calculate_offsets) {
   $current_offset=0;
-  for($i=0;$i<count($matches[0]);$i++) {
+  for($i=0;$i<\count($matches[0]);$i++) {
    $matches['offset'][$i] = $current_offset;
    $current_offset+=$matches[1][$i];
   }

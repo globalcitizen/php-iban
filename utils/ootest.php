@@ -6,12 +6,12 @@
 
 # Engine configuration
 #  - first we enable error display
-ini_set('display_errors',1);
+\ini_set('display_errors',1);
 #  - next we ensure that all errors are displayed
-ini_set('error_reporting',E_ALL);
+\ini_set('error_reporting',E_ALL);
 
 # include the object oriented version of the library itself
-require_once(dirname(dirname(__FILE__)) . '/oophp-iban.php');
+require_once(\dirname(\dirname(__FILE__)) . '/oophp-iban.php');
 
 # display registry contents
 #print_r($_iban_registry);
@@ -32,8 +32,8 @@ print "Hooray! - Invalid IBAN successfully rejected.\n\n";
 $broken_iiban = 'VG96VPVG00000L2345678901';
 $myIban = new IBAN($broken_iiban);
 $suggestions = $myIban->MistranscriptionSuggestions();
-if(count($suggestions)) {
- print "Hooray!  Successfully derived '" . implode(',',$suggestions) . "' as likely transcription error source suggestion(s) for the incorrect IBAN $broken_iiban.\n";
+if(\count($suggestions)) {
+ print "Hooray!  Successfully derived '" . \implode(',',$suggestions) . "' as likely transcription error source suggestion(s) for the incorrect IBAN $broken_iiban.\n";
 }
 else {
  print "ERROR: Not able to ascertain suggested transcription error source(s) for $broken_iiban.\n";
@@ -171,11 +171,11 @@ foreach($countries as $countrycode) {
    $country = $myIban->Country();
    print "        (country is: '$country')\n";
    $myCountry = new IBANCountry($country);
-   if(strlen($machine_iban)!=$myCountry->IBANLength()) {
-    print "        (ERROR: length of '" . strlen($machine_iban) . "' does not match expected length for country's IBAN '" . $myCountry->IBANLength() . "'.)";
+   if(\strlen($machine_iban)!=$myCountry->IBANLength()) {
+    print "        (ERROR: length of '" . \strlen($machine_iban) . "' does not match expected length for country's IBAN '" . $myCountry->IBANLength() . "'.)";
    }
    $regex = '/'.$myCountry->IBANFormatRegex().'/';
-   if(!preg_match($regex,$machine_iban)) {
+   if(!\preg_match($regex,$machine_iban)) {
     print "        (ERROR: did not match regular expression '" . $regex . "')\n";
    }
   }

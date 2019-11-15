@@ -6,12 +6,12 @@
 
 # Engine configuration
 #  - first we enable error display
-ini_set('display_errors',1);
+\ini_set('display_errors',1);
 #  - next we ensure that all errors are displayed
-ini_set('error_reporting',E_ALL);
+\ini_set('error_reporting',E_ALL);
 
 # include the library itself
-require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
+require_once(\dirname(\dirname(__FILE__)) . '/php-iban.php');
 
 # display registry contents
 #print_r($_iban_registry);
@@ -30,8 +30,8 @@ print "Hooray! - Invalid IBAN successfully rejected.\n\n";
 # Broken IIBAN
 $broken_iiban = 'VG96VPVG00000L2345678901';
 $suggestions = iban_mistranscription_suggestions($broken_iiban);
-if(count($suggestions)) {
- print "Hooray!  Successfully derived '" . implode(',',$suggestions) . "' as likely transcription error source suggestion(s) for the incorrect IBAN $broken_iiban.\n";
+if(\count($suggestions)) {
+ print "Hooray!  Successfully derived '" . \implode(',',$suggestions) . "' as likely transcription error source suggestion(s) for the incorrect IBAN $broken_iiban.\n";
 }
 else {
  print "ERROR: Not able to ascertain suggested transcription error source(s) for $broken_iiban.\n";
@@ -168,11 +168,11 @@ foreach($_iban_registry as $country) {
    print "        (machine format is: '$machine_iban')\n";
    $country = iban_get_country_part($machine_iban);
    print "        (country is: '$country')\n";
-   if(strlen($machine_iban)!=iban_country_get_iban_length($country)) {
-    print "        (ERROR: length of '" . strlen($machine_iban) . "' does not match expected length for country's IBAN '" . iban_country_get_iban_length($country) . "'.)";
+   if(\strlen($machine_iban)!=iban_country_get_iban_length($country)) {
+    print "        (ERROR: length of '" . \strlen($machine_iban) . "' does not match expected length for country's IBAN '" . iban_country_get_iban_length($country) . "'.)";
    }
    $regex = '/'.iban_country_get_iban_format_regex($country).'/';
-   if(!preg_match($regex,$machine_iban)) {
+   if(!\preg_match($regex,$machine_iban)) {
     print "        (ERROR: did not match regular expression '" . $regex . "')\n";
    }
   }

@@ -2,12 +2,12 @@
 
 # additional tests library
 #  - first we enable error display
-ini_set('display_errors',1);
+\ini_set('display_errors',1);
 #  - next we ensure that all errors are displayed
-ini_set('error_reporting',E_ALL);
+\ini_set('error_reporting',E_ALL);
 
 # include the library itself
-require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
+require_once(\dirname(\dirname(__FILE__)) . '/php-iban.php');
 
 print "Other tests:\n";
 
@@ -138,24 +138,24 @@ foreach($test_data as $input=>$expected_output) {
 }
 
 # Verify all of the example IBANs using the validate-list script
-$example_ibans_dir = dirname(__FILE__) . '/example-ibans/';
-if(!file_exists($example_ibans_dir) && is_dir($example_ibans_dir)) {
+$example_ibans_dir = \dirname(__FILE__) . '/example-ibans/';
+if(!\file_exists($example_ibans_dir) && \is_dir($example_ibans_dir)) {
  print "Example IBANs library is missing, not found or is not a directory at '" . $example_ibans_dir . "'.\n";
  exit(99);
 }
 print "\nTesting example IBANs by country...\n";
-if ($dh = opendir($example_ibans_dir)) {
- while (($file = readdir($dh)) !== false) {
+if ($dh = \opendir($example_ibans_dir)) {
+ while (($file = \readdir($dh)) !== false) {
   $file = $example_ibans_dir . '/' . $file;
   # only process files
-  if(filetype($file) == 'file') {
-   print ' - ' . basename($file) . '... ';
-   $cmd = "php " . dirname(__FILE__) . '/validate-list.php ' . escapeshellarg($file);
+  if(\filetype($file) == 'file') {
+   print ' - ' . \basename($file) . '... ';
+   $cmd = "php " . \dirname(__FILE__) . '/validate-list.php ' . \escapeshellarg($file);
    $output=array();
-   exec($cmd,$output,$exit_code);
+   \exec($cmd,$output,$exit_code);
    if($exit_code !== 0) {
     print "FAILED.\n================ output was ===================\n";
-    print join("\n",$output) . "\n";
+    print \join("\n",$output) . "\n";
     exit(1);
    }
    else {
@@ -163,7 +163,7 @@ if ($dh = opendir($example_ibans_dir)) {
    }
   }
  }
- closedir($dh);
+ \closedir($dh);
 }
 else {
  print "Failed to open example IBANs directory at '" . $example_ibans_dir . "'!";
