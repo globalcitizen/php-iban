@@ -376,6 +376,7 @@ function iban_country_get_central_bank_name($iban_country) {
 
 # Get the list of all IBAN countries
 function iban_countries() {
+ _iban_load_registry();
  global $_iban_registry;
  return array_keys($_iban_registry);
 }
@@ -471,7 +472,6 @@ function iban_mistranscription_suggestions($incorrect_iban) {
 # Load the IBAN registry from disk.
 global $_iban_registry;
 $_iban_registry = array();
-_iban_load_registry();
 function _iban_load_registry() {
  global $_iban_registry;
  # if the registry is not yet loaded, or has been corrupted, reload
@@ -538,6 +538,7 @@ function _iban_get_info($iban,$code) {
 
 # Get information from the IBAN registry by country / code combination
 function _iban_country_get_info($country,$code) {
+ _iban_load_registry();
  global $_iban_registry;
  $country = strtoupper($country);
  $code = strtolower($code);
