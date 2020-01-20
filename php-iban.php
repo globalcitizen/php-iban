@@ -1291,5 +1291,3 @@ function _iban_nationalchecksum_implementation($iban,$mode) {
  }
  return '';
 }
-
-?>
