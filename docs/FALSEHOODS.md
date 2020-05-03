@@ -25,3 +25,6 @@ In the spirit of [Falsehoods Programmers Believe About Phone Numbers](https://gi
 
 8. **IBAN solves input errors.**
    IBAN has a strong checksum system built in, however this does not really help you to help the user find the source of an input problem. The `php-iban` library includes a flexible and robust mistranscription error detection system which can assist you in presenting possible errors to the user for manual evaluation.
+
+9. **IBAN should be kept secret.**
+   Bank account number are public identifiers and are generally not supposed to be secret. Any banking system capable of being exploited purely through the knowledge of an account nunber (US checking system and early credit card systems were classic cases) should have long since been fixed by the time IBAN came in to being. The security argument in therefore misguided. However, for user experience optimization purposes it can be useful to obfuscate portions of an IBAN where it reduces cognitive load for users, such as in identifying one IBAN from a set using only the leading and unique trailing portions.
