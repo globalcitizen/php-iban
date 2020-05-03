@@ -36,6 +36,10 @@ Class IBAN {
   return iban_to_human_format($this->iban);
  }
 
+ public function ObfuscatedFormat() {
+  return iban_to_obfuscated_format($this->iban);
+ }
+
  public function Country($iban='') {
   return iban_get_country_part($this->iban);
  }
