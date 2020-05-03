@@ -332,6 +332,7 @@ __[Version 2.7.5](https://github.com/globalcitizen/php-iban/releases/tag/v2.7.5)
    * Updated Egypt example IBAN and registry entry (disabled French national checksum scheme as this no longer works with the example IBAN provided. Users with insight please check, there are no examples visible online!)
    * Corrections to Polish BBAN length (now fixed, previously spuriously specified as variable)
    * Corrections to Seychelles BBAN and IBAN structure
+
 __[Version 2.7.4](https://github.com/globalcitizen/php-iban/releases/tag/v2.7.4)__ has been released.
  * New function `iban_to_obfsucated_format()` or `ObfuscatedFormat()` to obfuscate IBAN for specific output scenarios (such as relative identification)
    * Thanks to @jaysee for feature request #99
