@@ -7,7 +7,7 @@ php-iban
 [![Latest Stable Version](https://poser.pugx.org/globalcitizen/php-iban/v/stable)](https://packagist.org/packages/globalcitizen/php-iban) 
 [![License](https://poser.pugx.org/globalcitizen/php-iban/license)](https://packagist.org/packages/globalcitizen/php-iban)
 
-All parts of an IBAN can be retrieved, including country code, checksum, BBAN, financial institution or bank code, account number, and where a fixed-length national system is in use, also branch/sort code. Legacy national checksums may also be retrieved, validated and correctly set, where available, whether they apply to the account number portion, bank and branch identifiers, part or all of the above. IBAN country codes can be converted in to ISO3166-1 alpha-2 and IANA formats, the parent IBAN country acting as registrar for dependent territories may be queried, the official national currency (ISO4217 alpha code format), central bank name and central bank URL may also be queried to ease integration. IBANs may be converted between human and machine representation. A database of example/test IBANs from different countries is included. Finally, highly accurate suggestions for originally intended input can be made when an incorrect IBAN is detected and is due to mistranscription error.
+All parts of an IBAN can be retrieved, including country code, checksum, BBAN, financial institution or bank code, account number, and where a fixed-length national system is in use, also branch/sort code. Legacy national checksums may also be retrieved, validated and correctly set, where available, whether they apply to the account number portion, bank and branch identifiers, part or all of the above. IBAN country codes can be converted in to ISO3166-1 alpha-2 and IANA formats, the parent IBAN country acting as registrar for dependent territories may be queried, the official national currency (ISO4217 alpha code format), central bank name and central bank URL may also be queried to ease integration. IBANs may be converted between human and machine representation. IBANs may be obfuscated for presentation to humans in special circumstances such as relative identification. A database of example/test IBANs from different countries is included. Finally, highly accurate suggestions for originally intended input can be made when an incorrect IBAN is detected and is due to mistranscription error.
 
 Tested on PHP versions: ![PHP 5.2](https://img.shields.io/badge/version-PHP%205.2%2B-lightgrey.svg) ![PHP 5.3](https://img.shields.io/badge/version-PHP%205.3%2B-lightgrey.svg) ![PHP 5.4](https://img.shields.io/badge/version-PHP%205.4%2B-lightgrey.svg) ![PHP 5.5](https://img.shields.io/badge/version-PHP%205.5%2B-lightgrey.svg) ![PHP 5.6](https://img.shields.io/badge/version-PHP%205.6%2B-lightgrey.svg) ![PHP 7.0](https://img.shields.io/badge/version-PHP%207.0%2B-lightgrey.svg)
 
@@ -160,7 +160,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "2.7.3"
+        "globalcitizen/php-iban": "2.7.4"
     }
 }
 ```
