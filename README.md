@@ -256,7 +256,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.7.3  | 293  | 26    | 60   | 1M+*     | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 2.7.4  | 322  | 26    | 70   | 1M+*     | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.3.0  | 50   | 9     | 19   | 178.39k  | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.1  | 466  | 22    | 54   | 145k     | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.2.3  | 8    | 4     | 3    | 25k      | German       | phpunit |
@@ -324,6 +324,12 @@ Your Help Wanted
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
 
+
+News: May 2020
+--------------
+__[Version 2.7.4](https://github.com/globalcitizen/php-iban/releases/tag/v2.7.4)__ has been released.
+ * New function `iban_to_obfsucated_format()` or `ObfuscatedFormat()` to obfuscate IBAN for specific output scenarios (such as relative identification)
+   * Thanks to @jaysee for feature request #99
 
 News: November 2019
 ------------------
@@ -1008,6 +1014,12 @@ $machine_iban = iban_to_machine_format($iban);
 # Convert an IBAN to human format.  To do this, we
 # add a space every four characters.
 $human_iban = iban_to_human_format($iban);
+
+# Convert an IBAN to obfuscated format for relative
+# identification. To do this, we replace all but the
+# leading country code and final four characters with
+# asterisks.
+$obfuscated_iban = iban_to_obfuscated_format($iban);
 ```
 
 
@@ -1223,6 +1235,12 @@ $machine_iban = $myIban->MachineFormat();
 # Convert an IBAN to human format.  To do this, we
 # add a space every four characters.
 $human_iban = $myIban->HumanFormat();
+
+# Convert an IBAN to obfuscated format for relative
+# identification. To do this, we replace all but the
+# leading country code and final four characters with
+# asterisks.
+$obfsucated_iban = $myIban->ObfuscatedFormat();
 ```
 
 IBAN Country-Level Functions
