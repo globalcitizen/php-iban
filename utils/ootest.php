@@ -21,7 +21,7 @@ $errors=0;
 
 # Try to validate an invalid IBAN
 $iban = "(@#(*@*ZV-This is NOT an IBAN!";
-$myIban = new IBAN($iban);
+$myIban = new PHP_IBAN\IBAN($iban);
 if($myIban->verify()) {
  print "ERROR: An invalid IBAN was validated!\n";
  $errors++;
@@ -30,7 +30,7 @@ print "Hooray! - Invalid IBAN successfully rejected.\n\n";
 
 # Broken IIBAN
 $broken_iiban = 'VG96VPVG00000L2345678901';
-$myIban = new IBAN($broken_iiban);
+$myIban = new PHP_IBAN\IBAN($broken_iiban);
 $suggestions = $myIban->MistranscriptionSuggestions();
 if(count($suggestions)) {
  print "Hooray!  Successfully derived '" . implode(',',$suggestions) . "' as likely transcription error source suggestion(s) for the incorrect IBAN $broken_iiban.\n";
@@ -48,7 +48,7 @@ $countries = $myIban->Countries();
 foreach($countries as $countrycode) {
 
  # instantiate
- $myCountry = new IBANCountry($countrycode);
+ $myCountry = new PHP_IBAN\IBANCountry($countrycode);
 
  # get country code
  $ianacountrycode = $myCountry->IANA();
@@ -110,7 +110,7 @@ foreach($countries as $countrycode) {
  print "\n";
 
  # get example iban
- $myIban = new IBAN($myCountry->IBANExample());
+ $myIban = new PHP_IBAN\IBAN($myCountry->IBANExample());
 
  # output example iban properties one by one
  print "Example IBAN: " . $myIban->HumanFormat() . "\n";
@@ -170,7 +170,7 @@ foreach($countries as $countrycode) {
    print "        (machine format is: '$machine_iban')\n";
    $country = $myIban->Country();
    print "        (country is: '$country')\n";
-   $myCountry = new IBANCountry($country);
+   $myCountry = new PHP_IBAN\IBANCountry($country);
    if(strlen($machine_iban)!=$myCountry->IBANLength()) {
     print "        (ERROR: length of '" . strlen($machine_iban) . "' does not match expected length for country's IBAN '" . $myCountry->IBANLength() . "'.)";
    }
