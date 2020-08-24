@@ -327,7 +327,7 @@ Your Help Wanted
 News: August 2020
 -----------------
 __[Version 4.0.0](https://github.com/globalcitizen/php-iban/releases/tag/v4.0.0)__ has been released.
- * Major version upgrade to certainly fix missing dot in prior release version string, thus avoiding composer hassles. (See [#108](https://github.com/globalcitizen/php-iban/issues/108)). I am relly beginning to hate composer.
+ * Major version upgrade to certainly fix missing dot in prior release version string, thus avoiding composer hassles. (See [#108](https://github.com/globalcitizen/php-iban/issues/108)). I am really beginning to hate composer.
 
 __[Version 3.0.3](https://github.com/globalcitizen/php-iban/releases/tag/v3.0.3)__ has been released.
  * Official support for php-7.4
