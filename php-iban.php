@@ -568,7 +568,7 @@ function _iban_country_get_info($country,$code) {
  global $_iban_registry;
  $country = strtoupper($country);
  $code = strtolower($code);
- if(array_key_exists($country,$_iban_registry)) {
+ if(is_array($_iban_registry) && array_key_exists($country,$_iban_registry)) {
   if(array_key_exists($code,$_iban_registry[$country])) {
    return $_iban_registry[$country][$code];
   }
