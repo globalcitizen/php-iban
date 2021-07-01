@@ -324,6 +324,12 @@ Your Help Wanted
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
 
+News: July 2021
+---------------
+
+__[Version 4.1.0](https://github.com/globalcitizen/php-iban/releases/tag/v4.1.0)__ has been released.
+ * New feature to check for EU memberships - thanks to [@julianpollmann](https://github.com/julianpollman)
+
 News: August 2020
 -----------------
 __[Version 4.0.0](https://github.com/globalcitizen/php-iban/releases/tag/v4.0.0)__ has been released.
