@@ -1150,6 +1150,18 @@ $central_bank_url = iban_country_get_central_bank_url($iban_country);
 # (Note: Returns '' if there is no central bank. Also, note that
 #        sometimes multiple countries share one central bank)
 $central_bank_name = iban_country_get_central_bank_name($iban_country);
+
+# Get the membership type of the country
+# There are four types of memberships:
+# * EU-Member States (eu_member)
+# * EFTA-Member States (efta_member)
+# * Other Memberships, which have monetary agreements with the EU (other_member)
+# * Non-Members, which don't belong to the EU or have agreements (non_member)
+$country_membership = iban_country_get_membership($iban_country);
+
+# Get if the country is a eu member state
+# (Note: Returns true, if member state; false otherwise)
+$country_membership = iban_country_get_is_eu_member($iban_country);
 ```
 
 
