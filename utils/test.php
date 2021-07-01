@@ -66,6 +66,11 @@ foreach($_iban_registry as $country) {
  if(iban_country_is_sepa($countrycode)) { print "Yes"; } else { print "No"; }
  print ".\n";
 
+ # output EU member state
+ print "Is a EU member? ";
+ if(iban_country_get_is_eu_member($countrycode)) { print "Yes"; } else { print "No"; }
+ print ".\n";
+
  # central bank
  print "Central Bank: ";
  $central_bank_name = iban_country_get_central_bank_name($countrycode);
