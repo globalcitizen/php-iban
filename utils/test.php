@@ -81,6 +81,11 @@ foreach($_iban_registry as $country) {
  }
  print "\n";
 
+ # output remaining country properties
+ print "Is a EU member? ";
+ if(iban_country_get_is_eu_member($countrycode)) { print "Yes"; } else { print "No"; }
+ print ".\n";
+
  # parent_registrar
  print "Has own team of bureaucrats? ";
  $parent_registrar = iban_country_get_parent_registrar($countrycode);

@@ -73,6 +73,11 @@ foreach($countries as $countrycode) {
  if($myCountry->IsSEPA()) { print "Yes"; } else { print "No"; }
  print ".\n";
 
+ # output remaining country properties
+ print "Is a SEPA member? ";
+ if($myCountry->IsEuMember()) { print "Yes"; } else { print "No"; }
+ print ".\n";
+
  # central bank
  print "Central Bank: ";
  $central_bank_name = $myCountry->CentralBankName();
