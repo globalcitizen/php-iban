@@ -218,6 +218,13 @@ Class IBANCountry {
   return iban_country_get_central_bank_name($this->code);
  }
 
+ public function Membership() {
+  return iban_country_get_membership($this->code);
+ }
+
+ public function IsEuMember() {
+  return iban_country_get_is_eu_member($this->code);
+ }
 }
 
 ?>
