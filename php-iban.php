@@ -407,6 +407,25 @@ function iban_countries() {
  return array_keys($_iban_registry);
 }
 
+# Get the membership of an IBAN country
+# (Note: Possible Values eu_member, efta_member, other_member, non_member)
+function iban_country_get_membership($iban_country) {
+ return _iban_country_get_info($iban_country,'membership');
+}
+
+# Get the membership of an IBAN country
+# (Note: Possible Values eu_member, efta_member, other_member, non_member)
+function iban_country_get_is_eu_member($iban_country) {
+ $membership = _iban_country_get_info($iban_country,'membership');
+ if ($membership === 'eu_member') {
+  $result = true;
+ } else {
+  $result = false;
+ }
+
+ return $result;
+}
+
 # Given an incorrect IBAN, return an array of zero or more checksum-valid
 # suggestions for what the user might have meant, based upon common
 # mistranscriptions.
@@ -516,7 +535,7 @@ function _iban_load_registry() {
      $old_error_reporting_value = ini_get('error_reporting');
      ini_set('error_reporting',false);
     }
-    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official,$bban_checksum_start_offset,$bban_checksum_stop_offset,$country_iana,$country_iso3166,$parent_registrar,$currency_iso4217,$central_bank_url,$central_bank_name) = explode('|',$line);
+    list($country,$country_name,$domestic_example,$bban_example,$bban_format_swift,$bban_format_regex,$bban_length,$iban_example,$iban_format_swift,$iban_format_regex,$iban_length,$bban_bankid_start_offset,$bban_bankid_stop_offset,$bban_branchid_start_offset,$bban_branchid_stop_offset,$registry_edition,$country_sepa,$country_swift_official,$bban_checksum_start_offset,$bban_checksum_stop_offset,$country_iana,$country_iso3166,$parent_registrar,$currency_iso4217,$central_bank_url,$central_bank_name,$membership) = explode('|',$line);
     # avoid spewing tonnes of PHP warnings under bad PHP configs - see issue #69
     if(function_exists('ini_set')) {
      ini_set('display_errors',$old_display_errors_value);
@@ -541,7 +560,7 @@ function _iban_load_registry() {
 				'bban_branchid_start_offset'	=>	$bban_branchid_start_offset,
 				'bban_branchid_stop_offset'	=>	$bban_branchid_stop_offset,
 				'registry_edition'		=>	$registry_edition,
-                                'country_swift_official'        =>      $country_swift_official,
+                'country_swift_official'        =>      $country_swift_official,
 				'bban_checksum_start_offset'	=>	$bban_checksum_start_offset,
 				'bban_checksum_stop_offset'	=>	$bban_checksum_stop_offset,
 				'country_iana'			=>	$country_iana,
@@ -549,7 +568,8 @@ function _iban_load_registry() {
 				'parent_registrar'		=>	$parent_registrar,
 				'currency_iso4217'		=>	$currency_iso4217,
 				'central_bank_url'		=>	$central_bank_url,
-				'central_bank_name'		=>	$central_bank_name
+				'central_bank_name'		=>	$central_bank_name,
+                'membership'            =>  $membership
                                );
    }
   }
