@@ -714,13 +714,13 @@ function _iso7064_mod97_10($str) {
 }
 
 # Implement the national checksum for a Belgium (BE) IBAN
-#  (Credit: @gaetan-be)
+#  (Credit: @gaetan-be, fixed by @Olympic1)
 function _iban_nationalchecksum_implementation_be($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
  $nationalchecksum = iban_get_nationalchecksum_part($iban);
- $account = iban_get_account_part($iban);
- $account_less_checksum = substr($account,strlen($account)-2);
- $expected_nationalchecksum = $account_less_checksum % 97;
+ $bban = iban_get_bban_part($iban);
+ $bban_less_checksum = substr($bban, 0, -strlen($nationalchecksum));
+ $expected_nationalchecksum = $bban_less_checksum % 97;
  if($mode=='find') {
   return $expected_nationalchecksum;
  }
