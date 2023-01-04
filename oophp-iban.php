@@ -4,6 +4,8 @@ namespace PHP_IBAN;
 # OO wrapper for 'php-iban.php'
 Class IBAN {
 
+ public $iban;
+
  function __construct($iban = '') {
   require_once('php-iban.php'); # load the procedural codebase
   $this->iban = $iban;
@@ -108,6 +110,8 @@ Class IBAN {
 
 # IBANCountry
 Class IBANCountry {
+
+ public $code;
 
  # constructor with code
  function __construct($code = '') {
