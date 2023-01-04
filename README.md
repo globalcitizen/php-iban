@@ -156,7 +156,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "4.1.0"
+        "globalcitizen/php-iban": "4.2.0"
     }
 }
 ```
@@ -252,7 +252,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 4.1.1  | 414  | 28    | 98   | ~3.5M*   | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 4.2.0  | 425  | 29    | 104  | ~5.5M+*  | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.3.0  | 50   | 9     | 19   | 178.39k  | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.1  | 466  | 22    | 54   | 145k     | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.2.3  | 8    | 4     | 3    | 25k      | German       | phpunit |
@@ -279,7 +279,7 @@ Notes:
     * [statement](https://github.com/hiwye/statement) 
     * [WooCommerce Germanized](http://hookr.io/plugins/woocommerce-germanized/)
     * [WooCommerce SEPA Payment Gateway](https://codecanyon.net/item/woocommerce-sepa-payment-gateway/7963419)
- * php-iban's author is an Australian born, Australia/New Zealand/German citizen based in mainland China, who has formerly also worked and banked in the US, UK, and many Asian countries.
+ * php-iban's author is an Australian born, Australia/New Zealand/German citizen based in the US, who has formerly also worked and banked in the US, UK, and many Asian countries.
  * The IsoCodes and SepaUtil's projects cover standards other than IBAN so their popularity should be considered in this light. (In essence, there is really only one directly competing library, Iban)
 
 Now let's take a look at features.
@@ -319,6 +319,12 @@ Your Help Wanted
   * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system. Previously the IBAN here was always fixed to '13' checksum digits, however as of registry v66 it is now dynamic, which suggests a changed or at least now nationally relaxed checksum system.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+News: January 2023
+------------------
+
+__[Version 4.2.0](https://github.com/globalcitizen/php-iban/releases/tag/v4.2.0)__ has been released.
+ * Resolve [forward-compatibility with php 8.2](https://github.com/globalcitizen/php-iban/issues/120)
 
 News: August 2022
 -----------------
