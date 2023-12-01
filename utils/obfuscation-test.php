@@ -1,6 +1,7 @@
 <?php
-require_once('../php-iban.php');
-$ibans = `cat example-ibans/*`;
+require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
+$dir = dirname(__FILE__);
+$ibans = `cat $dir/example-ibans/*`;
 $lines = explode("\n",$ibans);
 foreach($lines as $iban) {
  $iban = iban_to_machine_format($iban);
