@@ -323,6 +323,7 @@ News: March 2024
 ----------------
 __[Version 4.2.3](https://github.com/globalcitizen/php-iban/releases/tag/v4.2.3)__ has been released.
  * [Fix stupid deprecation warning](https://github.com/globalcitizen/php-iban/pull/128) - thanks to [@odolbeau](https://github.com/odolbeau)
+
 __[Version 4.2.2](https://github.com/globalcitizen/php-iban/releases/tag/v4.2.2)__ has been released.
  * [Fix registry bug causing misreporting of Denmark's EU membership](https://github.com/globalcitizen/php-iban/pull/127) - thanks to [@llange](https://github.com/llange)
  * [Avoid using shell in test script](https://github.com/globalcitizen/php-iban/pull/126) - thanks to [@hannob](https://github.com/hannob)
