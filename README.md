@@ -155,7 +155,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "4.2.2"
+        "globalcitizen/php-iban": "4.2.3"
     }
 }
 ```
@@ -251,7 +251,7 @@ The following table compares __php-iban__ to other PHP projects offering IBAN-re
 
 | Project                                                    | Lic. | Proc | OO  | Began  | Latest | Star | Watch | Fork | Installs | Home culture | Deps    |
 | ---------------------------------------------------------- | ---- | ---- | --- | ------ | ------ | ---- | ----- | ---- | -------- | ------------ | ------- |
-| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 4.2.2  | 426  | 29    | 104  | ~7M+*    | Global*      | *none*  |
+| __php-iban__                                               | LGPL | ✔    | ✔   | 2009   | 4.2.3  | 426  | 29    | 104  | ~7M+*    | Global*      | *none*  |
 | [Iban](https://github.com/jschaedl/Iban)                   | MIT  | ✘    | ✔   | 2013   | 1.3.0  | 50   | 9     | 19   | 178.39k  | German       | lots    |
 | [IsoCodes](https://github.com/ronanguilloux/IsoCodes)      | GPL3 | ✘    | ✔   | 2012   | 2.1.1  | 466  | 22    | 54   | 145k     | French       | lots    |
 | [SepaUtil's](https://github.com/AbcAeffchen/SepaUtilities) | GPL3 | ✘    | ✔   | 2014   | 1.2.3  | 8    | 4     | 3    | 25k      | German       | phpunit |
@@ -321,6 +321,8 @@ Your Help Wanted
 
 News: March 2024
 ----------------
+__[Version 4.2.3](https://github.com/globalcitizen/php-iban/releases/tag/v4.2.3)__ has been released.
+ * [Fix stupid deprecation warning](https://github.com/globalcitizen/php-iban/pull/128) - thanks to [@odolbeau](https://github.com/odolbeau)
 __[Version 4.2.2](https://github.com/globalcitizen/php-iban/releases/tag/v4.2.2)__ has been released.
  * [Fix registry bug causing misreporting of Denmark's EU membership](https://github.com/globalcitizen/php-iban/pull/127) - thanks to [@llange](https://github.com/llange)
  * [Avoid using shell in test script](https://github.com/globalcitizen/php-iban/pull/126) - thanks to [@hannob](https://github.com/hannob)
