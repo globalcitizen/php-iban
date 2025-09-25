@@ -15,7 +15,7 @@ For example:
 ```sh
 $ php utils/test.php          # Run main tests
 $ php utils/ootest.php        # Run object-oriented wrapper tests
-$ php utils/other-test.php    # Run additional tests
+$ php utils/other-tests.php   # Run additional tests
 ```
 
 Automated testing
