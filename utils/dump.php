@@ -11,5 +11,3 @@ require_once(dirname(dirname(__FILE__)) . '/php-iban.php');
 
 # display registry contents
 print_r($_iban_registry);
-
-?>

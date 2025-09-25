@@ -315,5 +315,3 @@ function swift_tokenize($string,$calculate_offsets=0) {
  }
  return $matches;
 }
-
-?>

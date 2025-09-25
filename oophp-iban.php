@@ -230,5 +230,3 @@ Class IBANCountry {
   return iban_country_get_is_eu_member($this->code);
  }
 }
-
-?>

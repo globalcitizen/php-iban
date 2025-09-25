@@ -88,5 +88,3 @@ function usage() {
  print $argv[0] . " <list-file>\n";
  exit(1);
 }
-
-?>

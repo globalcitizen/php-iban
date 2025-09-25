@@ -20,5 +20,3 @@ array_shift($matches);
 for($i=0;$i<count($matches[0]);$i++) {
  print $matches[0][$i] . "|" . $matches[1][$i] . "|" . $matches[2][$i] . "|" . $matches[3][$i] . "\n";
 }
-
-?>
