@@ -1123,7 +1123,7 @@ $country_iban_format_as_regex = iban_country_get_iban_format_regex($iban_country
 
 # Determine whether an IBAN country is a member of SEPA (Single Euro Payments Area)
 if(!iban_country_is_sepa($iban_country)) {
- # ... do something xenophobic ...
+ # ... do something ...
 }
 
 # Get the bank ID start offset for an IBAN country
@@ -1368,7 +1368,7 @@ $country_iban_format_as_regex = $myCountry->IBANFormatRegex();
 
 # Determine whether an IBAN country is a member of SEPA (Single Euro Payments Area)
 if(!$myCountry->IsSEPA()) {
- # ... do something xenophobic ...
+ # ... do something ...
 }
 
 # Get the bank ID start offset for an IBAN country
