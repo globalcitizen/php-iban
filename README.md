@@ -14,7 +14,7 @@ Various deficiencies in the initial adaptation have since been rectified, and th
 
 Where appropriate, __European Committee for Banking Standards__ (ECBS) recommendations have also been incorporated.
 
-Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the January 2020 release, ie. PDF release #86](https://www.swift.com/standards/data-standards/iban).
+Please bear in mind that because the specification changes frequently, it may not be 100% up to date if a new version has been recently released - I do my best though. We are currently thought to be up to date with [the December 2024 release, ie. PDF release #99](https://www.swift.com/standards/data-standards/iban).
 
 Licensed under LGPL, it is free to use in commercial settings.
 
@@ -60,6 +60,7 @@ The following 121 official and unofficial IBAN countries are supported.
 * El Salvador (SV)
 * Equitorial Guinea (GQ)
 * Estonia (EE)
+* Falkland Islands (FK)
 * Finland (FI)
  * Åland Islands (AX)
 * France (FR)
@@ -97,6 +98,7 @@ The following 121 official and unofficial IBAN countries are supported.
 * Kuwait (KW)
 * Latvia (LV)
 * Lebanon (LB)
+* Libya (LY)
 * Liechtenstein (LI)
 * Lithuania (LT)
 * Luxembourg (LU)
@@ -108,6 +110,7 @@ The following 121 official and unofficial IBAN countries are supported.
 * Mauritius (MU)
 * Moldova (MD)
 * Monaco (MC)
+* Mongolia (MN)
 * Montenegro (ME)
 * Morocco (MA)
 * Mozambique (MZ)
@@ -327,6 +330,7 @@ Your Help Wanted
 News: September 2026
 --------------------
 __[Version 5.0.0](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.0)__ has been released.
+ * Add Falkland Islands (FK), Libya (LY) and Mongolia (MN)
  * Update Nicaragua (NI)
  * Update Honduras (HN)
  * Fix Djibouti (DJ)
