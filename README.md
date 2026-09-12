@@ -324,6 +324,19 @@ Your Help Wanted
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
 
+News: September 2026
+--------------------
+__[Version 5.0.0](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.0)__ has been released.
+ * Update Nicaragua (NI)
+ * Update Honduras (HN)
+ * Fix Djibouti (DJ)
+ * Fix Burundi (BI)
+ * Add Yemen (YE)
+ * Add Vatican (VA)
+ * Add Sudan (SD)
+ * Add Russia (RU)
+ * Add Oman (OM)
+
 News: March 2024
 ----------------
 __[Version 4.2.3](https://github.com/globalcitizen/php-iban/releases/tag/v4.2.3)__ has been released.
