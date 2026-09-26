@@ -163,7 +163,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "4.2.3"
+        "globalcitizen/php-iban": "5.0.0"
     }
 }
 ```
