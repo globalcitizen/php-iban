@@ -885,42 +885,36 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
 }
 
 # Implement the national checksum for a Norway (NO) IBAN
-#  (NOTE: Built from description at https://docs.oracle.com/cd/E18727_01/doc.121/e13483/T359831T498954.htm, not well tested)
+#  Weights 5,4,3,2,7,6,5,4,3,2 on the ten body digits.
+#  The check digit is 11 minus that remainder, and 11 is stored as 0.
+#  A remainder of 1 would need the digit 10, which is not used.
 function _iban_nationalchecksum_implementation_no($iban,$mode) {
  if($mode != 'set' && $mode != 'find' && $mode != 'verify') { return ''; } # blank value on return to distinguish from correct execution
  # first, extract the BBAN
  $bban = iban_get_bban_part($iban);
- # then, the account
- $account = iban_get_account_part($iban);
  # existing checksum
  $nationalchecksum = iban_get_nationalchecksum_part($iban);
  # bban less checksum
  $bban_less_checksum = substr($bban,0,strlen($bban)-strlen($nationalchecksum));
  # factor table
  $factors = array(5,4,3,2,7,6,5,4,3,2);
- # calculate checksum
+ # calculate checksum from the ten body digits
  $total = 0;
  for($i=0;$i<10;$i++) {
   $total += $bban_less_checksum[$i] * $factors[$i];
  }
- $total += $nationalchecksum;
- # mod11
- $remainder = $total % 11;
- # to find the correct check digit, we add the remainder to the current check digit,
- #  mod10 (ie. rounding at 10, such that 10 = 0, 11 = 1, etc.)
- $calculated_checksum = ($nationalchecksum + $remainder)%10;
+ # 11 maps to 0. A remainder of 1 would need the digit 10, which is not used.
+ $calculated_checksum = (string) ((11 - ($total % 11)) % 11);
+ if($calculated_checksum === '10') { $calculated_checksum = ''; }
  if($mode == 'find') {
-  if($remainder == 0) { return $nationalchecksum; }
-  else {
-   return $calculated_checksum;
-  }
+  return $calculated_checksum;
  }
  elseif($mode == 'set') {
+  if($calculated_checksum === '') { return ''; }
   return _iban_nationalchecksum_set($iban,$calculated_checksum);
  }
  elseif($mode == 'verify') {
-  if($remainder == 0) { return true; }
-  return false;
+  return ($calculated_checksum !== '' && $nationalchecksum == $calculated_checksum);
  }
 }
 
