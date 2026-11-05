@@ -163,7 +163,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "5.0.1"
+        "globalcitizen/php-iban": "5.0.2"
     }
 }
 ```
@@ -329,6 +329,9 @@ Your Help Wanted
 
 News: November 2026
 -------------------
+__[Version 5.0.2](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.2)__ has been released.
+ * Fix registry metadata for DJ, CF, TD, KM, CG, GQ and GA by @egbavou in #145
+
 __[Version 5.0.1](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.1)__ has been released.
  * Update UEMOA countries (BJ, BF, CI, ML, SN) to the current IBAN format and implement French RIB variant for these countries. (Thanks to @egbavou)
 
