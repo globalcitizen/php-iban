@@ -163,7 +163,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "5.0.0"
+        "globalcitizen/php-iban": "5.0.1"
     }
 }
 ```
@@ -326,6 +326,11 @@ Your Help Wanted
   * __Mauritania__ (MR) has a dual character checksum system but our example IBAN does not match MOD97-10 which would be the expected system. Previously the IBAN here was always fixed to '13' checksum digits, however as of registry v66 it is now dynamic, which suggests a changed or at least now nationally relaxed checksum system.
 
  * If you are willing to spend some time searching, we could do with some more test IBANs for most countries, especially smaller ones...
+
+News: November 2026
+-------------------
+__[Version 5.0.1](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.1)__ has been released.
+ * Update UEMOA countries (BJ, BF, CI, ML, SN) to the current IBAN format and implement French RIB variant for these countries. (Thanks to @egbavou)
 
 News: September 2026
 --------------------
