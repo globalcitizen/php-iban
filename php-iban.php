@@ -863,14 +863,10 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  $bban_numeric_form = _iban_nationalchecksum_implementation_fr_letters2numbers_helper($bban);
  # if the result was null, something is horribly wrong
  if(is_null($bban_numeric_form)) { return ''; }
- # extract other parts
- $bank = substr($bban_numeric_form,0,5);
- $branch = substr($bban_numeric_form,5,5);
- $account = substr($bban_numeric_form,10,11);
- # actual implementation: mod97( (89 x bank number "Code banque") + (15 x branch code "Code guichet") + (3 x account number "Numéro de compte") )
- $sum = (89*($bank+0)) + ((15*($branch+0)));
- $sum += (3*($account+0));
- $expected_nationalchecksum = 97 - ($sum % 97);
+ # actual implementation: 97 - mod97( bank code "Code banque" . branch code "Code guichet" . account number "Numéro de compte" . '00' )
+ #  The account number has 11 characters in France and 12 digits in UEMOA countries.
+ #  With 11 characters this is the usual 97 - mod97( (89 x bank) + (15 x branch) + (3 x account) ).
+ $expected_nationalchecksum = 97 - iban_mod97_10_checksum(substr($bban_numeric_form,0,-2) . '00');
  if(strlen($expected_nationalchecksum) == 1) { $expected_nationalchecksum = '0' . $expected_nationalchecksum; }
  # return
  if($mode=='find') {
@@ -882,6 +878,41 @@ function _iban_nationalchecksum_implementation_fr($iban,$mode) {
  elseif($mode=='verify') {
   return (iban_get_nationalchecksum_part($iban) == $expected_nationalchecksum);
  }
+}
+
+# Implement the national checksum for a Benin (BJ) IBAN
+function _iban_nationalchecksum_implementation_bj($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
+# Implement the national checksum for a Burkina Faso (BF) IBAN
+function _iban_nationalchecksum_implementation_bf($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
+# Implement the national checksum for a Côte d'Ivoire (CI) IBAN
+function _iban_nationalchecksum_implementation_ci($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
+# Implement the national checksum for a Mali (ML) IBAN
+function _iban_nationalchecksum_implementation_ml($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
+# Implement the national checksum for a Niger (NE) IBAN
+function _iban_nationalchecksum_implementation_ne($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
+# Implement the national checksum for a Senegal (SN) IBAN
+function _iban_nationalchecksum_implementation_sn($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
+}
+
+# Implement the national checksum for a Togo (TG) IBAN
+function _iban_nationalchecksum_implementation_tg($iban,$mode) {
+ return _iban_nationalchecksum_implementation_fr($iban,$mode);
 }
 
 # Implement the national checksum for a Norway (NO) IBAN
