@@ -137,6 +137,44 @@ foreach($test_data as $input=>$expected_output) {
  $i++;
 }
 
+# === iban_country_is_sepa ===================================
+$test_data = array(	# input				=>	# expected output
+			'DE'				=>	true,			# Germany is SEPA
+			'VA'				=>	true,			# Vatican City State is SEPA (SWIFT registry)
+			'BI'				=>	false,			# Burundi is not SEPA
+			'DJ'				=>	false,			# Djibouti is not SEPA
+			'HN'				=>	false,			# Honduras is not SEPA
+			'NI'				=>	false,			# Nicaragua is not SEPA
+			'LY'				=>	false			# Libya is not SEPA
+	     );
+$i=0;
+foreach($test_data as $input=>$expected_output) {
+ print " - iban_country_is_sepa() test #$i... ";
+ $received_output = (bool)iban_country_is_sepa($input);
+ if($received_output !== $expected_output) {
+  print "FAILED (expected '" . var_export($expected_output,true) . "', received '" . var_export($received_output,true) . "')\n";
+  exit(1);
+ }
+ else {
+  print "OK.\n";
+ }
+ $i++;
+}
+
+# === registry countries ======================================
+# Countries listed as supported in README.md must be in the registry
+$test_data = array('FK','LY','MN','SO');
+foreach($test_data as $input) {
+ print " - registry has '$input'... ";
+ if(!in_array($input,iban_countries())) {
+  print "FAILED.\n";
+  exit(1);
+ }
+ else {
+  print "OK.\n";
+ }
+}
+
 # Verify all of the example IBANs using the validate-list script
 $example_ibans_dir = dirname(__FILE__) . '/example-ibans/';
 if(!file_exists($example_ibans_dir) && is_dir($example_ibans_dir)) {
