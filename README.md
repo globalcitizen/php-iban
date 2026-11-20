@@ -22,7 +22,7 @@ Licensed under LGPL, it is free to use in commercial settings.
 Countries Supported
 -------------------
 
-The following 121 official and unofficial IBAN countries are supported.
+The following 125 official and unofficial IBAN countries are supported.
 
 * Albania (AL)
 * Algeria (DZ)
@@ -135,6 +135,7 @@ The following 121 official and unofficial IBAN countries are supported.
 * Seychelles (SC)
 * Slovakia (SK)
 * Slovenia (SI)
+* Somalia (SO)
 * Spain (ES)
 * Sudan (SD)
 * Sweden (SE)
