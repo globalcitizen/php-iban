@@ -330,6 +330,9 @@ Your Help Wanted
 
 News: November 2026
 -------------------
+__[Version 5.0.3](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.3)__ has been released.
+ * Add FK, LY, MN, SO and fix SEPA flags for BI, DJ, HN, NI, VA - #147
+
 __[Version 5.0.2](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.2)__ has been released.
  * Fix registry metadata for DJ, CF, TD, KM, CG, GQ and GA by @egbavou in #145
 
