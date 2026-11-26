@@ -164,7 +164,7 @@ Then just add the following to your `composer.json` file:
 // composer.json
 {
     "require": {
-        "globalcitizen/php-iban": "5.0.3"
+        "globalcitizen/php-iban": "5.0.4"
     }
 }
 ```
@@ -330,6 +330,9 @@ Your Help Wanted
 
 News: November 2026
 -------------------
+__[Version 5.0.4](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.4)__ has been released.
+ * Fix BE checksums for 1/97 cases (thanks @bardrop)
+
 __[Version 5.0.3](https://github.com/globalcitizen/php-iban/releases/tag/v5.0.3)__ has been released.
  * Add FK, LY, MN, SO and fix SEPA flags for BI, DJ, HN, NI, VA - #147
 
