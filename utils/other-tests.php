@@ -161,6 +161,37 @@ foreach($test_data as $input=>$expected_output) {
  $i++;
 }
 
+# === Belgian (BE) national checksum ============================
+# The check is the BBAN (less the check) mod 97, as two digits.
+# A remainder of 0 gives check '97'. A remainder below 10 keeps
+# its leading zero.
+$test_data = array(	# input				# expected national checksum
+			array('BE54310000010897',		'97'),	# 3100000108 mod 97 = 0
+			array('BE74310000011507',		'07'),	# 3100000115 mod 97 = 7
+			array('BE68539007547034',		'34'),	# SWIFT registry example
+             );
+foreach($test_data as $this_test) {
+ list($input,$expected) = $this_test;
+ print " - Belgian national checksum for '$input'... ";
+ $found = iban_find_nationalchecksum($input);
+ if($found !== $expected) {
+  print "FAILED (find: expected '$expected', received '$found')\n";
+  exit(1);
+ }
+ if(iban_verify_nationalchecksum($input) !== true) {
+  print "FAILED (verify did not return true)\n";
+  exit(1);
+ }
+ # break the check, then set it again
+ $broken = substr($input,0,-2) . ($expected == '11' ? '12' : '11');
+ $fixed = iban_set_nationalchecksum($broken);
+ if($fixed !== $input) {
+  print "FAILED (set: expected '$input', received '$fixed')\n";
+  exit(1);
+ }
+ print "OK.\n";
+}
+
 # === registry countries ======================================
 # Countries listed as supported in README.md must be in the registry
 $test_data = array('FK','LY','MN','SO');

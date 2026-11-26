@@ -721,7 +721,11 @@ function _iban_nationalchecksum_implementation_be($iban,$mode) {
  $nationalchecksum = iban_get_nationalchecksum_part($iban);
  $bban = iban_get_bban_part($iban);
  $bban_less_checksum = substr($bban, 0, -strlen($nationalchecksum));
- $expected_nationalchecksum = $bban_less_checksum % 97;
+ $expected_nationalchecksum = iban_mod97_10_checksum($bban_less_checksum);
+ # a remainder of 0 is written as 97
+ if($expected_nationalchecksum == 0) { $expected_nationalchecksum = 97; }
+ # always two digits, keeping any leading zero
+ $expected_nationalchecksum = str_pad($expected_nationalchecksum,2,'0',STR_PAD_LEFT);
  if($mode=='find') {
   return $expected_nationalchecksum;
  }
